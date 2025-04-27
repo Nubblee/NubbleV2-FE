@@ -50,7 +50,11 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
 
   return (
     <div className="flex gap-6 items-center">
-      <button className="text-black" onClick={handlePrev} disabled={page === 1}>
+      <button
+        className={page === 1 ? "text-gray" : "text-black cursor-pointer"}
+        onClick={handlePrev}
+        disabled={page === 1}
+      >
         <ChevronLeft size={21} />
       </button>
       {pages.map((item) =>
@@ -73,7 +77,9 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
         )
       )}
       <button
-        className="text-black"
+        className={` ${
+          page === totalPage ? "text-gray" : "text-black cursor-pointer"
+        }`}
         onClick={handleNext}
         disabled={page === totalPage}
       >
