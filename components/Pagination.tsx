@@ -1,3 +1,5 @@
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
 interface Props {
   page: number;
   setPage: (page: number) => void;
@@ -25,9 +27,7 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
         pages.push(i);
       }
 
-      if (right < totalPage - 1) {
-        pages.push("next-dots");
-      }
+      if (right < totalPage - 1) pages.push("next-dots");
 
       pages.push(totalPage);
     }
@@ -49,9 +49,9 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
   const pages = createPages();
 
   return (
-    <div className="flex gap-6">
-      <button className="cursor-pointer" onClick={handlePrev}>
-        이전
+    <div className="flex gap-6 items-center">
+      <button className="text-black" onClick={handlePrev} disabled={page === 1}>
+        <ChevronLeft size={21} />
       </button>
       {pages.map((item) =>
         item === "prev-dots" || item === "next-dots" ? (
@@ -72,8 +72,12 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
           </button>
         )
       )}
-      <button className="cursor-pointer" onClick={handleNext}>
-        다음
+      <button
+        className="text-black"
+        onClick={handleNext}
+        disabled={page === totalPage}
+      >
+        <ChevronRight size={21} />
       </button>
     </div>
   );
