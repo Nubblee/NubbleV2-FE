@@ -1,4 +1,4 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Ellipsis } from "lucide-react";
 
 interface Props {
   page: number;
@@ -60,7 +60,7 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
       {pages.map((item) =>
         item === "prev-dots" || item === "next-dots" ? (
           <span key={item} className="text-black">
-            ...
+            <Ellipsis size={18} />
           </span>
         ) : (
           <button
