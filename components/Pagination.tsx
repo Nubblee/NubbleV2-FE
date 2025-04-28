@@ -16,6 +16,7 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
 
     pages.push(1);
 
+    // 2페이지 ~ totalPage - 1 까지 처리
     if (totalPage <= limit) {
       for (let i = 2; i < totalPage; i++) {
         pages.push(i);
@@ -28,6 +29,7 @@ const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
       left = Math.max(2, page - halfSize);
       right = Math.min(totalPage - 1, page + halfSize);
 
+      //limit가 짝수인 경우 pageSize 처리
       if (limit % 2 === 0) {
         left = Math.max(2, page - (halfSize - 1));
       }
