@@ -10,27 +10,38 @@ interface Props {
 const Pagination = ({ page, setPage, totalPage, limit }: Props) => {
   const createPages = () => {
     const pages = [];
+    const halfSize = Math.floor(limit / 2);
+    let left = 0;
+    let right = 0;
 
-    if (totalPage <= limit + Math.floor(limit / 2)) {
-      for (let i = 1; i <= totalPage; i++) {
+    pages.push(1);
+
+    if (totalPage <= limit) {
+      for (let i = 2; i < totalPage; i++) {
+        pages.push(i);
+      }
+    } else if (page <= limit) {
+      for (let i = 2; i <= limit; i++) {
         pages.push(i);
       }
     } else {
-      pages.push(1);
+      left = Math.max(2, page - halfSize);
+      right = Math.min(totalPage - 1, page + halfSize);
 
-      const left = Math.max(2, page - Math.floor(limit / 2));
-      const right = Math.min(totalPage - 1, page + Math.floor(limit / 2));
+      if (limit % 2 === 0) {
+        left = Math.max(2, page - (halfSize - 1));
+      }
 
       if (left > 2) pages.push("prev-dots");
 
       for (let i = left; i <= right; i++) {
         pages.push(i);
       }
-
-      if (right < totalPage - 1) pages.push("next-dots");
-
-      pages.push(totalPage);
     }
+
+    if (right < totalPage) pages.push("next-dots");
+    pages.push(totalPage);
+
     return pages;
   };
 
