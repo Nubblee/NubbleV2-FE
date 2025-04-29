@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-pretendard: var(--font-CSS변수명);
+  --font-pretendard: var(--font-pretendard);
 }
 
 @theme {
