@@ -4,6 +4,16 @@
   --font-pretendard: var(--font-CSS변수명);
 }
 
+@theme {
+  --color-blue: #7392c9;
+  --color-red: #ff0000;
+  --color-gray-light: #d0d0d0;
+  --color-gray-dark: #828282;
+  --color-green-light: #ccfbf1;
+  --color-green-middle: #30d1bd;
+  --color-green-dark: #0d9488;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -16,72 +26,7 @@
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-
-ol,
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-button {
-  outline: none;
-  border: 0;
-  font: inherit;
-  cursor: pointer;
-}
-
-input,
-textarea {
-  border: 0;
-  outline: none;
-  background: none;
-  font: inherit;
-}
-
-textarea {
-  resize: none;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: top;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
 }
