@@ -1,15 +1,13 @@
-//TODO: 페이지네이션 merge되면 북마크 아이콘으로 교체
-
 import React from "react";
 import Card from "./Card";
 import ShowDay from "./ShowDay";
 import Image from "next/image";
+import BookMarkButton, { BookMarkButtonProps } from "./BookMarkButton";
 
 type StudyCardType = "recruiting" | "active";
 
 interface StudyCardProps {
   type?: StudyCardType;
-  isbookmark?: boolean;
   icon: string;
   title: string;
   allMembers: number;
@@ -21,7 +19,6 @@ interface StudyCardProps {
 
 const StudyCard = ({
   type = "recruiting",
-  isbookmark,
   icon,
   title,
   allMembers,
@@ -29,19 +26,17 @@ const StudyCard = ({
   level,
   days,
   expireDay,
-}: StudyCardProps) => {
+  isBookMark = false,
+  onBookMark,
+}: StudyCardProps & BookMarkButtonProps) => {
   return (
-    <Card type="gray">
+    <Card type="gray" isShadow>
       <div className="w-[350px] h-[164px]">
-        <div
-          className={`flex justify-end px-[14px] ${
-            isbookmark ? "bg-gray-dark" : ""
-          }`}
-        >
-          북마크아이콘
+        <div className={`flex justify-end px-[14px] mt-[8px]`}>
+          <BookMarkButton isBookMark={isBookMark} onBookMark={onBookMark} />
         </div>
         <div className="flex gap-6 px-[26px]">
-          <div className="flex flex-col gap-[5px]">
+          <div className="flex flex-col gap-[13px]">
             <Image src={icon} alt={icon} width={60} height={60} />
             <div className="flex gap-[3px] w-[70px] text-xs font-semibold">
               파티원
