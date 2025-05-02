@@ -1,9 +1,9 @@
-import LoadingSpinner from "./_component/LoadingSpinner";
+import Loading from "./_component/Loading";
 
 export default function Home() {
   return (
-    <div className="">
-      <LoadingSpinner />
+    <div className="flex justify-center">
+      <Loading />
     </div>
   );
 }

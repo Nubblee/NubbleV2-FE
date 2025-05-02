@@ -3,26 +3,25 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex items-center justify-center h-full">
-      <div className="relative w-[300px] h-[300px] overflow-visible">
+    <div className="flex h-[calc(100vh-45px)] justify-center items-center">
+      <div className="relative w-[350px] h-[350px] overflow-visible">
         <svg
-          viewBox="-100 -100 550 550"
+          viewBox="-60 -250 550 550"
           xmlns="http://www.w3.org/2000/svg"
           className="absolute w-full"
         >
           <path
-            d=" M-0,10 
-                Q100,0 50,80 
-                Q0,120 50,160 
-                Q230,200 50,240 
-                Q0,280 50,320 
-                Q230,380 80,460"
+            d=" M0,0 
+                Q260,10 100,80 
+                Q0,140 80,140 
+                Q425,200 100,270 
+                Q0,300 180,380"
             stroke="#CCFBF1"
             strokeWidth="100"
             strokeLinecap="round"
             fill="none"
             className="animate-draw"
-            style={{ transform: "rotate(-30deg)", transformOrigin: "top left" }}
+            style={{ transform: "rotate(-50deg)", transformOrigin: "top left" }}
           />
         </svg>
         <div
@@ -37,6 +36,11 @@ const Loading = () => {
               {char}
             </span>
           ))}
+        </div>
+        <div
+          className={`absolute top-52 left-35 ${cookierun.variable} font-cookierun text-gray-light`}
+        >
+          Loading ...
         </div>
         <style>
           {`
@@ -76,7 +80,7 @@ const Loading = () => {
               }
   
               .animate-pop-once {
-                animation: pop 4s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+                animation: pop 2.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
                 display: inline-block;
               }
             `}
