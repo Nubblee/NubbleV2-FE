@@ -3,21 +3,47 @@
 import { ComponentProps } from "react";
 import clsx from "clsx";
 
+type InputVariant = "underline" | "borderless" | "default";
+
 export interface InputProps extends ComponentProps<"input"> {
   isInvalid?: boolean;
+  invalidMessage?: string;
+  validMessage?: string;
+  variant?: InputVariant;
 }
 
-const Input = ({ isInvalid = false, className, ...props }: InputProps) => {
+const variantStyles = {
+  underline: "border-0 border-b-1",
+  borderless: "border-0 bg-white",
+  default: "border",
+};
+
+const Input = ({
+  isInvalid = false,
+  variant = "default",
+  invalidMessage,
+  validMessage,
+  className,
+  ...props
+}: InputProps) => {
   return (
-    <input
-      className={clsx(
-        "w-full border",
-        isInvalid ? "border-red-500" : "border-black",
-        className
+    <div className="w-full">
+      <input
+        className={clsx(
+          "w-full px-2 py-1 outline-none rounded-md",
+          variantStyles[variant],
+          className
+        )}
+        aria-invalid={isInvalid}
+        {...props}
+      />
+      {isInvalid && invalidMessage && (
+        <p className="mt-1 text-base text-red">{invalidMessage}</p>
       )}
-      aria-invalid={isInvalid}
-      {...props}
-    />
+      {!isInvalid && validMessage && (
+        <p className="mt-1 text-base text-green-middle">{validMessage}</p>
+      )}
+    </div>
   );
 };
 
