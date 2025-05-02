@@ -1,3 +1,9 @@
+import LoadingSpinner from "./_component/LoadingSpinner";
+
 export default function Home() {
-  return <div className="text-2xl font-bold underline">너블 홈</div>;
+  return (
+    <div className="">
+      <LoadingSpinner />
+    </div>
+  );
 }
