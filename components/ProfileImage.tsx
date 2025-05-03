@@ -6,7 +6,7 @@ import clsx from "clsx";
 type ProfileImageType = "circle" | "rounded";
 
 interface ProfileImageProps {
-  src: string;
+  src?: string;
   alt?: string;
   size?: number;
   type?: ProfileImageType;
@@ -21,10 +21,11 @@ const ProfileImage = ({
   className,
 }: ProfileImageProps) => {
   const roundedClass = type === "circle" ? "rounded-full" : "rounded-lg";
+  const imageSrc = src || "/basicProfile.png";
 
   return (
     <Image
-      src={src}
+      src={imageSrc}
       alt={alt}
       width={size}
       height={size}
