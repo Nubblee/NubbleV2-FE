@@ -30,7 +30,7 @@ const Input = ({
     <div className="w-full">
       <input
         className={clsx(
-          "w-full px-2 py-1 outline-none ",
+          "w-full px-2 py-1 outline-none placeholder-gray-placeholder",
           variantStyles[variant],
           className
         )}
