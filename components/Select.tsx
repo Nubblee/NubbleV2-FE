@@ -9,7 +9,7 @@ export interface SelectProps extends ComponentProps<"select"> {
 }
 
 const variantStyles = {
-  underline: "border-0 border-b-1",
+  underline: "border-0 border-b-1 border-gray-middle",
   default: "border border-gray-middle rounded-md",
 };
 
