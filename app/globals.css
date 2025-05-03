@@ -2,11 +2,13 @@
 
 @theme inline {
   --font-pretendard: var(--font-pretendard);
+  --font-cookierun: var(--font-cookierun);
 }
 
 @theme {
   --color-blue: #7392c9;
   --color-red: #ff0000;
+  --color-gray-placeholder: #c2c2c2;
   --color-gray-light: #d0d0d0;
   --color-gray-middle: #cfcfcf;
   --color-gray-dark: #828282;

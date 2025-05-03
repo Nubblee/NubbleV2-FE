@@ -8,9 +8,5 @@ const options = [
 ];
 
 export default function Home() {
-  return (
-    <div className="w-[300px]">
-      <Select options={options} variant="underline" />
-    </div>
-  );
+  return <div className="flex justify-center">너블 홈</div>;
 }
