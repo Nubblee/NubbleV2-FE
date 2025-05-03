@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <div className="text-2xl font-bold underline w-[300px]">
       너블 홈
-      <Select variant="underline">
+      <Select>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

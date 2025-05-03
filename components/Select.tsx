@@ -9,8 +9,10 @@ export interface SelectProps extends ComponentProps<"select"> {
 }
 
 const variantStyles = {
-  underline: "border-0 border-b-1 border-gray-middle",
-  default: "border border-gray-middle rounded-md",
+  underline:
+    "border-0 border-b-1 border-gray-middle focus:outline-none focus:ring-0 focus:border-gray-dark",
+  default:
+    "border border-gray-middle rounded-md focus:outline-none focus:ring-1 focus:ring-gray-dark",
 };
 
 const Select = ({
@@ -32,8 +34,8 @@ const Select = ({
         {children}
       </select>
 
-      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
-        <ChevronDown size={20} className="text-gray-dark" />
+      <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+        <ChevronDown size={20} className="text-gray-dark pointer-events-none" />
       </div>
     </div>
   );
