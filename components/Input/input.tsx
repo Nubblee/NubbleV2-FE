@@ -14,8 +14,8 @@ export interface InputProps extends ComponentProps<"input"> {
 
 const variantStyles = {
   underline: "border-0 border-b-1",
-  borderless: "border-0 bg-white",
-  default: "border",
+  borderless: "border-0 bg-white rounded-md",
+  default: "border rounded-md",
 };
 
 const Input = ({
@@ -30,7 +30,7 @@ const Input = ({
     <div className="w-full">
       <input
         className={clsx(
-          "w-full px-2 py-1 outline-none rounded-md",
+          "w-full px-2 py-1 outline-none placeholder-gray-placeholder",
           variantStyles[variant],
           className
         )}
