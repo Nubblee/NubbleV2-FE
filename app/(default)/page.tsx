@@ -1,3 +1,9 @@
+import Loading from "./_component/Loading";
+
 export default function Home() {
-  return <div className="text-2xl font-bold underline">너블 홈</div>;
+  return (
+    <div className="flex justify-center">
+      <Loading />
+    </div>
+  );
 }
