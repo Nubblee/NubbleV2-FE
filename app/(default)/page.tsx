@@ -10,11 +10,7 @@ const options = [
 export default function Home() {
   return (
     <div className="w-[300px]">
-      <Select
-        options={options}
-        variant="underline"
-        onChange={(val) => console.log("선택된 값:", val)}
-      />
+      <Select options={options} variant="underline" />
     </div>
   );
 }
