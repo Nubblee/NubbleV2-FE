@@ -2,6 +2,7 @@
 
 @theme inline {
   --font-pretendard: var(--font-pretendard);
+  --font-cookierun: var(--font-cookierun);
 }
 
 @theme {
