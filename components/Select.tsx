@@ -22,7 +22,7 @@ const Select = ({
   ...props
 }: SelectProps) => {
   return (
-    <div className="relative w-full">
+    <label className="relative w-full block">
       <select
         className={clsx(
           "w-full px-3 py-2 text-base bg-white appearance-none pr-10",
@@ -34,10 +34,10 @@ const Select = ({
         {children}
       </select>
 
-      <div className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
-        <ChevronDown size={20} className="text-gray-dark pointer-events-none" />
+      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
+        <ChevronDown size={20} className="text-gray-dark" />
       </div>
-    </div>
+    </label>
   );
 };
 
