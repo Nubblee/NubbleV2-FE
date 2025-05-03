@@ -6,10 +6,10 @@ export default function Home() {
     <div className="text-2xl font-bold w-[300px] ">
       너블 홈
       <Input validMessage="성공입니다" />
-      <Button variant="primary" className="mr-1">
+      <Button variant="primary" className="mr-1" disabled>
         로그인
       </Button>
-      <Button variant="secondary" className="mr-1">
+      <Button variant="secondary" className="mr-1" disabled>
         회원가입
       </Button>
       <Button variant="outlined">로그아웃</Button>
