@@ -18,7 +18,7 @@ const TagButton = ({
     <button
       type="button"
       className={clsx(
-        "px-4 py-1 text-sm border rounded-2xl font-medium transition",
+        "px-4 py-1 text-sm border rounded-2xl font-medium transition cursor-pointer",
         selected
           ? "bg-green-middle text-white border-green-middle"
           : "bg-white text-green-middle border-green-middle",
