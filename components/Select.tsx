@@ -25,7 +25,7 @@ const Select = ({
     <label className="relative w-full block">
       <select
         className={clsx(
-          "w-full px-3 py-2 text-base bg-white appearance-none pr-10",
+          "w-full px-3 py-2 text-base bg-white appearance-none pr-10 cursor-pointer",
           variantStyles[variant],
           className
         )}
