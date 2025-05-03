@@ -10,6 +10,7 @@ interface TagGroupProps {
   options: string[];
   defaultSelected?: string[];
   onChange?: (selected: string[]) => void;
+  readonly?: boolean;
 }
 
 const TagGroup = ({
@@ -18,11 +19,13 @@ const TagGroup = ({
   options,
   defaultSelected = [],
   onChange,
+  readonly = false,
 }: TagGroupProps) => {
   const [selectedValues, setSelectedValues] =
     useState<string[]>(defaultSelected);
 
   const toggle = (value: string) => {
+    if (readonly) return;
     const newSelected = selectedValues.includes(value)
       ? selectedValues.filter((v) => v !== value)
       : [...selectedValues, value];
@@ -42,6 +45,7 @@ const TagGroup = ({
             key={option}
             selected={selectedValues.includes(option)}
             onClick={() => toggle(option)}
+            className={readonly ? "pointer-events-none" : ""}
           >
             {option}
           </TagButton>

@@ -9,6 +9,7 @@ export default function Home() {
         labelClassName="text-lg text-green-dark"
         options={["Lv 0", "Lv 1", "Lv 2", "Lv 3"]}
         defaultSelected={["Lv 1"]}
+        readonly
       />
     </div>
   );
