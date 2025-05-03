@@ -1,9 +1,7 @@
-import Loading from "./_component/Loading";
-
 export default function Home() {
   return (
     <div className="flex justify-center">
-      <Loading />
+      너블 홈
     </div>
   );
 }
