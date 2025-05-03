@@ -1,16 +1,20 @@
+"use client";
 import Select from "@/components/Select";
+
+const options = [
+  { label: "옵션 1", value: "1" },
+  { label: "옵션 2", value: "2" },
+  { label: "옵션 3", value: "3" },
+];
 
 export default function Home() {
   return (
-    <div className="text-2xl font-bold underline w-[300px]">
-      너블 홈
-      <Select>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </Select>
+    <div className="w-[300px]">
+      <Select
+        options={options}
+        variant="underline"
+        onChange={(val) => console.log("선택된 값:", val)}
+      />
     </div>
   );
 }

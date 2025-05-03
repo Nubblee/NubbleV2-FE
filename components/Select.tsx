@@ -1,43 +1,65 @@
 "use client";
 
-import { ComponentProps } from "react";
+import * as RadixSelect from "@radix-ui/react-select";
+import { ChevronDown, Check } from "lucide-react";
 import clsx from "clsx";
-import { ChevronDown } from "lucide-react";
 
-export interface SelectProps extends ComponentProps<"select"> {
-  variant?: "underline" | "default";
+export interface Option {
+  label: string;
+  value: string;
+}
+
+export interface SelectProps {
+  options: Option[];
+  value?: string;
+  onChange?: (value: string) => void;
+  placeholder?: string;
+  variant?: "default" | "underline";
 }
 
 const variantStyles = {
-  underline:
-    "border-0 border-b-1 border-gray-middle focus:outline-none focus:ring-0 focus:border-gray-dark",
-  default:
-    "border border-gray-middle rounded-md focus:outline-none focus:ring-1 focus:ring-gray-dark",
+  default: "border border-gray-middle rounded-md",
+  underline: "border-0 border-b border-gray-middle",
 };
 
 const Select = ({
-  className,
+  options,
+  value,
+  onChange,
+  placeholder = "선택하세요",
   variant = "default",
-  children,
-  ...props
 }: SelectProps) => {
   return (
-    <label className="relative w-full block">
-      <select
+    <RadixSelect.Root value={value} onValueChange={onChange}>
+      <RadixSelect.Trigger
         className={clsx(
-          "w-full px-3 py-2 text-base bg-white appearance-none pr-10 cursor-pointer",
-          variantStyles[variant],
-          className
+          "w-full flex items-center justify-between px-3 py-2 text-base bg-white cursor-pointer appearance-none",
+          variantStyles[variant]
         )}
-        {...props}
       >
-        {children}
-      </select>
+        <RadixSelect.Value placeholder={placeholder} />
+        <RadixSelect.Icon>
+          <ChevronDown size={20} className="text-gray-500" />
+        </RadixSelect.Icon>
+      </RadixSelect.Trigger>
 
-      <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
-        <ChevronDown size={20} className="text-gray-dark" />
-      </div>
-    </label>
+      <RadixSelect.Content className="z-50 mt-1 bg-white rounded-md shadow-md">
+        <RadixSelect.Viewport className="py-1">
+          {options.map((opt) => (
+            <RadixSelect.Item
+              key={opt.value}
+              value={opt.value}
+              className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-100 focus:outline-none"
+            >
+              <RadixSelect.ItemText>{opt.label}</RadixSelect.ItemText>
+              <RadixSelect.ItemIndicator>
+                <Check size={16} className="text-primary" />
+              </RadixSelect.ItemIndicator>
+            </RadixSelect.Item>
+          ))}
+        </RadixSelect.Viewport>
+      </RadixSelect.Content>
+    </RadixSelect.Root>
   );
 };
 
