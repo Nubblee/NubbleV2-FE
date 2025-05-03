@@ -10,9 +10,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variantStyles = {
-  outlined: "border border-green-middle text-green-middle bg-transparent",
-  primary: "bg-green-middle text-white",
-  secondary: "bg-green-dark text-white",
+  outlined:
+    "border border-green-middle text-green-middle bg-transparent hover:bg-green-light",
+  primary: "bg-green-middle text-white hover:bg-green-dark",
+  secondary: "bg-green-dark text-white hover:bg-green-middle",
 };
 
 const Button = ({
@@ -24,7 +25,7 @@ const Button = ({
   return (
     <button
       className={clsx(
-        "px-4 py-2 rounded-lg text-base font-medium transition",
+        "px-4 py-2 rounded-lg text-base font-medium transition cursor-pointer",
         variantStyles[variant],
         className
       )}
