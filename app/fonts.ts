@@ -6,3 +6,10 @@ export const pretendard = localFont({
   display: "swap",
   preload: true,
 });
+
+export const cookierun = localFont({
+  src: "../public/fonts/CookieRun-Bold.woff",
+  variable: "--font-cookierun",
+  display: "swap",
+  preload: true,
+});
