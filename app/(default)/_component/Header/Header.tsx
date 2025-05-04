@@ -9,12 +9,12 @@ const Header = () => {
   const pathname = usePathname()
   const isHome = pathname === '/'
 
-  const bgColor = isHome ? 'bg-[var(--color-green-middle)]' : ''
+  const bgColor = isHome ? 'bg-green-middle' : ''
   const logoColor = isHome ? 'white' : 'green'
-  const textColor = isHome ? 'text-white' : 'text-[var(--color-green-middle)]'
+  const textColor = isHome ? 'text-white' : 'text-green-middle'
 
   return (
-    <header className={`flex items-center justify-between px-12 ${bgColor}`}>
+    <header className={`flex items-center justify-between px-12 py-4 ${bgColor}`}>
       <Logo color={logoColor} />
       <nav className='flex gap-6'>
         {navItems.map((item) => (
