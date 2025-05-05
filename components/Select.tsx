@@ -34,6 +34,7 @@ const Select = ({
       <RadixSelect.Trigger
         className={clsx(
           "w-full flex items-center justify-between px-3 py-2 text-base bg-white cursor-pointer appearance-none",
+          "focus:outline-none focus:ring-2 focus:ring-green-light",
           variantStyles[variant]
         )}
       >
@@ -49,7 +50,7 @@ const Select = ({
             <RadixSelect.Item
               key={opt.value}
               value={opt.value}
-              className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-gray-100 focus:outline-none"
+              className="flex items-center justify-between px-3 py-2 cursor-pointer hover:bg-green-light focus:outline-none"
             >
               <RadixSelect.ItemText>{opt.label}</RadixSelect.ItemText>
               <RadixSelect.ItemIndicator>
