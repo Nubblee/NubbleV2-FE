@@ -15,7 +15,7 @@ const SignUpForm = () => {
   return (
     <div className="flex flex-col w-[350px] gap-5 items-center">
       <Input
-        label="닉네임"
+        label="닉네임 *"
         className="border-gray-light"
         variant="underline"
         placeholder="닉네임을 입력하세요."
@@ -25,7 +25,7 @@ const SignUpForm = () => {
           중복확인
         </TagButton>
         <Input
-          label="아이디"
+          label="아이디 *"
           className="absolute left-0 bottom-0 border-gray-light"
           placeholder="아이디를 입력하세요."
           variant="underline"
@@ -34,18 +34,18 @@ const SignUpForm = () => {
       <Input
         className="py-3 border-gray-light"
         type="password"
-        label="비밀번호"
+        label="비밀번호 *"
         placeholder="비밀번호를 입력하세요."
       />
       <Input
         className="py-3 border-gray-light"
         type="password"
-        label="비밀번호 확인"
+        label="비밀번호 확인 *"
         placeholder="비밀번호를 입력하세요."
       />
       <div className="flex items-center gap-1 w-full">
         <Input
-          label="이메일"
+          label="이메일 *"
           type="email"
           className="py-2 border-gray-light flex-grow"
         />
@@ -61,7 +61,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <Input label="주소" className="py-3 border-gray-light" />
-      <Button className="w-full py-3">회원가입</Button>
+      <Button className="w-full py-3">가입하기</Button>
     </div>
   );
 };

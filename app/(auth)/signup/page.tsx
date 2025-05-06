@@ -3,8 +3,9 @@ import SignUpForm from "../_component/SignUpForm";
 
 const SignUp = () => {
   return (
-    <div className="h-screen flex flex-col justify-center items-center gap-10">
-      <Logo width={200} />
+    <div className="h-screen flex flex-col justify-center items-center">
+      <Logo />
+      <span className="text-sm my-5 mb-10"> * 는 필수 입력값 입니다.</span>
       <SignUpForm />
     </div>
   );
