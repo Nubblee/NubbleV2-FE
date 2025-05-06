@@ -1,5 +1,11 @@
+import SignUpForm from "../_component/SignUpForm";
+
 const SignUp = () => {
-  return <div>회원가입</div>;
+  return (
+    <div className="h-screen flex flex-col justify-center items-center">
+      <SignUpForm />
+    </div>
+  );
 };
 
 export default SignUp;
