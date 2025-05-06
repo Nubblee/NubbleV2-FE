@@ -33,11 +33,13 @@ const SignUpForm = () => {
       </div>
       <Input
         className="py-3 border-gray-light"
+        type="password"
         label="비밀번호"
         placeholder="비밀번호를 입력하세요."
       />
       <Input
         className="py-3 border-gray-light"
+        type="password"
         label="비밀번호 확인"
         placeholder="비밀번호를 입력하세요."
       />
