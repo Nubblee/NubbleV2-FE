@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { pretendard } from "./fonts";
+import ToastContainer from "@/components/ToastContainer";
 
 export const metadata: Metadata = {
   title: "Nubble",
@@ -22,6 +23,7 @@ export default function RootLayout({
       <body className={`${pretendard.variable} font-pretendard`}>
         {children}
         {modal}
+        <ToastContainer />
       </body>
     </html>
   );
