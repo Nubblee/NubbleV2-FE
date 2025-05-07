@@ -1,37 +1,75 @@
 "use client";
 
 import { useToastStore } from "@/stores/useToastStore";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
+import { X } from "lucide-react";
 
 const ToastContainer = () => {
   const { toasts, removeToast } = useToastStore();
+
+  useEffect(() => {
+    const timers = toasts.map((toast) => {
+      const timeoutId = setTimeout(() => {
+        removeToast(toast.id);
+      }, toast.duration ?? 3000);
+      return () => clearTimeout(timeoutId);
+    });
+
+    return () => {
+      timers.forEach((cancel) => cancel());
+    };
+  }, [toasts, removeToast]);
+
   return (
     <div className="fixed top-4 right-4 z-[1000] space-y-2">
-      <AnimatePresence>
-        {toasts.map((toast) => (
-          <motion.div
-            key={toast.id}
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className={`px-4 py-2 rounded shadow text-white ${
+      {toasts.map((toast) => (
+        <div
+          key={toast.id}
+          className={`relative px-4 py-2 rounded shadow text-black overflow-hidden min-w-[240px] border-l-4
+            ${
               toast.type === "success"
-                ? "bg-green-middle"
+                ? "border-green-middle"
                 : toast.type === "error"
-                ? "bg-red"
-                : "bg-blue"
+                ? "border-red"
+                : "border-gray-600"
             }`}
-          >
+        >
+          <div className="flex justify-between">
             {toast.message}
-            <button
-              onClick={() => removeToast(toast.id)}
-              className="ml-2 text-sm underline"
-            >
-              닫기
+            <button onClick={() => removeToast(toast.id)} className="ml-2">
+              <X size={16} className="text-gray-dark" />
             </button>
-          </motion.div>
-        ))}
-      </AnimatePresence>
+          </div>
+
+          {/* 프로그레스 바 */}
+          <div
+            className={`absolute bottom-0 left-0 h-1 animate-progress ${
+              toast.type === "success"
+                ? "bg-green-light"
+                : toast.type === "error"
+                ? "bg-red-300"
+                : "bg-gray-light"
+            }`}
+            style={{ animationDuration: `${toast.duration ?? 3000}ms` }}
+          />
+        </div>
+      ))}
+
+      <style jsx>{`
+        @keyframes progressShrink {
+          from {
+            width: 100%;
+          }
+          to {
+            width: 0%;
+          }
+        }
+        .animate-progress {
+          animation-name: progressShrink;
+          animation-timing-function: linear;
+          animation-fill-mode: forwards;
+        }
+      `}</style>
     </div>
   );
 };
