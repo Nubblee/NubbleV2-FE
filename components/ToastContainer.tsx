@@ -2,7 +2,7 @@
 
 import { useToastStore } from "@/stores/useToastStore";
 import { useEffect } from "react";
-import { X } from "lucide-react";
+import { CircleCheck, CircleX, Info, X } from "lucide-react";
 
 const ToastContainer = () => {
   const { toasts, removeToast } = useToastStore();
@@ -34,10 +34,22 @@ const ToastContainer = () => {
                 : "border-gray-600"
             }`}
         >
-          <div className="flex justify-between">
-            {toast.message}
-            <button onClick={() => removeToast(toast.id)} className="ml-2">
-              <X size={16} className="text-gray-dark" />
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex items-start gap-2">
+              {toast.type === "success" && (
+                <CircleCheck size={20} className="text-green-middle mt-0.5" />
+              )}
+              {toast.type === "error" && (
+                <CircleX size={20} className="text-red mt-0.5" />
+              )}
+              {toast.type === "info" && (
+                <Info size={20} className="text-gray-dark mt-0.5" />
+              )}
+              <span>{toast.message}</span>
+            </div>
+
+            <button onClick={() => removeToast(toast.id)} className="shrink-0">
+              <X size={18} className="text-gray-dark mt-0.5" />
             </button>
           </div>
 
