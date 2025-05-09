@@ -16,7 +16,7 @@ const variantStyles = {
   secondary: "bg-green-dark text-white hover:bg-green-middle",
 };
 
-const baseStyles = "px-4 py-2 rounded-lg text-base font-medium transition";
+const baseStyles = "px-4 py-2 text-base font-medium transition";
 const disabledStyles =
   "bg-gray-300 text-white cursor-not-allowed hover:bg-gray-300 border-0";
 const enabledCursor = "cursor-pointer";
