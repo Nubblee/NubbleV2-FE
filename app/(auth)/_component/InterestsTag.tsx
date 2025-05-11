@@ -20,7 +20,7 @@ const InterestsTag = () => {
       <TagGroup label="언어" options={languageOptions} />
       <TagGroup label="풀이 사이트" options={problemOptions} />
       <TagGroup label="레벨" options={levelOptions} />
-      <Button className="w-[50%] m-auto items-center">확인</Button>
+      <Button className="w-[55%] m-auto items-center py-3">확인</Button>
     </div>
   );
 };
