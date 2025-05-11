@@ -25,7 +25,7 @@ const ToastContainer = () => {
       {toasts.map((toast) => (
         <div
           key={toast.id}
-          className={`relative px-4 py-2 rounded shadow text-black overflow-hidden min-w-[240px] border-l-4
+          className={`relative bg-white px-4 py-2 rounded shadow text-gray-700 overflow-hidden min-w-[240px] border-l-4
             ${
               toast.type === "success"
                 ? "border-green-middle"
