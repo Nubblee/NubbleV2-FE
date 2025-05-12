@@ -3,7 +3,7 @@ import React from "react";
 
 const Loading = () => {
   return (
-    <div className="flex h-[calc(100vh-45px)] justify-center items-center">
+    <div className="flex h-[calc(100vh-120px)] justify-center items-center">
       <div className="relative w-[350px] h-[350px] overflow-visible">
         <svg
           viewBox="-60 -250 550 550"

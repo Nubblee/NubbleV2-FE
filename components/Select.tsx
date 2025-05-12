@@ -44,8 +44,8 @@ const Select = ({
         </RadixSelect.Icon>
       </RadixSelect.Trigger>
 
-      <RadixSelect.Content className="z-50 mt-1 bg-white rounded-md shadow-md">
-        <RadixSelect.Viewport className="py-1">
+      <RadixSelect.Content className="z-50 mt-1 bg-white rounded-md shadow-md overflow-hidden">
+        <RadixSelect.Viewport className="py-1 overflow-y-auto">
           {options.map((opt) => (
             <RadixSelect.Item
               key={opt.value}
