@@ -61,13 +61,14 @@ const SignUpForm = () => {
         label="비밀번호 확인 *"
         placeholder="비밀번호를 입력하세요."
       />
-      <div className="flex items-center gap-1 w-full">
+      <div className="flex gap-1 w-full">
         <Input
           label="이메일 *"
+          placeholder="이메일을 입력하세요."
           type="email"
           className="py-2 border-gray-light flex-grow"
         />
-        <div className="w-full mt-6 flex gap-2">
+        <div className="w-full mt-6.5">
           {/* {selectItem === " " && (
             <Input
               className="py-2 border-gray-light flex-1"
