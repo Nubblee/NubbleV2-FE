@@ -1,9 +1,12 @@
+"use client";
 import Button from "@/components/Button";
 import Input from "@/components/Input/input";
 import Select from "@/components/Select";
 import TagButton from "@/components/TagGroup/TagButton";
+import { useRouter } from "next/navigation";
 
 const SignUpForm = () => {
+  const router = useRouter();
   const emailOptions = [
     { label: "직접입력", value: " " },
     { label: "@naver.com", value: "@naver.com" },
@@ -31,6 +34,10 @@ const SignUpForm = () => {
     { label: "경상남도", value: "gyeongnam" },
     { label: "제주특별자치도", value: "jeju" },
   ];
+
+  const handleSubmit = () => {
+    router.push("/signup/interests");
+  };
 
   return (
     <div className="flex flex-col w-[350px] gap-5 items-center">
@@ -84,7 +91,9 @@ const SignUpForm = () => {
         </label>
         <Select options={addressOptions} />
       </div>
-      <Button className="w-full py-3">가입하기</Button>
+      <Button className="w-full py-3" onClick={handleSubmit}>
+        가입하기
+      </Button>
     </div>
   );
 };
