@@ -3,21 +3,7 @@ import Card from "./Card";
 import ShowDay from "./ShowDay";
 import Image from "next/image";
 import BookMarkButton, { BookMarkButtonProps } from "./BookMarkButton";
-
-export type StudyCardType = "recruiting" | "active";
-
-export interface StudyCardProps {
-  id: string;
-  type?: StudyCardType;
-  icon: string;
-  title: string;
-  allMembers: number;
-  members: number;
-  level: string;
-  days: string[];
-  expireDay?: string;
-  className?: string;
-}
+import { StudyCardProps } from "@/types/study";
 
 const StudyCard = ({
   type = "recruiting",

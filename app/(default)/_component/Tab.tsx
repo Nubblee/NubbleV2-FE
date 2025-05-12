@@ -2,16 +2,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
-
-interface TabProps {
-  tabItems: TabItems[];
-  className?: string;
-}
-
-interface TabItems {
-  name: string;
-  link: string;
-}
+import { TabProps } from "@/types/tab";
 
 const Tab = ({ tabItems, className }: TabProps) => {
   const pathname = usePathname();
