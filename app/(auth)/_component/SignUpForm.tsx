@@ -6,10 +6,10 @@ import TagButton from "@/components/TagGroup/TagButton";
 const SignUpForm = () => {
   const emailOptions = [
     { label: "직접입력", value: " " },
-    { label: "naver.com", value: "naver.com" },
-    { label: "gmail.com", value: "gmail.com" },
-    { label: "hanmail.com", value: "hanmail.com" },
-    { label: "kakao.com", value: "kakao.com" },
+    { label: "@naver.com", value: "@naver.com" },
+    { label: "@gmail.com", value: "@gmail.com" },
+    { label: "@hanmail.com", value: "@hanmail.com" },
+    { label: "@kakao.com", value: "@kakao.com" },
   ];
 
   const addressOptions = [
@@ -36,20 +36,18 @@ const SignUpForm = () => {
     <div className="flex flex-col w-[350px] gap-5 items-center">
       <Input
         label="닉네임 *"
-        className="border-gray-light"
-        variant="underline"
+        className="py-3 border-gray-light"
         placeholder="닉네임을 입력하세요."
       />
-      <div className="w-full h-[54px] relative">
-        <TagButton className="absolute w-[83px] bottom-1 right-0 cursor-pointer hover:bg-green-dark">
-          중복확인
-        </TagButton>
+      <div className="w-full h-[76px] relative">
         <Input
           label="아이디 *"
-          className="absolute left-0 bottom-0 border-gray-light"
+          className="py-3 absolute left-0 bottom-0 border-gray-light"
           placeholder="아이디를 입력하세요."
-          variant="underline"
         />
+        <TagButton className="absolute w-[83px] bottom-2.5 right-2 cursor-pointer z-10">
+          중복확인
+        </TagButton>
       </div>
       <Input
         className="py-3 border-gray-light"
@@ -69,7 +67,6 @@ const SignUpForm = () => {
           type="email"
           className="py-2 border-gray-light flex-grow"
         />
-        <span className="mt-6">@</span>
         <div className="w-full mt-6 flex gap-2">
           {/* {selectItem === " " && (
             <Input
@@ -82,7 +79,7 @@ const SignUpForm = () => {
       </div>
       <div className="w-full">
         <label className="text-sm text-gray-dark" htmlFor="address">
-          주소
+          지역
         </label>
         <Select options={addressOptions} />
       </div>
