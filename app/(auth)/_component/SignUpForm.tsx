@@ -78,7 +78,7 @@ const SignUpForm = () => {
         </div>
       </div>
       <div className="w-full">
-        <label className="text-sm text-gray-dark" htmlFor="address">
+        <label className="flex text-sm text-gray-dark mb-1" htmlFor="address">
           지역
         </label>
         <Select options={addressOptions} />
