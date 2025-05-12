@@ -1,6 +1,7 @@
 "use client";
 
 import StudyCard from "@/app/(default)/_component/StudyCard";
+import RecruitingSection from "@/app/(default)/_sections/RecruitingSection";
 import Button from "@/components/Button";
 import Input from "@/components/Input/input";
 
@@ -62,37 +63,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ✅ 모집중인 스터디 (슬라이더) */}
-      <section className="w-full max-w-6xl px-4 py-8">
-        <h2 className="text-lg font-bold mb-4">모집중인 스터디 💬</h2>
-        <div className="overflow-x-auto whitespace-nowrap">
-          <div className="inline-flex gap-4">
-            <StudyCard
-              type="recruiting"
-              icon="/nubble.png"
-              title="[JS] 알고리즘 뿌시기 스터디원 찾습니다!"
-              allMembers={5}
-              members={3}
-              level="Lv 1 - Lv 2"
-              days={["MON"]}
-              expireDay="2025.12.31"
-              onBookMark={() => {}}
-            />
-            <StudyCard
-              type="recruiting"
-              icon="/nubble.png"
-              title="[JS] 알고리즘 뿌시기 스터디원 찾습니다!"
-              allMembers={5}
-              members={3}
-              level="Lv 1 - Lv 2"
-              days={["MON"]}
-              expireDay="2025.12.31"
-              onBookMark={() => {}}
-            />
-          </div>
-        </div>
-      </section>
-
       {/* ✅ 진행중인 스터디 */}
       <section className="w-full max-w-6xl px-4 py-8">
         <h2 className="text-lg font-bold mb-4">진행중인 스터디 🔥</h2>
@@ -119,6 +89,9 @@ export default function HomePage() {
           />
         </div>
       </section>
+
+      {/* ✅ 모집중인 스터디 */}
+      <RecruitingSection />
     </main>
   );
 }
