@@ -6,7 +6,8 @@ import BookMarkButton, { BookMarkButtonProps } from "./BookMarkButton";
 
 type StudyCardType = "recruiting" | "active";
 
-interface StudyCardProps {
+export interface StudyCardProps {
+  id: string;
   type?: StudyCardType;
   icon: string;
   title: string;
@@ -29,16 +30,23 @@ const StudyCard = ({
   isBookMark = false,
   onBookMark,
 }: StudyCardProps & BookMarkButtonProps) => {
+  console.log(icon);
   return (
     <Card type="gray" isShadow>
-      <div className="w-[350px] h-[164px]">
-        <div className={`flex justify-end px-[14px] mt-[8px]`}>
+      <div className="max-w-[310px] max-h-[164px] cursor-pointer">
+        <div className={`flex justify-end px-[14px] mt-[5px] z-10`}>
           <BookMarkButton isBookMark={isBookMark} onBookMark={onBookMark} />
         </div>
-        <div className="flex gap-6 px-[26px]">
-          <div className="flex flex-col gap-[13px]">
-            <Image src={icon} alt={icon} width={60} height={60} />
-            <div className="flex gap-[3px] w-[70px] text-xs font-semibold">
+        <div className="flex gap-4 px-[26px]">
+          <div className="flex flex-col gap-[12px] items-center">
+            <Image
+              className="rounded-lg"
+              src={icon}
+              alt={icon}
+              width={60}
+              height={60}
+            />
+            <div className="flex gap-[3px] text-xs font-semibold">
               파티원
               <span>
                 <span className="text-blue">{members}</span>/{allMembers}
@@ -46,7 +54,9 @@ const StudyCard = ({
             </div>
           </div>
           <div className="flex flex-col w-[170px] gap-[6px]">
-            <div className="font-bold text-lg line-clamp-2">{title}</div>
+            <div className="flex font-bold text-lg line-clamp-2 min-h-[50px]">
+              {title}
+            </div>
             <div className="font-semibold text-sm">
               코딩테스트 레벨 <span className="text-blue">{level}</span>
             </div>
@@ -54,7 +64,7 @@ const StudyCard = ({
           </div>
         </div>
         <div
-          className={`flex justify-end h-[14px] mt-[12px] px-[14px] text-xs font-semibold text-[#a2a2a2]`}
+          className={`flex justify-end h-[14px] mt-[12px] px-[14px] text-xs text-[#a2a2a2]`}
         >
           {type === "recruiting" ? `마감일 ${expireDay}` : ""}
         </div>
