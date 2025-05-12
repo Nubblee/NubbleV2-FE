@@ -4,7 +4,7 @@ import ShowDay from "./ShowDay";
 import Image from "next/image";
 import BookMarkButton, { BookMarkButtonProps } from "./BookMarkButton";
 
-type StudyCardType = "recruiting" | "active";
+export type StudyCardType = "recruiting" | "active";
 
 export interface StudyCardProps {
   id: string;
@@ -16,6 +16,7 @@ export interface StudyCardProps {
   level: string;
   days: string[];
   expireDay?: string;
+  className?: string;
 }
 
 const StudyCard = ({
@@ -32,8 +33,8 @@ const StudyCard = ({
 }: StudyCardProps & BookMarkButtonProps) => {
   console.log(icon);
   return (
-    <Card type="gray" isShadow>
-      <div className="max-w-[310px] max-h-[164px] cursor-pointer">
+    <Card type="gray" className="bg-white" isShadow>
+      <div className={`max-w-[310px] max-h-[164px] cursor-pointer`}>
         <div className={`flex justify-end px-[14px] mt-[5px] z-10`}>
           <BookMarkButton isBookMark={isBookMark} onBookMark={onBookMark} />
         </div>
