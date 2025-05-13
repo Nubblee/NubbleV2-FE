@@ -24,12 +24,12 @@ const SubscribeItems = ({ studyDatas, type }: SubscribeItemsProps) => {
       <div className="py-10 px-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {studyDatas.map(
           (studyData) =>
-            studyData.type === type && (
+            studyData.status === type && (
               <StudyCard
-                key={studyData.id}
+                key={studyData.studyGroupId}
                 {...studyData}
-                isBookMark={selectIds.includes(studyData.id)}
-                onBookMark={() => handleBookMark(studyData.id)}
+                isBookMark={selectIds.includes(studyData.studyGroupId)}
+                onBookMark={() => handleBookMark(studyData.studyGroupId)}
               />
             )
         )}

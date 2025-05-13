@@ -6,19 +6,39 @@ export type StudyCardType = "RECRUITING" | "ACTIVE" | "ENDED";
 //스터디 진행방식
 export type MeetingType = "ONLINE" | "OFFLINE" | "HYBRID";
 
-export interface StudyCardProps {
-  id: string;
-  type?: StudyCardType;
+//스터디 언어
+export type LanguageType =
+  | "JAVA"
+  | "PYTHON"
+  | "C"
+  | "CPP"
+  | "JAVASCRIPT"
+  | "TYPESCRIPT"
+  | "GO"
+  | "RUBY"
+  | "KOTLIN"
+  | "RUST"
+  | "OTHER";
+
+//스터디 카드 인터페이스
+export interface StudyCardProps
+  extends Pick<
+      StudyGroup,
+      | "studyGroupId"
+      | "name"
+      | "status"
+      | "mainLanguage"
+      | "mainMeetingDays"
+      | "difficultyLevels"
+    >,
+    "endDate" {
   icon: string;
-  title: string;
   allMembers: number;
   members: number;
-  level: string;
-  days: string[];
   expireDay?: string;
-  className?: string;
 }
 
+//스터디 그룹
 export interface StudyGroup {
   studyGroupId: string;
   name: string;
@@ -27,8 +47,8 @@ export interface StudyGroup {
   startDate: string;
   endDate: string | null;
   status: StudyCardType;
-  languages: string[];
-  mainLanguage: string;
+  languages: LanguageType[];
+  mainLanguage: LanguageType;
   difficultyLevels: string[];
   problemPlatforms: string[];
   meetingType: MeetingType;

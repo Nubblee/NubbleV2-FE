@@ -4,20 +4,21 @@ import ShowDay from "./ShowDay";
 import Image from "next/image";
 import BookMarkButton, { BookMarkButtonProps } from "./BookMarkButton";
 import { StudyCardProps } from "@/types/study";
+import formatDifficulty from "@/utils/formatDifficulty";
 
 const StudyCard = ({
-  type = "recruiting",
+  status = "RECRUITING",
   icon,
-  title,
+  name,
   allMembers,
   members,
-  level,
-  days,
+  difficultyLevels,
+  mainMeetingDays,
   expireDay,
   isBookMark = false,
   onBookMark,
 }: StudyCardProps & BookMarkButtonProps) => {
-  console.log(icon);
+  console.log(name, allMembers, difficultyLevels);
   return (
     <Card type="gray" className="bg-white" isShadow>
       <div className={`max-w-[310px] max-h-[164px] cursor-pointer`}>
@@ -42,18 +43,21 @@ const StudyCard = ({
           </div>
           <div className="flex flex-col w-[170px] gap-[6px]">
             <div className="flex font-bold text-lg line-clamp-2 min-h-[50px]">
-              {title}
+              {name}
             </div>
             <div className="font-semibold text-sm">
-              코딩테스트 레벨 <span className="text-blue">{level}</span>
+              코딩테스트 레벨{" "}
+              <span className="text-blue">
+                {formatDifficulty(difficultyLevels)}
+              </span>
             </div>
-            <ShowDay days={days} />
+            <ShowDay days={mainMeetingDays} />
           </div>
         </div>
         <div
           className={`flex justify-end h-[14px] mt-[12px] px-[14px] text-xs text-[#a2a2a2]`}
         >
-          {type === "recruiting" ? `마감일 ${expireDay}` : ""}
+          {status === "RECRUITING" ? `마감일 ${expireDay}` : ""}
         </div>
       </div>
     </Card>
