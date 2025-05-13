@@ -6,6 +6,8 @@ import clsx from "clsx";
 type InputVariant = "underline" | "borderless" | "default";
 
 export interface InputProps extends ComponentProps<"input"> {
+  label?: string;
+  htmlFor?: string;
   isInvalid?: boolean;
   invalidMessage?: string;
   validMessage?: string;
@@ -19,6 +21,8 @@ const variantStyles = {
 };
 
 const Input = ({
+  label,
+  htmlFor,
   isInvalid = false,
   variant = "default",
   invalidMessage,
@@ -28,6 +32,11 @@ const Input = ({
 }: InputProps) => {
   return (
     <div className="w-full">
+      {label && (
+        <label className="text-sm text-gray-dark flex mb-1.5" htmlFor={htmlFor}>
+          {label}
+        </label>
+      )}
       <input
         className={clsx(
           "w-full px-2 py-1 outline-none placeholder-gray-placeholder",
