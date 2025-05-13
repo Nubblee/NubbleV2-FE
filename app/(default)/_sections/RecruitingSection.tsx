@@ -142,7 +142,7 @@ export default function RecruitingSection() {
 
   return (
     <section className="w-full px-4 py-8">
-      <div className="max-w-[1120px] mx-auto">
+      <div className="max-w-[1140px] mx-auto">
         <h2 className="text-lg font-bold mb-4">모집중인 스터디 💬</h2>
 
         <div
