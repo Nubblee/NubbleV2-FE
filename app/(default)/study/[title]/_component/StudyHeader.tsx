@@ -36,7 +36,7 @@ const StudyInfo = ({
       />
       <div className="flex flex-col gap-4 w-full">
         <TagGroup options={levels} readonly />
-        <span className="font-bold text-3xl w-[45%] line-clamp-2 break-words">
+        <span className="font-bold text-3xl line-clamp-2 break-words">
           {title}
         </span>
         <div className="flex gap-3 items-center">
