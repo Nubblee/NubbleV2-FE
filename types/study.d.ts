@@ -36,6 +36,7 @@ export interface StudyCardProps
   allMembers: number;
   members: number;
   expireDay?: string;
+  className?: string;
 }
 
 //스터디 그룹
