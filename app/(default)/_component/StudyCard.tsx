@@ -22,7 +22,7 @@ const StudyCard = ({
   return (
     <Card type="gray" className="bg-white" isShadow>
       <div className={`w-full h-full cursor-pointer ${className}`}>
-        <div className={`flex justify-end px-[14px] mt-[5px] z-10`}>
+        <div className={`flex justify-end px-[10px] mt-[10px] z-10`}>
           <BookMarkButton isBookMark={isBookMark} onBookMark={onBookMark} />
         </div>
         <div className="flex gap-4 px-[26px]">
@@ -42,10 +42,10 @@ const StudyCard = ({
             </div>
           </div>
           <div className="flex flex-col w-full gap-[6px]">
-            <div className="flex font-bold text-lg line-clamp-2 min-h-[50px]">
-              {name}
+            <div className="flex font-bold text-lg w-[170px] min-h-[50px]">
+              <span className="line-clamp-2">{name}</span>
             </div>
-            <div className="font-semibold text-sm">
+            <div className="flex gap-1 font-semibold text-sm whitespace-nowrap">
               코딩테스트 레벨{" "}
               <span className="text-blue">
                 {formatDifficulty(difficultyLevels)}

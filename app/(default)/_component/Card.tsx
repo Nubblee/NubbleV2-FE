@@ -27,7 +27,7 @@ const Card = ({
 
   return (
     <div
-      className={`w-fit p-2 border-1 ${borderColor} ${borderRadius} ${borderShadow} ${className}`}
+      className={`w-fit border-1 ${borderColor} ${borderRadius} ${borderShadow} ${className}`}
     >
       {children}
     </div>
