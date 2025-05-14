@@ -1,6 +1,7 @@
 import ShowDay from "@/app/(default)/_component/ShowDay";
 import ProfileImage from "@/components/ProfileImage";
 import TagGroup from "@/components/TagGroup/TagGroup";
+import { DayType } from "@/types/day";
 import Image from "next/image";
 
 interface StudyInfoProps {
@@ -8,7 +9,7 @@ interface StudyInfoProps {
   language: string;
   levels: string[];
   title: string;
-  days: string[];
+  days: DayType[];
   members?: membersProps[];
 }
 
@@ -31,8 +32,8 @@ const StudyInfo = ({
         className="rounded-lg"
         src={icon}
         alt={language}
-        width={220}
-        height={220}
+        width={200}
+        height={200}
       />
       <div className="flex flex-col gap-4 w-full">
         <TagGroup options={levels} readonly />
