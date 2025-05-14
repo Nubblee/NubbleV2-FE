@@ -21,7 +21,7 @@ const SubscribeItems = ({ studyDatas, type }: SubscribeItemsProps) => {
 
   return (
     <div className="my-5 mx-auto  px-4">
-      <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
         {studyDatas.map(
           (studyData) =>
             studyData.status === type && (

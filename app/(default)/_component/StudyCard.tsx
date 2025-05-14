@@ -19,7 +19,6 @@ const StudyCard = ({
   onBookMark,
   className,
 }: StudyCardProps & BookMarkButtonProps) => {
-  console.log(name, allMembers, difficultyLevels);
   return (
     <Card type="gray" className="bg-white" isShadow>
       <div className={`w-full h-full cursor-pointer ${className}`}>
@@ -35,14 +34,14 @@ const StudyCard = ({
               width={60}
               height={60}
             />
-            <div className="flex gap-[3px] w-full text-xs font-semibold">
+            <div className="flex gap-[3px] w-full text-xs font-semibold items-center whitespace-nowrap">
               파티원
               <span>
                 <span className="text-blue">{members}</span>/{allMembers}
               </span>
             </div>
           </div>
-          <div className="flex flex-col max-w-[180px] gap-[6px]">
+          <div className="flex flex-col w-full gap-[6px]">
             <div className="flex font-bold text-lg line-clamp-2 min-h-[50px]">
               {name}
             </div>
