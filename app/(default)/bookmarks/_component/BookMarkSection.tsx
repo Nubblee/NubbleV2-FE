@@ -93,7 +93,7 @@ const studyCardData: StudyCardProps[] = [
     studyGroupId: "8",
     status: "ACTIVE",
     icon: "/javascript.png",
-    name: "Node.js 백엔드 스터디입니다 아니 반응형 시발아왜 두줄 처리도 안됨 제정신인가",
+    name: "Node.js 백엔드 스터디입니다 백엔드? 아닙니다 코딩테스트 스터디 입니다",
     allMembers: 5,
     members: 5,
     difficultyLevels: ["LV1", "LV2"],

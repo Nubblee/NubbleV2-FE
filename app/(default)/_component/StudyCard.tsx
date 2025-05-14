@@ -42,7 +42,7 @@ const StudyCard = ({
             </div>
           </div>
           <div className="flex flex-col w-full gap-[6px]">
-            <div className="flex font-bold text-lg w-[170px] min-h-[50px]">
+            <div className="flex font-bold text-lg w-[170px] h-[54px]">
               <span className="line-clamp-2">{name}</span>
             </div>
             <div className="flex gap-1 font-semibold text-sm whitespace-nowrap">
@@ -55,7 +55,7 @@ const StudyCard = ({
           </div>
         </div>
         <div
-          className={`flex justify-end h-[14px] mt-[12px] px-[14px] text-xs text-[#a2a2a2]`}
+          className={`flex justify-end my-[10px] px-[14px] text-xs text-[#a2a2a2]`}
         >
           {status === "RECRUITING" ? `마감일 ${expireDay}` : ""}
         </div>
