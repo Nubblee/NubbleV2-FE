@@ -15,6 +15,7 @@ export interface SelectProps {
   onChange?: (value: string) => void;
   placeholder?: string;
   variant?: "default" | "underline";
+  className?: string;
 }
 
 const variantStyles = {
@@ -28,14 +29,16 @@ const Select = ({
   onChange,
   placeholder = "선택하세요",
   variant = "default",
+  className,
 }: SelectProps) => {
   return (
     <RadixSelect.Root value={value} onValueChange={onChange}>
       <RadixSelect.Trigger
         className={clsx(
-          "w-full flex items-center justify-between px-3 py-2 text-base bg-white cursor-pointer appearance-none",
+          "w-full flex items-center justify-between px-3 text-base bg-white cursor-pointer appearance-none",
           "focus:outline-none focus:ring-2 focus:ring-green-light",
-          variantStyles[variant]
+          variantStyles[variant],
+          className ?? "py-2"
         )}
       >
         <RadixSelect.Value placeholder={placeholder} />

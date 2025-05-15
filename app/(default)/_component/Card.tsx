@@ -1,4 +1,4 @@
-type CardType = "gray" | "green";
+type CardType = "gray" | "green" | "none";
 type CardSizeType = "md" | "lg";
 
 export interface CardProps {
@@ -6,6 +6,7 @@ export interface CardProps {
   roundSize?: CardSizeType;
   isShadow?: boolean;
   children: React.ReactNode;
+  className?: string;
 }
 
 const Card = ({
@@ -13,15 +14,20 @@ const Card = ({
   roundSize = "md",
   isShadow = false,
   children,
+  className,
 }: CardProps) => {
   const borderColor =
-    type === "green" ? " border-green-middle" : " border-gray-light";
+    type === "green"
+      ? " border-green-middle"
+      : type === "gray"
+      ? " border-gray-light"
+      : "border-none";
   const borderRadius = roundSize === "md" ? "rounded-md" : "rounded-[10px]";
   const borderShadow = isShadow ? "shadow-sm" : "none";
 
   return (
     <div
-      className={`w-fit p-2 border-1 ${borderColor} ${borderRadius} ${borderShadow}`}
+      className={`w-fit border-1 ${borderColor} ${borderRadius} ${borderShadow} ${className}`}
     >
       {children}
     </div>
