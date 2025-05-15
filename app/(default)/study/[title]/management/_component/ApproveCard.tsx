@@ -35,7 +35,9 @@ const ApproveCard = ({
             </span>
             <span className="text-green-dark">{requestedAt}</span>
           </div>
-          <span className="whitespace-pre-wrap my-auto">{requestMessage}</span>
+          <span className="whitespace-pre-wrap my-auto min-h-[174px]">
+            {requestMessage}
+          </span>
         </div>
       </div>
     </Card>
