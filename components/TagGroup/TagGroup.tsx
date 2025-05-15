@@ -6,6 +6,7 @@ import TagButton from "./TagButton";
 
 interface TagGroupProps {
   label?: string;
+  sideLabel?: string;
   labelClassName?: string;
   options: string[];
   defaultSelected?: string[];
@@ -15,6 +16,7 @@ interface TagGroupProps {
 
 const TagGroup = ({
   label,
+  sideLabel,
   labelClassName,
   options,
   defaultSelected = [],
@@ -33,6 +35,28 @@ const TagGroup = ({
     setSelectedValues(newSelected);
     onChange?.(newSelected);
   };
+
+  if (sideLabel) {
+    return (
+      <div className="flex items-start gap-4 mb-4">
+        <div className={clsx("min-w-[40px] text-xl font-bold", labelClassName)}>
+          {sideLabel}
+        </div>
+        <div className="flex gap-2 flex-wrap">
+          {options.map((option) => (
+            <TagButton
+              key={option}
+              selected={selectedValues.includes(option)}
+              onClick={() => toggle(option)}
+              className={readonly ? "pointer-events-none" : ""}
+            >
+              {option}
+            </TagButton>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
