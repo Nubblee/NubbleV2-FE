@@ -1,8 +1,9 @@
 import Card from "@/app/(default)/_component/Card";
-import Button from "@/components/Button";
+import Checkbox, { CheckboxProps } from "@/components/Checkbox";
 import ProfileImage from "@/components/ProfileImage";
 
-interface ApproveCardProps {
+interface ApproveCardProps extends CheckboxProps {
+  requestId: number;
   name: string;
   image: string;
   requestedAt: string;
@@ -14,27 +15,28 @@ const ApproveCard = ({
   image,
   requestedAt,
   requestMessage,
+  checked,
+  onChange,
 }: ApproveCardProps) => {
   return (
-    <Card type="green" className=" p-6 w-full">
-      <div className="flex items-center gap-6">
-        <div className="flex flex-col w-1/4 items-center justify-center gap-6">
+    <Card type="green" className="px-6 py-4 w-full">
+      <div className="flex">
+        <div>
+          <Checkbox checked={checked} onChange={onChange} />
+        </div>
+        <div className="flex flex-col w-1/4 items-center justify-center gap-4">
           <ProfileImage size={120} src={image} alt={name} />
           <span className="text-lg font-semibold">{name}</span>
         </div>
-        <div className="flex w-full flex-col gap-2">
+        <div className="flex w-full flex-col gap-2 px-3">
           <div className="flex items-center justify-between">
             <span className="text-lg font-bold text-green-dark">
               요청메시지
             </span>
             <span className="text-green-dark">{requestedAt}</span>
           </div>
-          <span className="whitespace-pre-wrap">{requestMessage}</span>
+          <span className="whitespace-pre-wrap my-auto">{requestMessage}</span>
         </div>
-      </div>
-      <div className="flex justify-end gap-3">
-        <Button>승인</Button>
-        <Button variant="outlined">거부</Button>
       </div>
     </Card>
   );
