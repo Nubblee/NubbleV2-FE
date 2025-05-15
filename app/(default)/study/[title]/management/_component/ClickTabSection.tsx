@@ -80,9 +80,9 @@ const ClickTabSection = () => {
   const studyTitle = params.title as string;
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-6">
       <Tab tabItems={generatedTabs(studyTitle)} />
-      <div className="px-10 w-full grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-6">
+      <div className="w-full grid grid-cols-[repeat(auto-fit,_minmax(200px,_1fr))] gap-6 place-items-center">
         {params.tab === "members" ? (
           MemberData.map((member, idx) => <MemberCard key={idx} {...member} />)
         ) : (

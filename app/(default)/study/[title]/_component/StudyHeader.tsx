@@ -29,7 +29,7 @@ const StudyInfo = ({
   return (
     <div className="w-full flex gap-13">
       <Image
-        className="rounded-lg"
+        className="hidden sm:block rounded-lg"
         src={icon}
         alt={language}
         width={200}
