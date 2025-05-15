@@ -1,7 +1,7 @@
-import { redirect } from "next/navigation";
+import RedirectTab from "./_component/RedirectTab";
 
 const Page = () => {
-  redirect("/study/[title]/management/members");
+  return <RedirectTab />;
 };
 
 export default Page;

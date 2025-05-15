@@ -2,7 +2,7 @@
 
 import Tab from "@/app/(default)/_component/Tab";
 import { TabItems } from "@/types/tab";
-import MemberCard from "../../_component/MemberCard";
+import MemberCard from "./MemberCard";
 import React from "react";
 import { useParams } from "next/navigation";
 import ApproveList from "./ApproveList";
