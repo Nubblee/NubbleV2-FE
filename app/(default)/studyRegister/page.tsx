@@ -8,9 +8,10 @@ const studyRegister = () => {
       {/* 제목 */}
       <div className="mb-6 w-full max-w-[600px]">
         <Input
+          variant="underline"
           id="title"
           placeholder="스터디 제목을 입력해주세요"
-          className="py-3 text-xl font-semibold border-gray-light"
+          className="py-3 text-3xl font-semibold border-gray-light"
         />
       </div>
 
