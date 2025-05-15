@@ -17,7 +17,7 @@ const studyData = {
 const Page = () => {
   return (
     <div className="mt-5 flex flex-col px-10">
-      <StudyInfo {...studyData} />
+      <StudyInfo {...studyData} variant="management" />
       <div className="my-12">
         <ClickTabSection />
       </div>
