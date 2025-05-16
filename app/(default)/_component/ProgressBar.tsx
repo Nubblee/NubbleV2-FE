@@ -11,11 +11,11 @@ const getProcessColor = (progress: number) => {
 
 const ProgressBar = ({ label, progress }: ProgressBarProps) => {
   return (
-    <>
+    <div className="flex flex-col gap-1">
       <span className="text-base font-semibold">
         {label} {progress}%
       </span>
-      <div className="w-full h-3 bg-gray-light rounded-full overflow-hidden">
+      <div className="w-full h-2 bg-gray-light rounded-full overflow-hidden">
         <div
           className={`h-full ${getProcessColor(
             progress
@@ -23,7 +23,7 @@ const ProgressBar = ({ label, progress }: ProgressBarProps) => {
           style={{ width: `${progress}%` }}
         />
       </div>
-    </>
+    </div>
   );
 };
 

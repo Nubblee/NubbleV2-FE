@@ -1,0 +1,75 @@
+// type Section = {
+//   properties: { title: string };
+//   children?: Section[];
+// };
+
+import { Check } from "lucide-react";
+
+const templateStructure = {
+  ProblemInfo: {
+    title: "문제 정보",
+    description: [
+      "난이도 - 문제의 대략적인 난이도를 적어주세요. (ex.⭐️, 레벨 등)",
+      "알고리즘 분류 - 이 문제가 어떤 알고리즘과 관련 있는지 작성해주세요.",
+      "문제 상태 - 문제를 처음 접했는지, 이미 푼 문제인지 등 상태를 적어주세요.",
+    ],
+  },
+  Overview: {
+    title: "문제 파악",
+    description: [
+      "입/출력 형태와 제약조건 정리 - 문제의 입출력 형식과 제한 조건을 정리해주세요.",
+      "문제의 요구사항 파악 - 문제에서 진짜로 묻고 있는 게 뭔지 요약해주세요.",
+    ],
+  },
+  Intuition: {
+    title: "직관적 이해",
+    description: [
+      "주어진 예제 분석 - 주어진 테스트 케이스를 직접 분석해보세요.",
+      "문제의 본질과 패턴 파악 - 문제에서 숨겨진 패턴이나 규칙이 있는지 생각해보세요.",
+      "Edge case 고려 - 특별하거나 극단적인 입력에 대해서도 생각해보세요.",
+    ],
+  },
+  Solution: {
+    title: "문제 풀이",
+    description: [
+      "접근 방법 - 문제를 해결하기 위해 어떤 방식으로 접근했는지 설명해주세요.",
+      "시간/공간 복잡도 - 사용한 알고리즘의 시간/공간 복잡도를 추정해보세요.",
+      "구현 코드 - 최종적으로 작성한 코드를 붙여주세요.",
+      "제출 결과 - 어떤 결과가 나왔는지 공유해주세요. (ex. 맞았습니다, 시간 초과 등)",
+    ],
+  },
+  Retrospect: {
+    title: "회고",
+    description: [
+      "잘된 점 - 문제 해결 과정에서 잘한 점을 돌아보세요.",
+      "배운 점 - 이 문제를 통해 새롭게 배운 개념이나 팁을 정리해주세요.",
+      "개선할 점 - 다음에는 어떻게 하면 더 잘할 수 있을지 생각해보세요.",
+    ],
+  },
+};
+
+const TemplateList = () => {
+  return (
+    <div className="flex flex-col gap-3">
+      {Object.entries(templateStructure).map(
+        ([key, { title, description }]) => (
+          <div key={key}>
+            <div className="flex gap-1 items-center text-green-dark">
+              <Check size={20} />
+              <span className="text-lg font-bold">{`${title} (${key})`}</span>
+            </div>
+            <ul className="pl-6">
+              {description.map((item, idx) => (
+                <li className="text-gray-dark text-sm" key={idx}>
+                  {item.split("-")?.[0]}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )
+      )}
+    </div>
+  );
+};
+
+export default TemplateList;
