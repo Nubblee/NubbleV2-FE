@@ -4,7 +4,7 @@ import TemplateSection from "./_component/TemplateSection";
 
 const Page = () => {
   return (
-    <div className="flex gap-10">
+    <div className="flex gap-6 my-12">
       <TemplateSection />
       <TemplateSidebar />
     </div>
