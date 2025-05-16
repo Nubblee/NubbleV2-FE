@@ -2,15 +2,22 @@
 
 import { useState } from 'react'
 import Checkbox from '@/components/Checkbox'
-import CalendarWrapper from '@/app/(default)/_component/Calendar/Calendar'
+import CalendarView from '@/app/(default)/_component/Calendar/Calendar'
 
 export default function Test() {
   const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
   const [checkedDays, setCheckedDays] = useState<string[]>([])
   const [isChecked, setIsChecked] = useState(false)
 
+  const study = [
+    { label: '김수민', value: 'sumin' },
+    { label: '박지영', value: 'jiyoung' },
+    { label: '손성오', value: 'seongoh' },
+    { label: '유원우', value: 'wonwoo' },
+  ]
+
   return (
-    <div>
+    <div className='py-4'>
       <div className='flex gap-6'>
         {days.map((day) => (
           <Checkbox
@@ -33,7 +40,7 @@ export default function Test() {
       </div>
 
       <div>
-        <CalendarWrapper />
+        <CalendarView option={study} />
       </div>
     </div>
   )
