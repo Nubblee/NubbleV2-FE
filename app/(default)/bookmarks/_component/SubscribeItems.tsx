@@ -20,7 +20,7 @@ const SubscribeItems = ({ studyDatas, type }: SubscribeItemsProps) => {
   };
 
   return (
-    <div className="my-5 px-34">
+    <div className="my-5 lg:mx-32">
       <div className="w-full grid grid-cols-[repeat(auto-fill,_minmax(270px,_1fr))] gap-6 justify-items-center">
         {studyDatas.map(
           (studyData) =>
