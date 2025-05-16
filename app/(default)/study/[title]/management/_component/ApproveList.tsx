@@ -55,8 +55,8 @@ const ApproveList = () => {
   return (
     <div className="flex flex-col w-full gap-4">
       <div className="flex justify-end gap-3">
-        <Button>승인</Button>
-        <Button variant="outlined">거부</Button>
+        <Button>선택 승인</Button>
+        <Button variant="outlined">선택 거부</Button>
       </div>
       {approveItems.map((item) => (
         <ApproveCard
