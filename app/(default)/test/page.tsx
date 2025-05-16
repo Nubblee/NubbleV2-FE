@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Checkbox from '@/components/Checkbox'
+import CalendarWrapper from '@/app/(default)/_component/Calendar/Calendar'
 
 export default function Test() {
   const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
@@ -29,6 +30,10 @@ export default function Test() {
           <h3>[업데이트 소식] 스터디 유의사항</h3>
           <p>글쓴이: 스터디장</p>
         </div>
+      </div>
+
+      <div>
+        <CalendarWrapper />
       </div>
     </div>
   )

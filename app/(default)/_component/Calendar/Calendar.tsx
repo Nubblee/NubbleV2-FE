@@ -1,20 +1,11 @@
 'use client'
 
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import { Calendar, luxonLocalizer } from 'react-big-calendar'
+import { DateTime } from 'luxon'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
-import { format, parse, getDay, startOfWeek } from 'date-fns'
-import { ko } from 'date-fns/locale/ko'
 
-const locales = {
-  'ko-KR': ko,
-}
-
-const localizer = dateFnsLocalizer({
-  format,
-  parse,
-  startOfWeek: () => 0,
-  getDay,
-  locales,
+const localizer = luxonLocalizer(DateTime, {
+  firstDayOfWeek: 1,
 })
 
 const CalendarWrapper = () => {

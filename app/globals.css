@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme inline {
   --font-pretendard: var(--font-pretendard);
@@ -33,4 +33,21 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Calendar */
+.rbc-toolbar {
+  @apply flex justify-between items-center;
+}
+
+.rbc-toolbar-label {
+  @apply flex text-2xl font-bold;
+}
+
+.rbc-btn-group {
+  @apply order-last;
+}
+
+.rbc-date-cell {
+  @apply flex px-2 py-1;
 }
