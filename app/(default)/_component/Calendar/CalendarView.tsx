@@ -6,6 +6,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { CalendarViewProps, CalendarEvent } from '@/types/calendar'
 import CustomToolbar from './CustomToolbar'
 import CustomEvent from './CustomEvent'
+import { mapAndSortEvents } from '@/utils/calendar'
 
 const localizer = luxonLocalizer(DateTime, {
   firstDayOfWeek: 1,
@@ -16,24 +17,7 @@ const CalendarView = ({ option, events }: CalendarViewProps) => {
     <CustomToolbar {...props} options={option} />
   )
 
-  const mappedEvents = events
-    .slice()
-    .sort((a, b) => {
-      const aHasProgress = a.progress !== undefined
-      const bHasProgress = b.progress !== undefined
-
-      if (aHasProgress && bHasProgress) {
-        return a.progress! - b.progress!
-      }
-      if (aHasProgress) return -1
-      if (bHasProgress) return 1
-      return 0
-    })
-    .map((event) => ({
-      ...event,
-      start: event.date,
-      end: event.date,
-    }))
+  const mappedEvents = mapAndSortEvents(events)
 
   return (
     <div>
