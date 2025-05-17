@@ -4,8 +4,9 @@ import { ToolbarProps } from 'react-big-calendar'
 import Select, { Option } from '@/components/Select'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { DateTime } from 'luxon'
+import { CalendarEvent } from '@/app/(default)/_component/Calendar/CalendarView'
 
-interface CustomToolbarProps extends ToolbarProps {
+export interface CustomToolbarProps extends ToolbarProps<CalendarEvent, object> {
   options: Option[]
 }
 
