@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme inline {
   --font-pretendard: var(--font-pretendard);
@@ -8,14 +8,23 @@
 @theme {
   --color-blue: #7392c9;
   --color-red: #ff0000;
+
+  /* gray */
   --color-gray-placeholder: #c2c2c2;
   --color-gray-light: #d0d0d0;
   --color-gray-middle: #cfcfcf;
   --color-gray-dark: #828282;
+
+  /* green */
   --color-green-white: #e7fffa;
   --color-green-light: #ccfbf1;
   --color-green-middle: #30d1bd;
   --color-green-dark: #0d9488;
+
+  /* mint */
+  --color-mint-light: #f0fdfa;
+  --color-mint-middle: #99f6e4;
+  --color-mint-dark: #5eead4;
 }
 
 :root {
@@ -33,4 +42,18 @@
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Calendar */
+.rbc-date-cell {
+  @apply flex px-2 py-1;
+}
+
+.rbc-event {
+  padding: 0 !important;
+}
+
+.rbc-show-more {
+  color: #30d1bd !important;
+  font-weight: 500 !important;
 }

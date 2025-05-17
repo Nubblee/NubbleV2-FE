@@ -1,34 +1,41 @@
-'use client'
-
-import { useState } from 'react'
-import Checkbox from '@/components/Checkbox'
+import CalendarView from '@/app/(default)/_component/Calendar/CalendarView'
+import { CalendarEvent } from '@/types/calendar'
 
 export default function Test() {
-  const days = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일']
-  const [checkedDays, setCheckedDays] = useState<string[]>([])
-  const [isChecked, setIsChecked] = useState(false)
+  const study = [
+    { label: '김수민', value: 'sumin' },
+    { label: '박지영', value: 'jiyoung' },
+    { label: '손성오', value: 'seongoh' },
+    { label: '유원우', value: 'wonwoo' },
+  ]
+
+  const events: CalendarEvent[] = [
+    // 스터디그룹 예시 4개 이상
+    { title: '김수민', date: new Date('2025-05-20'), progress: 0 },
+    { title: '유원우', date: new Date('2025-05-20'), progress: 50 },
+    { title: '손성오', date: new Date('2025-05-20'), progress: 90 },
+    { title: '박지영', date: new Date('2025-05-20'), progress: 100 },
+    { title: '김수민', date: new Date('2025-05-20'), progress: 0 },
+    { title: '유원우', date: new Date('2025-05-20'), progress: 50 },
+    { title: '손성오', date: new Date('2025-05-20'), progress: 90 },
+    { title: '박지영', date: new Date('2025-05-20'), progress: 100 },
+
+    // 스터디그룹 4개
+    { title: '김수민', date: new Date('2025-05-23'), progress: 0 },
+    { title: '유원우', date: new Date('2025-05-23'), progress: 50 },
+    { title: '손성오', date: new Date('2025-05-23'), progress: 90 },
+    { title: '박지영', date: new Date('2025-05-23'), progress: 100 },
+
+    // 마이 페이지 예시
+    { title: '조이스틱', date: new Date('2025-05-21'), solved: false },
+    { title: '두 원 사이의 정수 쌍', date: new Date('2025-05-21'), solved: true },
+    { title: '[PCCP 기출문제] 2번 / 석유 시추', date: new Date('2025-05-21'), solved: false },
+  ]
 
   return (
-    <div>
-      <div className='flex gap-6'>
-        {days.map((day) => (
-          <Checkbox
-            key={day}
-            label={day}
-            checked={checkedDays.includes(day)}
-            onChange={(checked) =>
-              setCheckedDays((prev) => (checked ? [...prev, day] : prev.filter((d) => d !== day)))
-            }
-          />
-        ))}
-      </div>
-
-      <div className='flex items-center  gap-4 py-4'>
-        <Checkbox checked={isChecked} onChange={(v) => setIsChecked(v)} />
-        <div>
-          <h3>[업데이트 소식] 스터디 유의사항</h3>
-          <p>글쓴이: 스터디장</p>
-        </div>
+    <div className='mt-5 flex flex-col py-10 px-14'>
+      <div>
+        <CalendarView option={study} events={events} />
       </div>
     </div>
   )
