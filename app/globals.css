@@ -52,3 +52,8 @@ body {
 .rbc-event {
   padding: 0 !important;
 }
+
+.rbc-show-more {
+  color: #30d1bd !important;
+  font-weight: 500 !important;
+}

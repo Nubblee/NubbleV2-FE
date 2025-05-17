@@ -1,10 +1,10 @@
 'use client'
 
+import { DateTime } from 'luxon'
 import { ToolbarProps } from 'react-big-calendar'
 import Select, { Option } from '@/components/Select'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import { DateTime } from 'luxon'
-import { CalendarEvent } from '@/app/(default)/_component/Calendar/CalendarView'
+import { CalendarEvent } from '@/types/calendar'
 
 export interface CustomToolbarProps extends ToolbarProps<CalendarEvent, object> {
   options: Option[]

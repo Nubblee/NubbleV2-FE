@@ -1,7 +1,7 @@
 'use client'
 
 import { EventProps } from 'react-big-calendar'
-import { CalendarEvent } from './CalendarView'
+import { CalendarEvent } from '@/types/calendar'
 
 const CustomEvent = ({ event }: EventProps<CalendarEvent>) => {
   const getColor = (progress?: number) => {
