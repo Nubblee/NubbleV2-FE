@@ -1,7 +1,8 @@
 'use client'
 
-import { Calendar, luxonLocalizer, ToolbarProps } from 'react-big-calendar'
+import { useState } from 'react'
 import { DateTime } from 'luxon'
+import { Calendar, luxonLocalizer, ToolbarProps } from 'react-big-calendar'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import { CalendarViewProps, CalendarEvent } from '@/types/calendar'
 import CustomToolbar from './CustomToolbar'
@@ -13,11 +14,15 @@ const localizer = luxonLocalizer(DateTime, {
 })
 
 const CalendarView = ({ option, events }: CalendarViewProps) => {
-  const ToolbarComponent: React.ComponentType<ToolbarProps<CalendarEvent, object>> = (props) => (
-    <CustomToolbar {...props} options={option} />
-  )
+  const [selected, setSelected] = useState<string | null>(null)
+  const filteredEvents = selected
+    ? events.filter((e) => e.title === option.find((o) => o.value === selected)?.label)
+    : events
+  const mappedEvents = mapAndSortEvents(filteredEvents)
 
-  const mappedEvents = mapAndSortEvents(events)
+  const ToolbarComponent: React.ComponentType<ToolbarProps<CalendarEvent, object>> = (props) => (
+    <CustomToolbar {...props} options={option} onSelectChange={setSelected} />
+  )
 
   return (
     <div>

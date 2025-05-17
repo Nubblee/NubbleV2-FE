@@ -8,9 +8,10 @@ import { CalendarEvent } from '@/types/calendar'
 
 export interface CustomToolbarProps extends ToolbarProps<CalendarEvent, object> {
   options: Option[]
+  onSelectChange: (value: string | null) => void
 }
 
-const CustomToolbar = ({ date, onNavigate, options }: CustomToolbarProps) => {
+const CustomToolbar = ({ date, onNavigate, options, onSelectChange }: CustomToolbarProps) => {
   const formattedLabel = DateTime.fromJSDate(date).toFormat('LLL yyyy')
 
   return (
@@ -35,7 +36,7 @@ const CustomToolbar = ({ date, onNavigate, options }: CustomToolbarProps) => {
         <Select
           options={options}
           onChange={(value) => {
-            console.log('선택된 스터디:', value)
+            onSelectChange(value)
           }}
         />
       </div>
