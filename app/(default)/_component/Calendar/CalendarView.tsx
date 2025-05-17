@@ -21,7 +21,7 @@ const CalendarView = ({ option, events }: CalendarViewProps) => {
   const mappedEvents = mapAndSortEvents(filteredEvents)
 
   const ToolbarComponent: React.ComponentType<ToolbarProps<CalendarEvent, object>> = (props) => (
-    <CustomToolbar {...props} options={option} onSelectChange={setSelected} />
+    <CustomToolbar {...props} options={option} onSelectChange={setSelected} selected={selected} />
   )
 
   return (

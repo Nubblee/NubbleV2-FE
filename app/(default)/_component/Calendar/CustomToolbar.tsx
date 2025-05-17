@@ -9,9 +9,16 @@ import { CalendarEvent } from '@/types/calendar'
 export interface CustomToolbarProps extends ToolbarProps<CalendarEvent, object> {
   options: Option[]
   onSelectChange: (value: string | null) => void
+  selected: string | null
 }
 
-const CustomToolbar = ({ date, onNavigate, options, onSelectChange }: CustomToolbarProps) => {
+const CustomToolbar = ({
+  date,
+  onNavigate,
+  options,
+  onSelectChange,
+  selected,
+}: CustomToolbarProps) => {
   const formattedLabel = DateTime.fromJSDate(date).toFormat('LLL yyyy')
 
   return (
@@ -35,6 +42,7 @@ const CustomToolbar = ({ date, onNavigate, options, onSelectChange }: CustomTool
       <div className='w-[160px]'>
         <Select
           options={options}
+          value={selected ?? undefined}
           onChange={(value) => {
             onSelectChange(value)
           }}
