@@ -15,7 +15,7 @@ export const TemplateCard = ({
   return (
     <div className="flex flex-col gap-3 w-full">
       <span className="text-2xl font-semibold">{title}</span>
-      <Card type="gray" roundSize="lg" className="w-full lg:min-h-[280px]">
+      <Card type="gray" roundSize="lg" className="w-full md:min-h-[280px]">
         <textarea
           className="w-full h-full border-none resize-none focus:outline-green-middle  focus:rounded-xl p-4"
           value={content}

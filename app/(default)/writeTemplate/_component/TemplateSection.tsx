@@ -20,7 +20,7 @@ const TemplateSection = () => {
   }, []);
 
   return (
-    <div className="w-3/4 flex flex-col gap-4 px-8">
+    <div className="w-full flex flex-col gap-4 px-8">
       {Object.entries(templateStructure).map(([key, { title, description }]) =>
         openedKeys.includes(key) ? (
           <TemplateCard
