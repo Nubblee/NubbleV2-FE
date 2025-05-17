@@ -6,7 +6,7 @@ interface TemplateCardProps {
   placeholder?: string;
   onContent: (content: string) => void;
 }
-const TemplateCard = ({
+export const TemplateCard = ({
   title,
   content,
   placeholder,
@@ -15,7 +15,7 @@ const TemplateCard = ({
   return (
     <div className="flex flex-col gap-3 w-full">
       <span className="text-2xl font-semibold">{title}</span>
-      <Card type="gray" roundSize="lg" className="w-full">
+      <Card type="gray" roundSize="lg" className="w-full lg:min-h-[280px]">
         <textarea
           className="w-full h-full border-none resize-none focus:outline-green-middle  focus:rounded-xl p-4"
           value={content}

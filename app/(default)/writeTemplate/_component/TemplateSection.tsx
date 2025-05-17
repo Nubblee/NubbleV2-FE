@@ -1,10 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TemplateCard from "./TemplateCard";
 import { templateStructure } from "@/config/template";
+import { useTemplateStore } from "@/stores/useTemplateStore";
 
 const TemplateSection = () => {
   const [contents, setContents] = useState<Record<string, string>>({});
+  const { openedKeys, setAllOpened } = useTemplateStore();
 
   const handleContentChange = (key: string, value: string) => {
     setContents((prev) => ({
@@ -13,10 +15,14 @@ const TemplateSection = () => {
     }));
   };
 
+  useEffect(() => {
+    setAllOpened();
+  }, []);
+
   return (
     <div className="w-3/4 flex flex-col gap-4 px-8">
-      {Object.entries(templateStructure).map(
-        ([key, { title, description }]) => (
+      {Object.entries(templateStructure).map(([key, { title, description }]) =>
+        openedKeys.includes(key) ? (
           <TemplateCard
             key={key}
             title={title}
@@ -24,6 +30,8 @@ const TemplateSection = () => {
             content={contents[key]}
             onContent={(value) => handleContentChange(key, value)}
           />
+        ) : (
+          ""
         )
       )}
     </div>
