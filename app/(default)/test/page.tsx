@@ -33,7 +33,7 @@ export default function Test() {
   ]
 
   return (
-    <div className='flex justify-center py-4'>
+    <div className='mt-5 flex flex-col py-10 px-14'>
       <div>
         <CalendarView option={study} events={events} />
       </div>

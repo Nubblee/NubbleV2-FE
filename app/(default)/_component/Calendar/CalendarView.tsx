@@ -37,7 +37,7 @@ const CalendarView = ({ option, events }: CalendarViewProps) => {
           event: CustomEvent,
         }}
         popup
-        style={{ width: 1200, height: 800 }}
+        style={{ width: '100%', height: 800 }}
       />
     </div>
   )
