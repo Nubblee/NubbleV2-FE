@@ -12,8 +12,10 @@ const DailyProgress = ({ event }: DailyProgressProps) => {
 
   return (
     <div className='flex flex-col gap-6'>
-      <SelectedDate date={date} />
-      <ProgressInfo title={title} progress={progress} />
+      <div className='flex justify-between items-center'>
+        <ProgressInfo title={title} progress={progress} />
+        <SelectedDate date={date} />
+      </div>
       {solvedInfo && <DailyProgressCard solvedInfo={solvedInfo} />}
     </div>
   )
