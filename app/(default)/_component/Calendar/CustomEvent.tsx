@@ -1,5 +1,3 @@
-'use client'
-
 import { EventProps } from 'react-big-calendar'
 import { CalendarEvent } from '@/types/calendar'
 
