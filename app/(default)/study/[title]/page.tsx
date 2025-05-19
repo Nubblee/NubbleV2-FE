@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import CalendarView from '@/app/(default)/_component/Calendar/CalendarView'
 import StudyCard from './_component/StudyCard'
 import StudyInfo from './_component/StudyHeader'
@@ -10,9 +10,13 @@ import { events, studyData, todayProblem, studyRule, study } from '@/mocks/study
 
 const Page = () => {
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
+  const progressRef = useRef<HTMLDivElement>(null)
 
   const handleEventClick = (event: CalendarEvent) => {
     setSelectedEvent(event)
+    setTimeout(() => {
+      progressRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 0)
   }
 
   return (
@@ -35,7 +39,11 @@ const Page = () => {
         />
       </div>
       <CalendarView events={events} option={study} onEventSelect={handleEventClick} />
-      {selectedEvent && <DailyProgress event={selectedEvent} />}
+      {selectedEvent && (
+        <div ref={progressRef}>
+          <DailyProgress event={selectedEvent} />
+        </div>
+      )}
     </div>
   )
 }
