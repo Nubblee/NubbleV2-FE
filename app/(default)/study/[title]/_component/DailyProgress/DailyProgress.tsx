@@ -1,7 +1,7 @@
 import ProgressInfo from './ProgressInfo'
 import SelectedDate from './SelectedDate'
 import DailyProgressCard from './DailyProgressCard'
-import { CalendarEvent } from '@/types/calendar'
+import type { CalendarEvent } from '@/types/calendar'
 
 interface DailyProgressProps {
   event: CalendarEvent

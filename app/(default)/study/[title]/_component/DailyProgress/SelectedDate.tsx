@@ -7,7 +7,7 @@ interface SelectedDateProps {
 
 const SelectedDate = ({ date }: SelectedDateProps) => {
   return (
-    <div className='text-lg font-semibold'>
+    <div className='text-lg font-medium'>
       {DateTime.fromJSDate(date).toFormat('yyyy년 MM월 dd일')}
     </div>
   )

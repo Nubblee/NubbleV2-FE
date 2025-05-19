@@ -1,5 +1,5 @@
 import StudyCard from '../../_component/StudyCard'
-import { DailyStudyInfo } from '@/types/calendar'
+import type { DailyStudyInfo } from '@/types/calendar'
 
 interface DailyProgressCardProps {
   solvedInfo: DailyStudyInfo
