@@ -8,8 +8,7 @@ export interface CalendarViewProps {
   onEventSelect?: (event: CalendarEvent) => void
 }
 
-// 하나의 문제 정보
-export interface StudyProblem {
+export interface listProps {
   id: number
   title: string
   link: string

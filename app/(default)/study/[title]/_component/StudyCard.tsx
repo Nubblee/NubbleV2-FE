@@ -1,11 +1,12 @@
 import Card from '@/app/(default)/_component/Card'
+import { listProps } from '@/types/calendar'
 import { Plus } from 'lucide-react'
 import Link from 'next/link'
 
 interface StudyCardProps {
   studyTitle?: string
   cardTitle: string
-  lists: { id: number; title: string }[]
+  lists: listProps[]
   className?: string
   emptyMessage?: string
 }
@@ -30,8 +31,14 @@ const StudyCard = ({ studyTitle, cardTitle, lists, className, emptyMessage }: St
           ) : (
             <>
               {lists.map((list) => (
-                <li key={list.id} className='mb-4 text-gray-700 hover:font-semibold cursor-pointer'>
-                  {list.title}
+                <li key={list.id} className='mb-4'>
+                  <Link
+                    href={list.link}
+                    className='text-gray-700 hover:font-semibold cursor-pointer'
+                    rel='noopener noreferrer'
+                  >
+                    {list.title}
+                  </Link>
                 </li>
               ))}
 
