@@ -20,6 +20,7 @@ interface StudyInfoProps {
 }
 
 interface membersProps {
+  id: number
   name: string
   image: string
 }
@@ -55,7 +56,7 @@ const StudyInfo = ({
           <div className='flex gap-3 items-center'>
             <span className='font-base text-base'>스터디원</span>
             {members?.map((member) => (
-              <ProfileImage size={40} key={member.image} src={member.image} alt={member.name} />
+              <ProfileImage size={40} key={member.id} src={member.image} alt={member.name} />
             ))}
           </div>
         ) : (
