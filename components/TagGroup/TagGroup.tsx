@@ -12,6 +12,7 @@ interface TagGroupProps {
   defaultSelected?: string[];
   onChange?: (selected: string[]) => void;
   readonly?: boolean;
+  sideLabelSize?: "default" | "small";
 }
 
 const TagGroup = ({
@@ -22,6 +23,7 @@ const TagGroup = ({
   defaultSelected = [],
   onChange,
   readonly = false,
+  sideLabelSize = "default",
 }: TagGroupProps) => {
   const [selectedValues, setSelectedValues] =
     useState<string[]>(defaultSelected);
@@ -36,12 +38,16 @@ const TagGroup = ({
     onChange?.(newSelected);
   };
 
+  const computedLabelClass = clsx(
+    "min-w-[40px] font-bold",
+    sideLabelSize === "small" ? "text-base" : "text-xl",
+    labelClassName
+  );
+
   if (sideLabel) {
     return (
       <div className="flex items-start gap-4 mb-4">
-        <div className={clsx("min-w-[40px] text-xl font-bold", labelClassName)}>
-          {sideLabel}
-        </div>
+        <div className={computedLabelClass}>{sideLabel}</div>
         <div className="flex gap-2 flex-wrap">
           {options.map((option) => (
             <TagButton
