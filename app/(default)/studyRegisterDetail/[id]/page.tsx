@@ -1,3 +1,5 @@
+"use client";
+import Button from "@/components/Button";
 import StudyRegisterDetailTag from "./_component/studyRegisterDetailTag";
 
 // type Props = {
@@ -33,6 +35,10 @@ const StudyDetailPage = () => {
       </div>
       <div className="mt-6 w-full max-w-[600px] whitespace-pre-wrap">
         {mockStudy.introduction}
+      </div>
+      <div className="mt-6 w-full max-w-[600px] flex gap-4 justify-center">
+        <Button variant="outlined">모집마감</Button>
+        <Button>수정하기</Button>
       </div>
     </div>
   );
