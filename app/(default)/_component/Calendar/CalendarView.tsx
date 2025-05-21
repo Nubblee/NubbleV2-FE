@@ -13,7 +13,7 @@ const localizer = luxonLocalizer(DateTime, {
   firstDayOfWeek: 1,
 })
 
-const CalendarView = ({ option, events, onEventSelect }: CalendarViewProps) => {
+const CalendarView = ({ option, events }: CalendarViewProps) => {
   const [selected, setSelected] = useState<string | null>(null)
   const filteredEvents = selected
     ? events.filter((e) => e.title === option.find((o) => o.value === selected)?.label)
@@ -37,9 +37,6 @@ const CalendarView = ({ option, events, onEventSelect }: CalendarViewProps) => {
           event: CustomEvent,
         }}
         popup
-        onSelectEvent={(event) => {
-          onEventSelect?.(event)
-        }}
         style={{ width: '100%', height: 800 }}
       />
     </div>

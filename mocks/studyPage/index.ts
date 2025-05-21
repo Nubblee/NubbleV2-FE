@@ -1,5 +1,0 @@
-export { events } from './events'
-export { studyRule } from './notice'
-export { todayProblem } from './problems'
-export { study } from './select'
-export { studyData } from './study'
