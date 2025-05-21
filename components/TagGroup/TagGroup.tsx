@@ -46,7 +46,7 @@ const TagGroup = ({
 
   if (sideLabel) {
     return (
-      <div className="flex items-start gap-4 mb-4">
+      <div className="flex  items-center gap-4 mb-4">
         <div className={computedLabelClass}>{sideLabel}</div>
         <div className="flex gap-2 flex-wrap">
           {options.map((option) => (

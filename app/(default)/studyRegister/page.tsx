@@ -41,7 +41,7 @@ const StudyRegister = () => {
         <textarea
           id="introduction"
           placeholder="스터디를 간략하게 소개해주세요"
-          className="w-full h-[200px] p-3 border border-gray-light rounded-md resize-none"
+          className="w-full h-[200px] p-3 border border-gray-light rounded-md focus:outline-none focus:border-green-middle resize-none"
         />
       </div>
 
@@ -56,7 +56,7 @@ const StudyRegister = () => {
         <textarea
           id="applicationForm"
           placeholder={`코딩스터디 언어:\n코딩스터디 레벨:\n선호하는 코딩테스트 사이트:\n가능한 스터디 시간:\n원하는 스터디 요일:\n이 스터디에 가입하고 싶은 이유:\n깃허브 아이디:\n사는 지역:`}
-          className="w-full h-[240px] p-3 border border-gray-light rounded-md resize-none"
+          className="w-full h-[240px] p-3 border border-gray-light rounded-md focus:outline-none focus:border-green-middle resize-none"
         />
       </div>
 
