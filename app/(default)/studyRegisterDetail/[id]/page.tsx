@@ -1,4 +1,3 @@
-"use client";
 import Button from "@/components/Button";
 import StudyRegisterDetailTag from "./_component/studyRegisterDetailTag";
 
