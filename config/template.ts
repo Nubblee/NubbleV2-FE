@@ -1,5 +1,5 @@
 export const templateStructure = {
-  ProblemInfo: {
+  Information: {
     title: "문제 정보",
     description: [
       "난이도 - 문제의 대략적인 난이도를 적어주세요. (ex.⭐️, 레벨 등)",

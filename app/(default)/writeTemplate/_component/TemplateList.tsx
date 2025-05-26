@@ -4,7 +4,7 @@
 // };
 "use client";
 
-import { Check, PencilLine, PencilOffIcon } from "lucide-react";
+import { Check, PencilLine, PencilOffIcon, Plus } from "lucide-react";
 import { templateStructure } from "@/config/template";
 import { useTemplateStore } from "@/stores/useTemplateStore";
 
@@ -22,9 +22,9 @@ const TemplateList = () => {
         ([key, { title, description }]) => (
           <div key={key}>
             <div className="flex gap-1 items-center">
-              <Check size={20} />
+              <Check size={14} />
               <div className="flex items-center w-full gap-2">
-                <span className="text-lg font-bold text-green-dark w-8/9">
+                <span className="text-lg font-bold text-green-dark w-full">
                   {`${title} (${key})`}{" "}
                 </span>
                 <button
@@ -35,12 +35,12 @@ const TemplateList = () => {
                 >
                   {openedKeys.includes(key) ? (
                     <PencilOffIcon
-                      size={22}
+                      size={20}
                       style={{ color: "var(--color-gray-light)" }}
                     />
                   ) : (
                     <PencilLine
-                      size={22}
+                      size={20}
                       style={{ color: "var(--color-green-middle)" }}
                     />
                   )}
@@ -57,6 +57,9 @@ const TemplateList = () => {
           </div>
         )
       )}
+      <button className="w-full flex justify-center bg-green-light text-green-middle rounded-md p-1 hover:bg-green-dark cursor-pointer text-green-light">
+        <Plus size={20} />
+      </button>
     </div>
   );
 };
