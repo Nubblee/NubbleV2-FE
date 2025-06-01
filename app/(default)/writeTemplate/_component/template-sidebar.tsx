@@ -1,5 +1,5 @@
 import React from "react";
-import TemplateList from "./TemplateList";
+import TemplateList from "./template-list";
 import ProgressBar from "../../_component/ProgressBar";
 
 const TemplateSidebar = () => {

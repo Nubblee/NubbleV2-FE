@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import TemplateSidebar from "./_component/TemplateSidebar";
+import TemplateSidebar from "./_component/template-sidebar";
 
 interface LayoutProps {
   children: ReactNode;

@@ -15,9 +15,9 @@ export const TemplateCard = ({
   return (
     <div className="flex flex-col gap-3 w-full">
       <span className="text-2xl font-semibold">{title}</span>
-      <Card type="gray" roundSize="lg" className="w-full md:min-h-[280px]">
+      <Card type="green" roundSize="lg" className="w-full md:min-h-[300px]">
         <textarea
-          className="w-full h-full border-none resize-none focus:outline-green-middle  focus:rounded-xl p-4"
+          className="w-full border-none h-full resize-none focus:outline-green-middle rounded-xl p-4 caret-green-middle placeholder-gray-placeholder"
           value={content}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
             onContent(e.target.value)

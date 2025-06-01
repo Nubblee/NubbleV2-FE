@@ -1,5 +1,5 @@
 import React from "react";
-import TemplateSection from "./_component/TemplateSection";
+import TemplateSection from "./_component/template-section";
 
 const Page = () => {
   return (

@@ -1,6 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
-import TemplateCard from "./TemplateCard";
+import { useCallback, useEffect, useState } from "react";
+import TemplateCard from "./template-card";
 import { templateStructure } from "@/config/template";
 import { useTemplateStore } from "@/stores/useTemplateStore";
 
@@ -8,12 +8,12 @@ const TemplateSection = () => {
   const [contents, setContents] = useState<Record<string, string>>({});
   const { openedKeys, setAllOpened } = useTemplateStore();
 
-  const handleContentChange = (key: string, value: string) => {
+  const handleContentChange = useCallback((key: string, value: string) => {
     setContents((prev) => ({
       ...prev,
       [key]: value,
     }));
-  };
+  }, []);
 
   useEffect(() => {
     setAllOpened();
