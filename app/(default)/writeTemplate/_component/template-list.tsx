@@ -32,7 +32,13 @@ const TemplateList = () => {
           <div key={key}>
             <div className="flex gap-1 items-center">
               <div className="flex items-center w-full gap-2">
-                <span className="text-lg font-bold text-green-dark w-full">
+                <span
+                  className={`text-lg font-bold ${
+                    openedKeys.includes(key)
+                      ? "text-gray-light"
+                      : "text-green-dark"
+                  } w-full`}
+                >
                   {`${title} (${key})`}{" "}
                 </span>
                 <button
