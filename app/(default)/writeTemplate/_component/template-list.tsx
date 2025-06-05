@@ -35,8 +35,8 @@ const TemplateList = () => {
                 <span
                   className={`text-lg font-bold ${
                     openedKeys.includes(key)
-                      ? "text-gray-light"
-                      : "text-green-dark"
+                      ? "text-green-dark"
+                      : "text-gray-light"
                   } w-full`}
                 >
                   {`${title} (${key})`}{" "}
@@ -50,12 +50,12 @@ const TemplateList = () => {
                   {openedKeys.includes(key) ? (
                     <PencilOffIcon
                       size={20}
-                      style={{ color: "var(--color-gray-light)" }}
+                      style={{ color: "var(--color-green-middle)" }}
                     />
                   ) : (
                     <PencilLine
                       size={20}
-                      style={{ color: "var(--color-green-middle)" }}
+                      style={{ color: "var(--color-gray-light)" }}
                     />
                   )}
                 </button>
