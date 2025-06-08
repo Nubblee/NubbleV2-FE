@@ -1,5 +1,7 @@
-const bookmarksPage = () => {
-  return <div>bookmarksPage</div>
-}
+import { redirect } from "next/navigation";
 
-export default bookmarksPage
+const BookmarksPage = () => {
+  redirect("/bookmarks/active");
+};
+
+export default BookmarksPage;

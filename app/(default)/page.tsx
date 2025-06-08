@@ -51,14 +51,16 @@ export default function HomePage() {
         <h2 className="text-lg font-bold mb-4">내 스터디 🔒</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <StudyCard
-            type="recruiting"
+            studyGroupId=""
+            status="RECRUITING"
             icon="/nubble.png"
-            title="[JS] 알고리즘 뿌시기 스터디원 찾습니다!"
+            name="[JS] 알고리즘 뿌시기 스터디원 찾습니다!"
             allMembers={5}
             members={3}
-            level="Lv 1 - Lv 2"
-            days={["MON"]}
+            difficultyLevels={["1", "2"]}
+            mainMeetingDays={["MON"]}
             expireDay="2025.12.31"
+            mainLanguage="JAVASCRIPT"
             onBookMark={() => {}}
           />
         </div>

@@ -1,8 +1,10 @@
+import { DayType } from "@/types/day";
+
 type ShowDayType = "primary" | "secondary";
 
 interface ShowDayProps {
   type?: ShowDayType;
-  days: string[];
+  days: DayType[];
 }
 
 const Fulldays = {
@@ -22,7 +24,7 @@ const ShowDay = ({ days, type = "primary" }: ShowDayProps) => {
         <div
           key={key}
           className={`text-sm font-semibold ${
-            days.includes(key)
+            days.includes(key as DayType)
               ? type === "primary"
                 ? "text-[#7392C9]"
                 : "text-[#30D1BD]"
