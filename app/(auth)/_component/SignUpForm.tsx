@@ -19,6 +19,7 @@ const SignUpForm = () => {
     equalPwdMessage,
     isPasswordValid,
     passwordIsMatch, 
+    disabledSignUp,
     handleNickName,
     handleSignUpId,
     handlePassword,
@@ -94,7 +95,7 @@ const SignUpForm = () => {
         </label>
         <Select options={addressOptions} value={preferredArea} onChange={handlePreferredArea} />
       </div>
-      <Button className="w-full py-3"  disabled={!loginId || !email || !password || !checkPassword || !preferredArea || password !== checkPassword} onClick={handleSubmit}>
+      <Button className="w-full py-3"  disabled={disabledSignUp} onClick={handleSubmit}>
         가입하기
       </Button>
     </div>

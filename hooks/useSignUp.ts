@@ -15,9 +15,10 @@ const router = useRouter()
   const invalidPWDMessage = password.trim().length !== 0 ? "비밀번호는 8글자 이상이어야 하고 특수문자와 숫자를 포함해야 합니다." : ''
   let notEqualPwdMessage = checkPassword.trim().length !== 0 ? '비밀번호가 일치하지 않습니다.' : '';
   const equalPwdMessage = checkPassword.trim().length !== 0 ? '비밀번호가 일치합니다.' : '';
+  const disabledSignUp = !loginId || !email || !password || !checkPassword || !preferredArea || password !== checkPassword
 
 
-  // 비밀번호 유효성 검사 정규식
+  // 비밀번호 유효성 정규식
   const passwordRegex = /^[A-Za-z0-9@$!%*?&]+$/;
   const isPasswordValid = passwordRegex.test(password) && password.length >= 8;
 
@@ -64,7 +65,8 @@ const router = useRouter()
     notEqualPwdMessage,
     equalPwdMessage,
     isPasswordValid, 
-    passwordIsMatch, 
+    passwordIsMatch,
+    disabledSignUp,
     handleNickName,
     handleSignUpId,
     handlePassword,
