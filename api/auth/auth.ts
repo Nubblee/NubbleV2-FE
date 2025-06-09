@@ -39,10 +39,23 @@ export const fetchLogin = async ({ loginId, password }: UserLoginType) => {
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      if (error.response?.data?.message) {
-        throw new Error(error.response.data.message);
+      if (error.response?.data) {
+        throw new Error(error.response.data.detail);
       }
     }
     throw new Error("로그인 중 오류가 발생했습니다.");
+  }
+};
+
+export const fetchLogout = async () => {
+  try {
+    const res = await apiClient.post(
+      apiEndPoints.AUTH.LOGOUT,
+      {},
+      { withCredentials: true }
+    );
+    return res.data;
+  } catch (error) {
+    throw error;
   }
 };
