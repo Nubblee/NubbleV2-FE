@@ -193,24 +193,15 @@ export default function RecruitingSection() {
         <h2 className="text-lg font-bold mb-4">모집중인 스터디 💬</h2>
 
         <div
-          className="grid gap-4 mb-6"
-          style={{
-            gridTemplateColumns: "repeat(auto-fill, minmax(350px, 1fr))",
-          }}
+          className="grid 
+             grid-cols-[repeat(auto-fill,_minmax(270px,_1fr))] 
+             gap-6 mb-6 
+             justify-items-center"
         >
           {currentStudies.map((study, i) => (
             <StudyCard
               key={i}
-              studyGroupId={study.studyGroupId}
-              mainLanguage={study.mainLanguage}
-              status="RECRUITING"
-              icon={study.icon}
-              name={study.name}
-              allMembers={study.allMembers}
-              members={study.members}
-              difficultyLevels={study.difficultyLevels}
-              mainMeetingDays={study.mainMeetingDays}
-              expireDay={study.expireDay}
+              {...study}
               onClick={() =>
                 router.push(`/studyRegisterDetail/${study.studyGroupId}`)
               }

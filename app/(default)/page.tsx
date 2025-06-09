@@ -5,10 +5,50 @@ import ActiveSection from "@/app/(default)/_sections/ActiveSection";
 import RecruitingSection from "@/app/(default)/_sections/RecruitingSection";
 import Button from "@/components/Button";
 import Input from "@/components/Input/input";
+import { StudyCardProps } from "@/types/study";
 import { useRouter } from "next/navigation";
 
 export default function HomePage() {
   const router = useRouter();
+
+  const myStudies: StudyCardProps[] = [
+    {
+      studyGroupId: "101",
+      status: "RECRUITING",
+      icon: "/javascript.png",
+      name: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
+      allMembers: 5,
+      members: 3,
+      difficultyLevels: ["LV1", "LV2"],
+      mainMeetingDays: ["MON"],
+      expireDay: "2025.12.31",
+      mainLanguage: "JAVASCRIPT",
+    },
+    {
+      studyGroupId: "102",
+      status: "RECRUITING",
+      icon: "/javascript.png",
+      name: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
+      allMembers: 5,
+      members: 3,
+      difficultyLevels: ["LV1", "LV2"],
+      mainMeetingDays: ["MON"],
+      expireDay: "2025.12.31",
+      mainLanguage: "JAVASCRIPT",
+    },
+    {
+      studyGroupId: "103",
+      status: "RECRUITING",
+      icon: "/javascript.png",
+      name: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
+      allMembers: 5,
+      members: 3,
+      difficultyLevels: ["LV1", "LV2"],
+      mainMeetingDays: ["MON"],
+      expireDay: "2025.12.31",
+      mainLanguage: "JAVASCRIPT",
+    },
+  ];
 
   return (
     <main className="flex flex-col items-center">
@@ -53,20 +93,21 @@ export default function HomePage() {
       {/* ✅ 내 스터디 */}
       <section className="w-full max-w-6xl px-4 py-8">
         <h2 className="text-lg font-bold mb-4">내 스터디 🔒</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <StudyCard
-            studyGroupId=""
-            status="RECRUITING"
-            icon="/javascript.png"
-            name="[JS] 알고리즘 뿌시기 스터디원 찾습니다!"
-            allMembers={5}
-            members={3}
-            difficultyLevels={["LV1", "LV2"]}
-            mainMeetingDays={["MON"]}
-            expireDay="2025.12.31"
-            mainLanguage="JAVASCRIPT"
-            onBookMark={() => {}}
-          />
+
+        <div
+          className="grid 
+                        grid-cols-[repeat(auto-fill,_minmax(270px,_1fr))] 
+                        gap-6 
+                        justify-items-center"
+        >
+          {myStudies.map((study) => (
+            <StudyCard
+              key={study.studyGroupId}
+              {...study}
+              className="cursor-pointer"
+              onBookMark={() => {}}
+            />
+          ))}
         </div>
       </section>
 
