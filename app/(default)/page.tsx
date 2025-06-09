@@ -90,6 +90,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ✅ 진행중인 스터디 */}
+      <ActiveSection />
+
       {/* ✅ 내 스터디 */}
       <section className="w-full max-w-6xl px-4 py-8">
         <h2 className="text-lg font-bold mb-4">내 스터디 🔒</h2>
@@ -110,9 +113,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      {/* ✅ 진행중인 스터디 */}
-      <ActiveSection />
 
       {/* ✅ 모집중인 스터디 */}
       <RecruitingSection />
