@@ -7,63 +7,123 @@ import { CircleChevronLeft, CircleChevronRight } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { StudyCardProps } from "@/types/study";
 
-const activeStudyList = [
+const activeStudyList: StudyCardProps[] = [
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
-    allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    studyGroupId: "1",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 왕초보 스터디",
+    allMembers: 8,
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "WED", "FRI"],
+    expireDay: "2025-06-01",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
-    allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    studyGroupId: "2",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "모던 JS 완전 정복",
+    allMembers: 6,
+    members: 6,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["TUE", "THU"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
-    allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    studyGroupId: "3",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "JS 알고리즘 스터디",
+    allMembers: 4,
+    members: 1,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    expireDay: "2025-05-20",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
-    allMembers: 5,
+    studyGroupId: "4",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "프론트엔드 면접 대비",
+    allMembers: 3,
     members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["WED", "SUN"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
+    studyGroupId: "5",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 입문과정",
     allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "TUE"],
+    expireDay: "2025-05-25",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
-    allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    studyGroupId: "6",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "React로 배우는 JS",
+    allMembers: 7,
+    members: 7,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["FRI", "SAT"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 뿌시기 스터디원 찾습니다!",
+    studyGroupId: "7",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "코딩 테스트 준비반",
+    allMembers: 6,
+    members: 2,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "THU"],
+    expireDay: "2025-06-05",
+    mainLanguage: "PYTHON",
+  },
+  {
+    studyGroupId: "8",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "Node.js 백엔드 스터디입니다 백엔드? 아닙니다 코딩테스트 스터디 입니다",
     allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON"],
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["TUE", "SAT"],
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "9",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "웹 개발 기초반",
+    allMembers: 4,
+    members: 1,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["WED", "FRI"],
+    expireDay: "2025-06-10",
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
   },
 ];
 
@@ -110,14 +170,16 @@ export default function ActiveSection() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {group.map((study, j) => (
                   <StudyCard
+                    studyGroupId={study.studyGroupId}
+                    mainLanguage={study.mainLanguage}
                     key={j}
-                    type="active"
+                    status="ACTIVE"
                     icon={study.icon}
-                    title={study.title}
+                    name={study.name}
                     allMembers={study.allMembers}
                     members={study.members}
-                    level={study.level}
-                    days={study.days}
+                    difficultyLevels={study.difficultyLevels}
+                    mainMeetingDays={study.mainMeetingDays}
                     onBookMark={() => {}}
                   />
                 ))}

@@ -1,141 +1,188 @@
 import { useState } from "react";
-import StudyCard from "@/app/(default)/_component/StudyCard";
 import Pagination from "@/components/Pagination";
+import { StudyCardProps } from "@/types/study";
+import StudyCard from "@/app/(default)/_component/StudyCard";
+import { useRouter } from "next/navigation";
 
 const studiesPerPage = 6;
 
-const studyList = [
+const studyList: StudyCardProps[] = [
   {
-    icon: "/nubble.png",
-    title: "[JS] 알고리즘 초급 스터디",
-    allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["MON", "WED"],
-    expireDay: "2025.06.30",
-  },
-  {
-    icon: "/nubble.png",
-    title: "[Python] 중급 백엔드 개발 스터디",
-    allMembers: 6,
+    studyGroupId: "1",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 왕초보 스터디",
+    allMembers: 8,
     members: 4,
-    level: "Lv 2 - Lv 3",
-    days: ["TUE", "THU"],
-    expireDay: "2025.07.15",
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "WED", "FRI"],
+    expireDay: "2025-06-01",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[React] 프론트엔드 프로젝트 팀 모집",
-    allMembers: 4,
-    members: 2,
-    level: "Lv 3 - Lv 4",
-    days: ["SAT"],
-    expireDay: "2025.06.10",
-  },
-  {
-    icon: "/nubble.png",
-    title: "[Node.js] 실전 API 서버 만들기",
-    allMembers: 5,
-    members: 5,
-    level: "Lv 2 - Lv 3",
-    days: ["SUN"],
-    expireDay: "2025.07.01",
-  },
-  {
-    icon: "/nubble.png",
-    title: "[C#] 게임 개발 기초 스터디",
-    allMembers: 5,
-    members: 3,
-    level: "Lv 1 - Lv 2",
-    days: ["FRI"],
-    expireDay: "2025.06.25",
-  },
-  {
-    icon: "/nubble.png",
-    title: "[Java] 스프링 입문부터 실전까지",
-    allMembers: 7,
+    studyGroupId: "2",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "모던 JS 완전 정복",
+    allMembers: 6,
     members: 6,
-    level: "Lv 2 - Lv 4",
-    days: ["MON", "WED"],
-    expireDay: "2025.06.20",
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["TUE", "THU"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[Go] Go로 배우는 백엔드",
-    allMembers: 5,
-    members: 2,
-    level: "Lv 1 - Lv 2",
-    days: ["TUE"],
-    expireDay: "2025.07.05",
+    studyGroupId: "3",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "JS 알고리즘 스터디",
+    allMembers: 4,
+    members: 1,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    expireDay: "2025-05-20",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[TS] 타입스크립트 실전 패턴",
+    studyGroupId: "4",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "프론트엔드 면접 대비",
+    allMembers: 3,
+    members: 3,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["WED", "SUN"],
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "5",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 입문과정",
     allMembers: 5,
     members: 4,
-    level: "Lv 3 - Lv 4",
-    days: ["THU"],
-    expireDay: "2025.07.10",
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "TUE"],
+    expireDay: "2025-05-25",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[DB] SQL 성능 개선 스터디",
+    studyGroupId: "6",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "React로 배우는 JS",
+    allMembers: 7,
+    members: 7,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["FRI", "SAT"],
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "7",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "코딩 테스트 준비반",
     allMembers: 6,
+    members: 2,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "THU"],
+    expireDay: "2025-06-05",
+    mainLanguage: "PYTHON",
+  },
+  {
+    studyGroupId: "8",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "Node.js 백엔드 스터디입니다 백엔드? 아닙니다 코딩테스트 스터디 입니다",
+    allMembers: 5,
     members: 5,
-    level: "Lv 3 - Lv 4",
-    days: ["WED"],
-    expireDay: "2025.06.15",
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["TUE", "SAT"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[DevOps] CI/CD 구축 스터디",
+    studyGroupId: "9",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "웹 개발 기초반",
     allMembers: 4,
-    members: 3,
-    level: "Lv 2 - Lv 3",
-    days: ["FRI"],
-    expireDay: "2025.06.18",
+    members: 1,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["WED", "FRI"],
+    expireDay: "2025-06-10",
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[DevOps] CI/CD 구축 스터디",
-    allMembers: 4,
-    members: 3,
-    level: "Lv 2 - Lv 3",
-    days: ["FRI"],
-    expireDay: "2025.06.18",
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[DevOps] CI/CD 구축 스터디",
-    allMembers: 4,
-    members: 3,
-    level: "Lv 2 - Lv 3",
-    days: ["FRI"],
-    expireDay: "2025.06.18",
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[DevOps] CI/CD 구축 스터디",
-    allMembers: 4,
-    members: 3,
-    level: "Lv 2 - Lv 3",
-    days: ["FRI"],
-    expireDay: "2025.06.18",
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
   },
   {
-    icon: "/nubble.png",
-    title: "[DevOps] CI/CD 구축 스터디",
-    allMembers: 4,
-    members: 3,
-    level: "Lv 2 - Lv 3",
-    days: ["FRI"],
-    expireDay: "2025.06.18",
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "10",
+    status: "ACTIVE",
+    icon: "/javascript.png",
+    name: "JS 프로젝트 실습반",
+    allMembers: 5,
+    members: 5,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    mainLanguage: "JAVASCRIPT",
   },
 ];
 
 export default function RecruitingSection() {
-  const [currentPage, setCurrentPage] = useState(1);
+  const router = useRouter();
 
+  const [currentPage, setCurrentPage] = useState(1);
   const totalPages = Math.ceil(studyList.length / studiesPerPage);
   const startIdx = (currentPage - 1) * studiesPerPage;
   const currentStudies = studyList.slice(startIdx, startIdx + studiesPerPage);
@@ -154,14 +201,19 @@ export default function RecruitingSection() {
           {currentStudies.map((study, i) => (
             <StudyCard
               key={i}
-              type="recruiting"
+              studyGroupId={study.studyGroupId}
+              mainLanguage={study.mainLanguage}
+              status="RECRUITING"
               icon={study.icon}
-              title={study.title}
+              name={study.name}
               allMembers={study.allMembers}
               members={study.members}
-              level={study.level}
-              days={study.days}
+              difficultyLevels={study.difficultyLevels}
+              mainMeetingDays={study.mainMeetingDays}
               expireDay={study.expireDay}
+              onClick={() =>
+                router.push(`/studyRegisterDetail/${study.studyGroupId}`)
+              }
               onBookMark={() => {}}
             />
           ))}
