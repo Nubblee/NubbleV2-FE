@@ -47,6 +47,17 @@ export const fetchLogin = async ({ loginId, password }: UserLoginType) => {
   }
 };
 
+//토큰으로 인증 정보 조회
+export const fetchUser = async () => {
+  try {
+    const res = await apiClient.get(apiEndPoints.AUTH.USER);
+    return res.data;
+  } catch (error) {
+    throw error;
+  }
+};
+
+//로그아웃
 export const fetchLogout = async () => {
   try {
     const res = await apiClient.post(
