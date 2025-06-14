@@ -5,5 +5,6 @@ export const apiEndPoints = {
     AVAILABILITY_USER: "/availability/users",
     LOGIN: "/auth/login",
     LOGOUT: "/auth/logout",
+    INTERESTS: "/user/interest",
   },
 };

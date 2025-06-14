@@ -1,4 +1,4 @@
-import { AuthUserProps, UserLoginType } from "@/types/auth";
+import { AuthInterestsProps, AuthUserProps, UserLoginType } from "@/types/auth";
 import { apiClient, ServerClient } from "../apiClient";
 import { apiEndPoints } from "../apiEndPoints";
 import axios from "axios";
@@ -22,6 +22,24 @@ export const fetchSignUp = async ({
     return res.data;
   } catch (error) {
     console.error("회원가입 실패", error);
+  }
+};
+
+//회원가입시 회원 선호 코딩테스트 정보 전송
+export const fetchUserInterest = async ({
+  interestsLanguages,
+  currentLevels,
+  preferredPlatforms,
+}: AuthInterestsProps) => {
+  try {
+    const res = await apiClient.put(apiEndPoints.AUTH.INTERESTS, {
+      interestsLanguages,
+      currentLevels,
+      preferredPlatforms,
+    });
+    return res.data;
+  } catch (error) {
+    throw error;
   }
 };
 
