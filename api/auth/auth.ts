@@ -1,5 +1,5 @@
 import { AuthUserProps, UserLoginType } from "@/types/auth";
-import { apiClient } from "../apiClient";
+import { apiClient, ServerClient } from "../apiClient";
 import { apiEndPoints } from "../apiEndPoints";
 import axios from "axios";
 
@@ -48,12 +48,17 @@ export const fetchLogin = async ({ loginId, password }: UserLoginType) => {
 };
 
 //토큰으로 인증 정보 조회
-export const fetchUser = async () => {
+export const fetchUser = async (token: string) => {
+  const client = typeof window === "undefined" ? ServerClient : apiClient;
   try {
-    const res = await apiClient.get(apiEndPoints.AUTH.USER);
-    return res.data;
+    const res = await client.get(apiEndPoints.AUTH.USER, {
+      headers: {
+        Cookie: `auth-session-id=${token}`,
+      },
+    });
+    return res.data.user;
   } catch (error) {
-    throw error;
+    console.log("failed to fetch user", error);
   }
 };
 
