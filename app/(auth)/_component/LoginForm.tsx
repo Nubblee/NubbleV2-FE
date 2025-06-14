@@ -20,7 +20,7 @@ const LoginForm = () => {
         onChange={handleLoginId}
         label="아이디"
         placeholder="아이디를 입력해주세요."
-        className="border-gray-light py-3 px-3"
+        className="border-gray-light py-3 px-3 caret-green-middle"
       />
       <Input
         type="password"
@@ -28,9 +28,13 @@ const LoginForm = () => {
         onChange={handleLoginPWD}
         label="비밀번호"
         placeholder="비밀번호를 입력해주세요."
-        className="border-gray-light py-3 px-3"
+        className="border-gray-light py-3 px-3 caret-green-middle"
       />
-      <Button className="w-[350px] mt-[16px] py-3" onClick={handleSubmitLogin}>
+      <Button
+        className="w-[350px] mt-[16px] py-3"
+        onClick={handleSubmitLogin}
+        disabled={!loginId && !password}
+      >
         로그인
       </Button>
       {errorMessage && (

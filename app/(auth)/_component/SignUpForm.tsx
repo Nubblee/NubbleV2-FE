@@ -76,7 +76,7 @@ const SignUpForm = () => {
         invalidMessage={invalidNickName.message}
         size={20}
         label="닉네임 *"
-        className="py-2 border-gray-light"
+        className="py-3 border-gray-light"
         placeholder="닉네임을 입력하세요."
       />
 
@@ -89,7 +89,7 @@ const SignUpForm = () => {
         invalidMessage={invalidId.message}
         size={20}
         label="아이디 *"
-        className="py-2 border-gray-light caret-green-middle"
+        className="py-3 border-gray-light caret-green-middle"
         placeholder="아이디를 입력하세요."
       />
 
@@ -98,7 +98,7 @@ const SignUpForm = () => {
         onChange={handlePassword}
         isInvalid={!isPasswordValid}
         invalidMessage={invalidPWDMessage}
-        className="py-2 border-gray-light caret-green-middle"
+        className="py-3 border-gray-light caret-green-middle"
         type="password"
         label="비밀번호 *"
         placeholder="비밀번호를 입력하세요."
@@ -109,7 +109,7 @@ const SignUpForm = () => {
         isInvalid={!passwordIsMatch}
         validMessage={equalPwdMessage}
         invalidMessage={notEqualPwdMessage}
-        className="py-2 border-gray-light caret-green-middle"
+        className="py-3 border-gray-light caret-green-middle"
         type="password"
         label="비밀번호 확인 *"
         placeholder="비밀번호를 입력하세요."
@@ -124,7 +124,7 @@ const SignUpForm = () => {
           label="이메일 *"
           placeholder="이메일을 입력하세요."
           type="email"
-          className="py-2 border-gray-light flex-grow caret-green-middle"
+          className="py-3 border-gray-light flex-grow caret-green-middle"
         />
       </div>
 
@@ -133,6 +133,7 @@ const SignUpForm = () => {
           지역
         </label>
         <Select
+          className="py-3"
           options={addressOptions}
           value={preferredArea}
           onChange={handlePreferredArea}
