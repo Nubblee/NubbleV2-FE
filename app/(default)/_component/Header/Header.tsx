@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header className={`flex px-12 py-4 ${bgColor}`}>
-      <div className="flex items-center justify-between max-w-screen-xl w-full mx-auto">
+      <div className="flex items-center justify-between  w-full mx-auto">
         <Logo color={logoColor} />
         <nav className="flex gap-6">
           {navItems.map((item) => (
