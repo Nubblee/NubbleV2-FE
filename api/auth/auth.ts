@@ -39,7 +39,12 @@ export const fetchUserInterest = async ({
     });
     return res.data;
   } catch (error) {
-    throw error;
+    if (axios.isAxiosError(error)) {
+      if (error.response?.data) {
+        throw new Error(error.response.data.detail);
+      }
+    }
+    throw new Error("정보 전송 도중 오류가 발생했습니다.");
   }
 };
 
