@@ -4,6 +4,14 @@ import Input from "@/components/Input/input";
 import Select from "@/components/Select";
 import { addressOptions } from "@/config/signup";
 import { useSignUp } from "@/hooks/useSignUp";
+import {
+  invalidEmailMessage,
+  invalidPWDMessage,
+  isEqualPwdMessage,
+  isPasswordMatch,
+  isValidEmail,
+  isValidPassword,
+} from "@/utils/validAuth";
 import { useEffect, useRef, useState } from "react";
 
 const SignUpForm = () => {
@@ -16,13 +24,6 @@ const SignUpForm = () => {
     preferredArea,
     invalidId,
     invalidNickName,
-    invalidEmailMessage,
-    invalidPWDMessage,
-    notEqualPwdMessage,
-    equalPwdMessage,
-    isPasswordValid,
-    isEmailValid,
-    passwordIsMatch,
     disabledSignUp,
     handleNickName,
     handleSignUpId,
@@ -34,12 +35,19 @@ const SignUpForm = () => {
     handlePreferredArea,
     handleSubmit,
   } = useSignUp();
+
+  const { validCheckPwdMessage, invalidCheckPwdMessage } = isEqualPwdMessage(
+    password,
+    checkPassword
+  );
+
   const nicknameRef = useRef<HTMLInputElement>(null);
   const loginIdRef = useRef<HTMLInputElement>(null);
 
   const [isNickFocused, setIsNickFocused] = useState(false);
   const [isIdFocused, setIsIdFocused] = useState(false);
 
+  //닉네임, 아이디 인풋 창 밖으로 커서 클릭시 유효성 검사 진행
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -96,8 +104,9 @@ const SignUpForm = () => {
       <Input
         value={password}
         onChange={handlePassword}
-        isInvalid={!isPasswordValid}
-        invalidMessage={invalidPWDMessage}
+        isInvalid={!isValidPassword(password)}
+        invalidMessage={invalidPWDMessage(password)}
+        size={15}
         className="py-3 border-gray-light caret-green-middle"
         type="password"
         label="비밀번호 *"
@@ -106,9 +115,9 @@ const SignUpForm = () => {
       <Input
         value={checkPassword}
         onChange={handleCheckPassword}
-        isInvalid={!passwordIsMatch}
-        validMessage={equalPwdMessage}
-        invalidMessage={notEqualPwdMessage}
+        isInvalid={!isPasswordMatch(password, checkPassword)}
+        validMessage={validCheckPwdMessage}
+        invalidMessage={invalidCheckPwdMessage}
         className="py-3 border-gray-light caret-green-middle"
         type="password"
         label="비밀번호 확인 *"
@@ -118,8 +127,8 @@ const SignUpForm = () => {
       <div className="flex gap-1 w-full">
         <Input
           value={email}
-          isInvalid={!isEmailValid}
-          invalidMessage={invalidEmailMessage}
+          isInvalid={!isValidEmail(email)}
+          invalidMessage={invalidEmailMessage(email)}
           onChange={handleEmail}
           label="이메일 *"
           placeholder="이메일을 입력하세요."

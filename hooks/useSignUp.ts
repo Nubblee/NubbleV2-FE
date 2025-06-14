@@ -19,16 +19,6 @@ export const useSignUp = () => {
     message: "",
   });
 
-  const invalidEmailMessage =
-    email.trim().length !== 0 ? "올바른 이메일을 입력해주세요." : "";
-  const invalidPWDMessage =
-    password.trim().length !== 0
-      ? "비밀번호는 8글자 이상이어야 하고 특수문자와 숫자를 포함해야 합니다."
-      : "";
-  const notEqualPwdMessage =
-    checkPassword.trim().length !== 0 ? "비밀번호가 일치하지 않습니다." : "";
-  const equalPwdMessage =
-    checkPassword.trim().length !== 0 ? "비밀번호가 일치합니다." : "";
   const disabledSignUp =
     !loginId ||
     !email ||
@@ -36,17 +26,6 @@ export const useSignUp = () => {
     !checkPassword ||
     !preferredArea ||
     password !== checkPassword;
-
-  // 비밀번호 유효성 정규식
-  const passwordRegex = /^[A-Za-z0-9@$!%*?&]+$/;
-  // 이메일 유효성 정규식
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const isPasswordValid = passwordRegex.test(password) && password.length >= 8;
-  const isEmailValid = emailRegex.test(email);
-
-  // 비밀번호와 비밀번호 확인 입력값 일치 여부 체크
-  const passwordIsMatch = password === checkPassword;
 
   //닉네임 중복확인
   const handleAvailableNickName = async ({
@@ -156,13 +135,6 @@ export const useSignUp = () => {
     preferredArea,
     invalidId,
     invalidNickName,
-    invalidEmailMessage,
-    invalidPWDMessage,
-    notEqualPwdMessage,
-    equalPwdMessage,
-    isPasswordValid,
-    isEmailValid,
-    passwordIsMatch,
     disabledSignUp,
     handleNickName,
     handleSignUpId,
