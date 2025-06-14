@@ -33,7 +33,7 @@ const LoginForm = () => {
       <Button
         className="w-[350px] mt-[16px] py-3"
         onClick={handleSubmitLogin}
-        disabled={!loginId && !password}
+        disabled={!loginId || !password}
       >
         로그인
       </Button>
