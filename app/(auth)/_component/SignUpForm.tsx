@@ -2,9 +2,9 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input/input";
 import Select from "@/components/Select";
-import TagButton from "@/components/TagGroup/TagButton";
 import { addressOptions } from "@/config/signup";
 import { useSignUp } from "@/hooks/useSignUp";
+import { useEffect, useRef, useState } from "react";
 
 const SignUpForm = () => {
   const {
@@ -14,6 +14,8 @@ const SignUpForm = () => {
     checkPassword,
     email,
     preferredArea,
+    invalidId,
+    invalidNickName,
     invalidEmailMessage,
     invalidPWDMessage,
     notEqualPwdMessage,
@@ -24,38 +26,72 @@ const SignUpForm = () => {
     disabledSignUp,
     handleNickName,
     handleSignUpId,
+    handleAvailableNickName,
+    handleAvailableId,
     handlePassword,
     handleCheckPassword,
     handleEmail,
     handlePreferredArea,
     handleSubmit,
   } = useSignUp();
+  const nicknameRef = useRef<HTMLInputElement>(null);
+  const loginIdRef = useRef<HTMLInputElement>(null);
+
+  const [isNickFocused, setIsNickFocused] = useState(false);
+  const [isIdFocused, setIsIdFocused] = useState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        isNickFocused &&
+        nicknameRef.current &&
+        !nicknameRef.current.contains(e.target as Node)
+      ) {
+        handleAvailableNickName({ nickname });
+        setIsNickFocused(false);
+      }
+
+      if (
+        isIdFocused &&
+        loginIdRef.current &&
+        !loginIdRef.current.contains(e.target as Node)
+      ) {
+        handleAvailableId({ loginId });
+        setIsIdFocused(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [nickname, loginId, isNickFocused, isIdFocused]);
 
   return (
     <div className="flex flex-col w-[350px] gap-5 items-center caret-green-middle">
       <Input
+        ref={nicknameRef}
+        onFocus={() => setIsNickFocused(true)}
         value={nickname}
         onChange={handleNickName}
+        isInvalid={!invalidNickName.state}
+        invalidMessage={invalidNickName.message}
         size={20}
         label="닉네임 *"
         className="py-2 border-gray-light"
         placeholder="닉네임을 입력하세요."
       />
 
-      <div className="w-full h-[67px] relative">
-        <Input
-          value={loginId}
-          onChange={handleSignUpId}
-          isInvalid={loginId.length < 4}
-          size={20}
-          label="아이디 *"
-          className="py-2 absolute left-0 bottom-0 border-gray-light caret-green-middle"
-          placeholder="아이디를 입력하세요."
-        />
-        <TagButton className="absolute w-[83px] bottom-1.5 right-2 cursor-pointer z-10">
-          중복확인
-        </TagButton>
-      </div>
+      <Input
+        ref={loginIdRef}
+        onFocus={() => setIsIdFocused(true)}
+        value={loginId}
+        onChange={handleSignUpId}
+        isInvalid={!invalidId.state}
+        invalidMessage={invalidId.message}
+        size={20}
+        label="아이디 *"
+        className="py-2 border-gray-light caret-green-middle"
+        placeholder="아이디를 입력하세요."
+      />
 
       <Input
         value={password}
