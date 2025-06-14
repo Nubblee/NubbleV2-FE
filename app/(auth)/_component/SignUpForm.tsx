@@ -8,17 +8,19 @@ import { useSignUp } from "@/hooks/useSignUp";
 
 const SignUpForm = () => {
   const {
-     nickname,
+    nickname,
     loginId,
     password,
     checkPassword,
     email,
     preferredArea,
+    invalidEmailMessage,
     invalidPWDMessage,
     notEqualPwdMessage,
     equalPwdMessage,
     isPasswordValid,
-    passwordIsMatch, 
+    isEmailValid,
+    passwordIsMatch,
     disabledSignUp,
     handleNickName,
     handleSignUpId,
@@ -26,9 +28,8 @@ const SignUpForm = () => {
     handleCheckPassword,
     handleEmail,
     handlePreferredArea,
-    handleSubmit
-  } = useSignUp()
- 
+    handleSubmit,
+  } = useSignUp();
 
   return (
     <div className="flex flex-col w-[350px] gap-5 items-center caret-green-middle">
@@ -80,8 +81,10 @@ const SignUpForm = () => {
 
       <div className="flex gap-1 w-full">
         <Input
-        value={email}
-        onChange={handleEmail}
+          value={email}
+          isInvalid={!isEmailValid}
+          invalidMessage={invalidEmailMessage}
+          onChange={handleEmail}
           label="이메일 *"
           placeholder="이메일을 입력하세요."
           type="email"
@@ -93,9 +96,17 @@ const SignUpForm = () => {
         <label className="flex text-sm text-gray-dark mb-1" htmlFor="address">
           지역
         </label>
-        <Select options={addressOptions} value={preferredArea} onChange={handlePreferredArea} />
+        <Select
+          options={addressOptions}
+          value={preferredArea}
+          onChange={handlePreferredArea}
+        />
       </div>
-      <Button className="w-full py-3"  disabled={disabledSignUp} onClick={handleSubmit}>
+      <Button
+        className="w-full py-3"
+        disabled={disabledSignUp}
+        onClick={handleSubmit}
+      >
         가입하기
       </Button>
     </div>

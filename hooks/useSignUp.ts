@@ -13,6 +13,8 @@ export const useSignUp = () => {
 
   const invalidIdMessage =
     loginId.trim().length !== 0 ? "아이디는 4글자 이상이어야 합니다." : "";
+  const invalidEmailMessage =
+    email.trim().length !== 0 ? "올바른 이메일을 입력해주세요." : "";
   const invalidPWDMessage =
     password.trim().length !== 0
       ? "비밀번호는 8글자 이상이어야 하고 특수문자와 숫자를 포함해야 합니다."
@@ -31,8 +33,11 @@ export const useSignUp = () => {
 
   // 비밀번호 유효성 정규식
   const passwordRegex = /^[A-Za-z0-9@$!%*?&]+$/;
+  // 이메일 유효성 검사
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const isPasswordValid = passwordRegex.test(password) && password.length >= 8;
+  const isEmailValid = emailRegex.test(email);
 
   // 비밀번호와 비밀번호 확인 입력값 일치 여부 체크
   const passwordIsMatch = password === checkPassword;
@@ -78,10 +83,12 @@ export const useSignUp = () => {
     email,
     preferredArea,
     invalidIdMessage,
+    invalidEmailMessage,
     invalidPWDMessage,
     notEqualPwdMessage,
     equalPwdMessage,
     isPasswordValid,
+    isEmailValid,
     passwordIsMatch,
     disabledSignUp,
     handleNickName,

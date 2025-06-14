@@ -47,6 +47,31 @@ export const fetchLogin = async ({ loginId, password }: UserLoginType) => {
   }
 };
 
+//아이디 및 닉네임 중복 유효성 검사
+export const fetchAvailabilityLogin = async ({
+  loginId,
+  nickname,
+}: {
+  loginId?: string;
+  nickname?: string;
+}) => {
+  try {
+    const res = await apiClient.get(apiEndPoints.AUTH.AVAILABILITY_USER, {
+      params: {
+        loginId,
+        nickname,
+      },
+    });
+    return res.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      if (error.response?.data) {
+        throw new Error(error.response.data.detail);
+      }
+    }
+  }
+};
+
 //토큰으로 인증 정보 조회
 export const fetchUser = async (token: string) => {
   const client = typeof window === "undefined" ? ServerClient : apiClient;
