@@ -54,7 +54,7 @@ export default function HomePage() {
     <main className="flex flex-col items-center">
       {/*검색 필터 영역 */}
       <section className="w-full bg-green-middle text-white py-4 px-4">
-        <div className="max-w-[80%] mx-auto space-y-4">
+        <div className="max-w-6xl mx-auto space-y-4 px-4">
           {/* 제목 + 버튼 */}
           <div className="hidden md:flex flex-col md:flex-row items-center gap-4">
             <h1 className="text-3xl font-bold text-green-dark">
