@@ -8,7 +8,7 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import { fetchLogout } from "@/api/auth/auth";
 
 const Header = () => {
-  const clearUser = useAuthStore((state) => state.clearUser);
+  const { clearUser } = useAuthStore();
   const pathname = usePathname();
   const isHome = pathname === "/";
 

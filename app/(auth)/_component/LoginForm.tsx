@@ -33,7 +33,9 @@ const LoginForm = () => {
       <Button className="w-[350px] mt-[16px] py-3" onClick={handleSubmitLogin}>
         로그인
       </Button>
-      {errorMessage ?? <span className="text-red">{errorMessage}</span>}
+      {errorMessage && (
+        <span className="text-red-400 text-center text-sm">{errorMessage}</span>
+      )}
     </div>
   );
 };

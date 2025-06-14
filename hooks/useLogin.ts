@@ -5,7 +5,7 @@ import { useAuthStore } from "@/stores/useAuthStore";
 
 export const useLogin = () => {
   const router = useRouter();
-  const setUser = useAuthStore((state) => state.setUser);
+  const { setUser } = useAuthStore();
 
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
