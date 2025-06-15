@@ -17,11 +17,15 @@ const StudyCard = ({
   expireDay,
   isBookMark = false,
   onBookMark,
+  onClick,
   className,
 }: StudyCardProps & BookMarkButtonProps) => {
   return (
     <Card type="gray" className="bg-white" isShadow>
-      <div className={`w-full h-full cursor-pointer ${className}`}>
+      <div
+        onClick={onClick}
+        className={`w-full h-full cursor-pointer ${className}`}
+      >
         <div className={`flex justify-end px-[10px] mt-[10px] z-10`}>
           <BookMarkButton isBookMark={isBookMark} onBookMark={onBookMark} />
         </div>
