@@ -1,6 +1,6 @@
 'use client'
 
-import { ApplicationStatus, StudyManagement, StudyStatus } from './'
+import { ApplicationStatus, StudyManagement, StudyStatus } from '.'
 import { useSearchParams } from 'next/navigation'
 
 const TabContent = () => {

@@ -16,7 +16,13 @@ const localizer = luxonLocalizer(DateTime, {
 const CalendarView = ({ option, events, onEventSelect }: CalendarViewProps) => {
   const [selected, setSelected] = useState<string | null>(null)
   const filteredEvents = selected
-    ? events.filter((e) => e.title === option.find((o) => o.value === selected)?.label)
+    ? events.filter((e) => {
+        const selectedOption = option.find((o) => o.value === selected)
+        if (selectedOption?.label && e.title === selectedOption.label) return true
+        if (selected === 'solved') return e.solved === true
+        if (selected === 'unsolved') return e.solved === false
+        return false
+      })
     : events
   const mappedEvents = mapAndSortEvents(filteredEvents)
 
@@ -25,24 +31,22 @@ const CalendarView = ({ option, events, onEventSelect }: CalendarViewProps) => {
   )
 
   return (
-    <div>
-      <Calendar
-        localizer={localizer}
-        events={mappedEvents}
-        startAccessor={(event) => event.date}
-        endAccessor={(event) => event.date}
-        views={['month']}
-        components={{
-          toolbar: ToolbarComponent,
-          event: CustomEvent,
-        }}
-        popup
-        onSelectEvent={(event) => {
-          onEventSelect?.(event)
-        }}
-        style={{ width: '100%', height: 800 }}
-      />
-    </div>
+    <Calendar
+      localizer={localizer}
+      events={mappedEvents}
+      startAccessor={(event) => event.date}
+      endAccessor={(event) => event.date}
+      views={['month']}
+      components={{
+        toolbar: ToolbarComponent,
+        event: CustomEvent,
+      }}
+      popup
+      onSelectEvent={(event) => {
+        onEventSelect?.(event)
+      }}
+      style={{ width: '100%', height: 800 }}
+    />
   )
 }
 

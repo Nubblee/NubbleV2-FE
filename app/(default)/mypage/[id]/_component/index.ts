@@ -1,6 +1,4 @@
 export {default as UserInfo} from './user-info'
 export {default as MypageTabs} from './mypage-tabs'
 export {default as TabContent} from './tab-content'
-export {default as ApplicationStatus} from './application-status'
-export {default as StudyManagement} from './study-management'
-export {default as StudyStatus} from './study-status'
+export * from './tab'
