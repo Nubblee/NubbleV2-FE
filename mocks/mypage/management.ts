@@ -1,4 +1,4 @@
-import type { StudyCardProps } from '@/types/study';
+import type { StudyCardProps, RejectionCardProps } from '@/types/study';
 
 export const createdStudyList: StudyCardProps[] = [
   {
@@ -13,7 +13,6 @@ export const createdStudyList: StudyCardProps[] = [
     expireDay: "2025-06-01",
     mainLanguage: "JAVASCRIPT",
   },
-
   {
     studyGroupId: "3",
     status: "RECRUITING",
@@ -27,7 +26,55 @@ export const createdStudyList: StudyCardProps[] = [
     mainLanguage: "JAVASCRIPT",
   },
   {
-    studyGroupId: "5",
+    studyGroupId: "55",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 입문과정",
+    allMembers: 5,
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "TUE"],
+    expireDay: "2025-05-25",
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "43",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "JS 알고리즘 스터디",
+    allMembers: 4,
+    members: 1,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    expireDay: "2025-05-20",
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "35",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 입문과정",
+    allMembers: 5,
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "TUE"],
+    expireDay: "2025-05-25",
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "23",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "JS 알고리즘 스터디",
+    allMembers: 4,
+    members: 1,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["SAT", "SUN"],
+    expireDay: "2025-05-20",
+    mainLanguage: "JAVASCRIPT",
+  },
+  {
+    studyGroupId: "15",
     status: "RECRUITING",
     icon: "/javascript.png",
     name: "자바스크립트 입문과정",
@@ -105,5 +152,50 @@ export const finishedStudyList: StudyCardProps[] = [
     mainMeetingDays: ["SAT", "SUN"],
     expireDay: "2025-05-20",
     mainLanguage: "JAVASCRIPT",
+  },
+];
+
+export const rejectionStudyList: RejectionCardProps[] = [
+  {
+    studyGroupId: "1",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 왕초보 스터디",
+    allMembers: 8,
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "WED", "FRI"],
+    expireDay: "2025-06-20",
+    rejectionDay: "2025-6-19",
+    mainLanguage: "JAVASCRIPT",
+    message:'죄송하지만..........안될거 같네요.........거절 사유 글자 제한 수가 몇일까?..............죄송하지만..........안될거 같네요.........거절 사유 글자 제한 수가 몇일까?..............'
+  },
+  {
+    studyGroupId: "2",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "자바스크립트 알고리즘 스터디",
+    allMembers: 8,
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "WED", "FRI"],
+    expireDay: "2025-06-20",
+    rejectionDay: "2025-6-19",
+    mainLanguage: "JAVASCRIPT",
+    message:'신청 양식에 안맞네요. 재신청해주시길 바랍니다.'
+  },
+  {
+    studyGroupId: "3",
+    status: "RECRUITING",
+    icon: "/javascript.png",
+    name: "JS 왕초보 스터디",
+    allMembers: 8,
+    members: 4,
+    difficultyLevels: ["LV1", "LV2"],
+    mainMeetingDays: ["MON", "WED", "FRI"],
+    expireDay: "2025-06-20",
+    rejectionDay: "2025-6-19",
+    mainLanguage: "JAVASCRIPT",
+    message:'인원이 벌써 다 찼어요 ㅠㅠ 아쉽지만 다음에 함께해요!! 🥺'
   },
 ];

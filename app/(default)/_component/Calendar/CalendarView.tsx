@@ -45,7 +45,7 @@ const CalendarView = ({ option, events, onEventSelect }: CalendarViewProps) => {
       onSelectEvent={(event) => {
         onEventSelect?.(event)
       }}
-      style={{ width: '100%', height: 800 }}
+      style={{ width: '100%', height: 1000 }}
     />
   )
 }
