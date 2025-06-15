@@ -1,9 +1,11 @@
-import UserInfo from './_component/UserInfo'
+import { UserInfo, TabContent, MypageTabs } from './_component'
 
 const page = () => {
   return (
-    <div className='mt-5 flex flex-col py-10 px-14'>
+    <div className='flex flex-col py-6 px-14 gap-10'>
       <UserInfo />
+      <MypageTabs />
+      <TabContent />
     </div>
   )
 }
