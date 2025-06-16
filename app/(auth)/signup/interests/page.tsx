@@ -1,4 +1,4 @@
-import InterestsTag from "../../_component/InterestsTag";
+import InterestsTag from "../../_component/interests-tag";
 
 const Page = () => {
   return (

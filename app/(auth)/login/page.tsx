@@ -1,5 +1,5 @@
 import LoginForm from "../_component/LoginForm";
-import AuthLink from "../_component/AuthLink";
+import AuthLink from "../_component/auth-link";
 
 const page = () => {
   return (
