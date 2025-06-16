@@ -4,9 +4,21 @@ import StudyRegisterTag from "@/app/(default)/studyRegister/_component/studyRegi
 import Input from "@/components/Input/input";
 import Button from "@/components/Button";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 const StudyRegister = () => {
   const router = useRouter();
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [applicationForm, setApplicationForm] = useState("");
+  const [tags, setTags] = useState<string[]>([]);
+  const [mainLanguage, setMainLanguage] = useState("");
+  const [difficultyLevels, setDifficultyLevels] = useState<string[]>([]);
+  const [problemPlatforms, setProblemPlatforms] = useState<string[]>([]);
+  const [meetingType, setMeetingType] = useState("");
+  const [meetingRegion, setMeetingRegion] = useState("");
+  const [mainMeetingDays, setMainMeetingDays] = useState<string[]>([]);
 
   const handleCreate = async () => {
     // 임의의 ID 사용

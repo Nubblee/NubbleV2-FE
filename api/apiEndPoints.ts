@@ -7,4 +7,8 @@ export const apiEndPoints = {
     LOGOUT: "/auth/logout",
     INTERESTS: "/user/interest",
   },
+  STUDY: {
+    REGISTER: "/study-groups",
+    ANNOUNCEMENT_POST: "/study-announcements",
+  },
 };

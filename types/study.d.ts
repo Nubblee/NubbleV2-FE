@@ -47,3 +47,19 @@ export interface StudyGroup {
   meetingRegion: string | null;
   mainMeetingDays: DayType[];
 }
+
+//스터디 생성  타입
+export type RegisterStudyParams = Omit<
+  StudyGroup,
+  "studyGroupId" | "startDate" | "endDate" | "status"
+>;
+
+//스터디 모집공고
+export interface CreateRecruitingPostParams {
+  studyGroupId: string;
+  title: string;
+  description: string;
+  recruitCapacity: number;
+  endDate: string;
+  applicationFormContent: string;
+}
