@@ -7,4 +7,11 @@ export interface AuthUserProps {
   email: string;
 }
 
+//회원 선호 코테 정보 인터페이스
+export interface AuthInterestsProps {
+  interestsLanguages: string[];
+  currentLevels: string[];
+  preferredPlatforms: string[];
+}
+
 type UserLoginType = Pick<AuthUserProps, "loginId" | "password">;

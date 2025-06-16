@@ -1,3 +1,4 @@
+import { languageOptions } from "@/config/study";
 import { DayType } from "./day";
 
 //스터디 상태
@@ -7,18 +8,7 @@ export type StudyCardType = "RECRUITING" | "ACTIVE" | "ENDED";
 export type MeetingType = "ONLINE" | "OFFLINE" | "HYBRID";
 
 //스터디 언어
-export type LanguageType =
-  | "JAVA"
-  | "PYTHON"
-  | "C"
-  | "CPP"
-  | "JAVASCRIPT"
-  | "TYPESCRIPT"
-  | "GO"
-  | "RUBY"
-  | "KOTLIN"
-  | "RUST"
-  | "OTHER";
+export type LanguageType = (typeof languageOptions)[number];
 
 //스터디 카드 인터페이스
 export interface StudyCardProps

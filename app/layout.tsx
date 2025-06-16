@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { pretendard } from "./fonts";
 import ToastContainer from "@/components/ToastContainer";
+import AuthProvier from "@/components/\bauth/auth-provier";
 
 export const metadata: Metadata = {
   title: "Nubble",
@@ -21,9 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${pretendard.variable} font-pretendard`}>
-        {children}
-        {modal}
-        <ToastContainer />
+        <AuthProvier>
+          {children}
+          {modal}
+          <ToastContainer />
+        </AuthProvier>
       </body>
     </html>
   );
