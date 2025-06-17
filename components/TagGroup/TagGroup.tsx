@@ -13,6 +13,7 @@ interface TagGroupProps {
   onChange?: (selected: string[]) => void;
   readonly?: boolean;
   sideLabelSize?: "default" | "small";
+  singleSelect?: boolean;
 }
 
 const TagGroup = ({
@@ -24,15 +25,25 @@ const TagGroup = ({
   onChange,
   readonly = false,
   sideLabelSize = "default",
+  singleSelect = false,
 }: TagGroupProps) => {
   const [selectedValues, setSelectedValues] =
     useState<string[]>(defaultSelected);
 
   const toggle = (value: string) => {
     if (readonly) return;
-    const newSelected = selectedValues.includes(value)
-      ? selectedValues.filter((v) => v !== value)
-      : [...selectedValues, value];
+
+    let newSelected: string[];
+
+    if (singleSelect) {
+      // 하나만 선택 가능
+      newSelected = selectedValues.includes(value) ? [] : [value];
+    } else {
+      // 다중 선택
+      newSelected = selectedValues.includes(value)
+        ? selectedValues.filter((v) => v !== value)
+        : [...selectedValues, value];
+    }
 
     setSelectedValues(newSelected);
     onChange?.(newSelected);

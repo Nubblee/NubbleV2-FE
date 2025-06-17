@@ -35,16 +35,21 @@ const addressOptions = [
 
 const problemOptions = ["프로그래머스", "리트코드", "백준", "codetree"];
 const levelOptions = ["LV0", "LV1", "LV2", "LV3", "LV4"];
-const howOptions = ["온라인", "오프라인"];
+const howOptions = ["온라인", "오프라인", "하이브리드"];
 const days = ["월", "화", "수", "목", "금", "토", "일"];
 const StudyRegisterTag = () => {
   return (
     <div className="flex flex-col gap-[40px] justify-center">
       <TagGroup label="언어" options={languageOptions} />
+      <TagGroup
+        label="대표 언어 (1개)"
+        options={languageOptions}
+        singleSelect
+      />
       <TagGroup label="레벨" options={levelOptions} />
       <TagGroup label="문제 푸는 사이트" options={problemOptions} />
       <div className="flex gap-18">
-        <TagGroup label="진행방식" options={howOptions} />
+        <TagGroup label="진행방식 (1개)" options={howOptions} singleSelect />
         <div className="w-[30%]">
           <h2 className="mb-2 font-bold">지역</h2>
           <Select options={addressOptions} className="py-1" />
