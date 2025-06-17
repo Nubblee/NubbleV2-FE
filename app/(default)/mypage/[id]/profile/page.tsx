@@ -14,7 +14,7 @@ const Page = () => {
 
   return (
     <div className='flex w-full justify-center'>
-      <form className='flex flex-col w-[1000px] items-center gap-10' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='flex flex-col w-[1000px] items-center gap-10'>
         <EditImage user={user} onChangeImage={() => {}} />
         <Divider />
         <EditForm user={user} />

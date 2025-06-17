@@ -3,7 +3,7 @@ import { languageOptions } from '@/config/study'
 import { addressOptions } from '@/config/signup'
 import TagGroup from '@/components/TagGroup/TagGroup'
 import Select from '@/components/Select'
-import Input from '@/components/Input/input'
+import Input from '@/components/input'
 import Link from 'next/link'
 
 interface EditFormProps {
@@ -12,7 +12,7 @@ interface EditFormProps {
 
 const EditForm = ({ user }: EditFormProps) => {
   return (
-    <div className='flex flex-col gap-8 w-[600px] '>
+    <section className='flex flex-col gap-8 w-[600px]' aria-label='프로필 수정 입력폼'>
       <Input
         htmlFor='nickname'
         label='닉네임'
@@ -49,12 +49,12 @@ const EditForm = ({ user }: EditFormProps) => {
         </label>
         <Link
           href={`/mypage/${user?.loginId}/profile/password`}
-          className='text-sm bg-gray-middle py-1 px-2 text-gray-800 cursor-pointer hover:bg-gray-light'
+          className='text-sm bg-gray-middle py-1 px-2 text-gray-800 cursor-pointer hover:bg-gray-300'
         >
           변경하기
         </Link>
       </div>
-    </div>
+    </section>
   )
 }
 

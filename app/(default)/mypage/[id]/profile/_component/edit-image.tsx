@@ -34,7 +34,10 @@ const EditImage = ({ user, onChangeImage }: EditImageProps) => {
   const profileImageSrc = previewUrl ?? user?.profileImg
 
   return (
-    <div className='relative group rounded-full overflow-hidden'>
+    <section
+      className='relative group rounded-full overflow-hidden'
+      aria-label='프로필 이미지 변경'
+    >
       <ProfileImage src={profileImageSrc} alt={`${user?.nickname} 의 프로필 이미지`} size={160} />
       <div
         className='absolute inset-0 bg-black/50 opacity-50 group-hover:opacity-100 flex items-center justify-center transition cursor-pointer'
@@ -49,7 +52,7 @@ const EditImage = ({ user, onChangeImage }: EditImageProps) => {
         ref={fileInputRef}
         onChange={handleFileChange}
       />
-    </div>
+    </section>
   )
 }
 
