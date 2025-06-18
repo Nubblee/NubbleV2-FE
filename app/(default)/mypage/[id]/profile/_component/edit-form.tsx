@@ -17,7 +17,7 @@ const EditForm = ({ user }: EditFormProps) => {
         htmlFor='nickname'
         label='닉네임'
         variant='underline'
-        value={user?.nickname}
+        value={user?.nickname ?? ''}
         onChange={() => {}}
         className='py-3 border-gray-light caret-green-middle'
       />
@@ -25,7 +25,7 @@ const EditForm = ({ user }: EditFormProps) => {
         htmlFor='email'
         label='이메일'
         variant='underline'
-        value={user?.email}
+        value={user?.email ?? ''}
         onChange={() => {}}
         className='py-3 border-gray-light caret-green-middle'
       />
