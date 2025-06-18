@@ -1,4 +1,4 @@
-import { apiClient } from "@/api/apiClient";
+import { apiClient, ServerClient } from "@/api/apiClient";
 import { apiEndPoints } from "@/api/apiEndPoints";
 import { CreateRecruitingPostParams, RegisterStudyParams } from "@/types/study";
 import axios from "axios";
@@ -78,5 +78,33 @@ export const fetchCreateRecruitingPost = async ({
       }
     }
     throw new Error("모집공고 생성 중 오류가 발생했습니다.");
+  }
+};
+
+//모집공고 조회
+export const fetchGetAnnouncement = async (announcementId: string) => {
+  try {
+    // endpoint 만들기
+    const endpoint = apiEndPoints.STUDY.ANNOUNCEMENT_GET.replace(
+      "{announcementId}",
+      announcementId
+    );
+    // 콘솔로 값 찍기
+    console.log("fetchGetAnnouncement called!");
+    console.log("announcementId:", announcementId);
+    console.log("endpoint:", endpoint);
+
+    const res = await ServerClient.get(endpoint, {
+      withCredentials: true,
+    });
+    return res.data;
+  } catch (error) {
+    console.error("실제 axios 에러:", error);
+    if (axios.isAxiosError(error)) {
+      if (error.response?.data) {
+        throw new Error(error.response.data.detail);
+      }
+    }
+    throw new Error("모집공고 조회 중 오류가 발생했습니다.");
   }
 };

@@ -1,34 +1,35 @@
 "use client";
 
-import StudyRegisterTag from "@/app/(default)/studyRegister/_component/studyRegisterTag";
-import Input from "@/components/Input/input";
-import Button from "@/components/Button";
-import { useRouter } from "next/navigation";
-import { useState } from "react";
 import {
   fetchCreateRecruitingPost,
   fetchRegisterStudy,
 } from "@/api/studyRegister/studyRegister";
-import { DayType } from "@/types/day";
+import StudyRegisterTag from "@/app/(default)/studyRegister/_component/studyRegisterTag";
+import Button from "@/components/Button";
+import Input from "@/components/Input/input";
+import { useStudyRegisterForm } from "@/hooks/hooks/useStudyRegisterForm";
 import { MeetingType } from "@/types/study";
+import {
+  LANGUAGE_MAP,
+  LEVEL_MAP,
+  MEETING_TYPE_MAP,
+  DAY_MAP,
+  PROBLEM_MAP,
+  LanguageKey,
+  ProblemKey,
+  MeetingTypeKey,
+  LevelKey,
+  DayKey,
+} from "@/utils/enumMaps";
 import { validateStudyForm } from "@/utils/validateStudyForm";
+import { useRouter } from "next/navigation";
 
 const StudyRegister = () => {
   const router = useRouter();
-
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [applicationForm, setApplicationForm] = useState("");
-  const [languages, setLanguages] = useState<string[]>([]);
-  const [mainLanguage, setMainLanguage] = useState("");
-  const [difficultyLevels, setDifficultyLevels] = useState<string[]>([]);
-  const [problemPlatforms, setProblemPlatforms] = useState<string[]>([]);
-  const [meetingType, setMeetingType] = useState<MeetingType | "">("");
-  const [meetingRegion, setMeetingRegion] = useState("");
-  const [mainMeetingDays, setMainMeetingDays] = useState<DayType[]>([]);
+  const form = useStudyRegisterForm();
 
   const handleCreate = async () => {
-    const error = validateStudyForm({
+    const {
       title,
       description,
       applicationForm,
@@ -39,6 +40,37 @@ const StudyRegister = () => {
       meetingType,
       meetingRegion,
       mainMeetingDays,
+      capacity,
+      endDate,
+    } = form.getFormData();
+
+    const mappedLanguages = languages.map(
+      (l) => LANGUAGE_MAP[l as LanguageKey]
+    );
+    const mappedMainLanguage = mainLanguage
+      ? LANGUAGE_MAP[mainLanguage as LanguageKey]
+      : "";
+    const mappedLevels = difficultyLevels.map((l) => LEVEL_MAP[l as LevelKey]);
+    const mappedProblems = problemPlatforms.map(
+      (p) => PROBLEM_MAP[p as ProblemKey]
+    );
+    const mappedMeetingType =
+      MEETING_TYPE_MAP[meetingType as MeetingTypeKey] || "";
+    const mappedDays = mainMeetingDays.map((d) => DAY_MAP[d as DayKey]);
+
+    const error = validateStudyForm({
+      title,
+      description,
+      applicationForm,
+      languages: mappedLanguages,
+      mainLanguage: mappedMainLanguage,
+      difficultyLevels: mappedLevels,
+      problemPlatforms: mappedProblems,
+      meetingType: mappedMeetingType,
+      meetingRegion,
+      mainMeetingDays: mappedDays,
+      capacity,
+      endDate,
     });
 
     if (error) {
@@ -50,28 +82,30 @@ const StudyRegister = () => {
       const studyData = await fetchRegisterStudy({
         name: title,
         description,
-        capacity: 5,
-        languages,
-        difficultyLevels,
-        mainLanguage,
-        problemPlatforms,
-        meetingType: meetingType as MeetingType,
+        capacity,
+        languages: mappedLanguages,
+        difficultyLevels: mappedLevels,
+        mainLanguage: mappedMainLanguage,
+        problemPlatforms: mappedProblems,
+        meetingType: mappedMeetingType,
         meetingRegion,
-        mainMeetingDays,
+        mainMeetingDays: mappedDays,
       });
 
       const studyGroupId = studyData.studyGroup.id;
 
-      await fetchCreateRecruitingPost({
+      const announcementData = await fetchCreateRecruitingPost({
         studyGroupId,
         title,
         description,
-        recruitCapacity: 5,
-        endDate: new Date().toISOString(),
+        recruitCapacity: capacity - 1,
+        endDate,
         applicationFormContent: applicationForm,
       });
 
-      router.push(`/study/${studyGroupId}`);
+      const announcementId = announcementData.studyAnnouncement.id;
+
+      router.push(`/studyRegisterDetail/${announcementId}`);
     } catch (error) {
       console.error("생성 중 오류 발생:", error);
       alert(
@@ -81,6 +115,8 @@ const StudyRegister = () => {
       );
     }
   };
+
+  console.log("difficultyLevels:", form.difficultyLevels);
   return (
     <div className="flex flex-col items-center justify-center w-full px-4 py-10">
       {/* 제목 */}
@@ -88,15 +124,34 @@ const StudyRegister = () => {
         <Input
           variant="underline"
           id="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={form.title}
+          onChange={(e) => form.setTitle(e.target.value)}
           placeholder="스터디 제목을 입력해주세요"
           className="py-3 text-3xl font-semibold border-gray-light"
         />
       </div>
 
       {/* 태그 및 설정 */}
-      <StudyRegisterTag />
+      <StudyRegisterTag
+        languages={form.languages}
+        setLanguages={form.setLanguages}
+        mainLanguage={form.mainLanguage}
+        setMainLanguage={form.setMainLanguage}
+        difficultyLevels={form.difficultyLevels}
+        setDifficultyLevels={form.setDifficultyLevels}
+        problemPlatforms={form.problemPlatforms}
+        setProblemPlatforms={form.setProblemPlatforms}
+        meetingType={form.meetingType}
+        setMeetingType={form.setMeetingType}
+        meetingRegion={form.meetingRegion}
+        setMeetingRegion={form.setMeetingRegion}
+        mainMeetingDays={form.mainMeetingDays}
+        setMainMeetingDays={form.setMainMeetingDays}
+        capacity={form.capacity}
+        setCapacity={form.setCapacity}
+        endDate={form.endDate}
+        setEndDate={form.setEndDate}
+      />
 
       {/* 스터디 소개 */}
       <div className="mt-10 w-full max-w-[600px]">
@@ -108,9 +163,9 @@ const StudyRegister = () => {
         </label>
         <textarea
           id="description"
-          value={description}
+          value={form.description}
           placeholder="스터디를 간략하게 소개해주세요"
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e) => form.setDescription(e.target.value)}
           className="w-full h-[200px] p-3 border border-gray-light rounded-md focus:outline-none focus:border-green-middle resize-none"
         />
       </div>
@@ -125,8 +180,8 @@ const StudyRegister = () => {
         </label>
         <textarea
           id="applicationForm"
-          value={applicationForm}
-          onChange={(e) => setApplicationForm(e.target.value)}
+          value={form.applicationForm}
+          onChange={(e) => form.setApplicationForm(e.target.value)}
           placeholder={`코딩스터디 언어:\n코딩스터디 레벨:\n선호하는 코딩테스트 사이트:\n가능한 스터디 시간:\n원하는 스터디 요일:\n이 스터디에 가입하고 싶은 이유:\n깃허브 아이디:\n사는 지역:`}
           className="w-full h-[240px] p-3 border border-gray-light rounded-md focus:outline-none focus:border-green-middle resize-none"
         />

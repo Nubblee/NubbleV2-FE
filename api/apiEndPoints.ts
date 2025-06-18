@@ -10,5 +10,6 @@ export const apiEndPoints = {
   STUDY: {
     REGISTER: "/study-groups",
     ANNOUNCEMENT_POST: "/study-announcements",
+    ANNOUNCEMENT_GET: "/study-announcements/{announcementId}",
   },
 };

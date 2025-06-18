@@ -63,3 +63,14 @@ export interface CreateRecruitingPostParams {
   endDate: string;
   applicationFormContent: string;
 }
+//스터디 모집공고 조회
+export interface StudyRegisterDetailTagProps {
+  languages: string[];
+  levels: string[];
+  platforms: string[];
+  meetingType: string;
+  region: string;
+  days: string[];
+  capacity: number;
+  endDate: string;
+}
