@@ -8,7 +8,6 @@ type Props = {
 
 const StudyDetailPage = async ({ params }: Props) => {
   const { id } = await params;
-  console.log("params in page:", params);
 
   const data = await fetchGetAnnouncement(id);
   const announcement = data.studyAnnouncement.announcement;

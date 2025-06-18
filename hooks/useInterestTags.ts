@@ -13,8 +13,6 @@ export const useInterestTags = () => {
   );
   const [levels, setLevels] = useState<(typeof levelOptions)[number][]>([]);
 
-  console.log(languages, levels);
-
   const handleInterestTags = async () => {
     try {
       await fetchUserInterest({

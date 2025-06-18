@@ -84,15 +84,10 @@ export const fetchCreateRecruitingPost = async ({
 //모집공고 조회
 export const fetchGetAnnouncement = async (announcementId: string) => {
   try {
-    // endpoint 만들기
     const endpoint = apiEndPoints.STUDY.ANNOUNCEMENT_GET.replace(
       "{announcementId}",
       announcementId
     );
-    // 콘솔로 값 찍기
-    console.log("fetchGetAnnouncement called!");
-    console.log("announcementId:", announcementId);
-    console.log("endpoint:", endpoint);
 
     const res = await ServerClient.get(endpoint, {
       withCredentials: true,

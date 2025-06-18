@@ -1,4 +1,3 @@
-// TagGroup.tsx
 import clsx from "clsx";
 import TagButton from "./TagButton";
 
@@ -25,8 +24,6 @@ const TagGroup = ({
   sideLabelSize = "default",
   singleSelect = false,
 }: TagGroupProps) => {
-  console.log("[TagGroup] options:", options);
-  console.log("[TagGroup] selectedValues:", selectedValues);
   const toggle = (value: string) => {
     if (readonly || !onChange) return;
 
