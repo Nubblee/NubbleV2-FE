@@ -3,13 +3,18 @@ export const languageOptions = [
   "PYTHON",
   "C",
   "CPP",
+  "CSHARP",
   "JAVASCRIPT",
-  "TYPESCRIPT",
-  "GO",
-  "RUBY",
   "KOTLIN",
-  "RUST",
-  "OTHER",
+  "SWIFT",
+  "GO",
 ];
-export const problemOptions = ["프로그래머스", "리트코드", "백준", "codetree"];
-export const levelOptions = ["LV0", "LV1", "LV2", "LV3", "LV4"];
+
+export const problemOptions = {
+  PROGRAMMERS: "프로그래머스",
+  BAEKJOON: "백준",
+  LEET_CODE: "리트코드",
+  CODE_TREE: "코드트리",
+};
+
+export const levelOptions = ["LV1", "LV2", "LV3", "LV4", "LV5"];
