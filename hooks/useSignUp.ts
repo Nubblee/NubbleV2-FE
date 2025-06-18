@@ -43,7 +43,7 @@ export const useSignUp = () => {
       } else {
         setinvalidNickName({
           state: true,
-          message: "",
+          message: "사용가능한 닉네임 입니다.",
         });
       }
     } catch (error) {
@@ -74,7 +74,7 @@ export const useSignUp = () => {
       } else {
         setInvalidId({
           state: true,
-          message: "",
+          message: "사용가능한 아이디 입니다.",
         });
       }
     } catch (error) {
@@ -96,8 +96,16 @@ export const useSignUp = () => {
   // 회원가입 요청
   const handleSubmit = async () => {
     try {
-      await fetchSignUp({ loginId, nickname, password, preferredArea, email });
-      router.push("/signup/interests");
+      const res = await fetchSignUp({
+        loginId,
+        nickname,
+        password,
+        preferredArea,
+        email,
+      });
+      if (res) {
+        router.push("/signup/interests");
+      }
     } catch (error) {
       console.error("회원가입 실패", error);
     }

@@ -5,8 +5,13 @@ import { languageOptions, levelOptions, problemOptions } from "@/config/study";
 import { useInterestTags } from "@/hooks/useInterestTags";
 
 const InterestsTag = () => {
-  const { handleLanguages, handlePlatforms, handleLevels, handleInterestTags } =
-    useInterestTags();
+  const {
+    handleLanguages,
+    handlePlatforms,
+    handleLevels,
+    handleInterestTags,
+    handleSkipInterestTags,
+  } = useInterestTags();
 
   return (
     <div className="flex flex-col gap-[78px] max-w-screen-md items-center">
@@ -18,17 +23,23 @@ const InterestsTag = () => {
         />
         <TagGroup
           label="풀이 사이트"
-          options={problemOptions}
+          options={Object.values(problemOptions)}
           onChange={handlePlatforms}
         />
         <TagGroup label="레벨" options={levelOptions} onChange={handleLevels} />
       </div>
-      <Button
-        onClick={handleInterestTags}
-        className="w-[55%] m-auto items-center py-3"
-      >
-        확인
-      </Button>
+      <div className="flex gap-4">
+        <Button onClick={handleInterestTags} className="items-center py-3">
+          입력 완료
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={handleSkipInterestTags}
+          className="items-center py-3"
+        >
+          건너뛰기
+        </Button>
+      </div>
     </div>
   );
 };
