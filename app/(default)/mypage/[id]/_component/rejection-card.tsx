@@ -17,7 +17,7 @@ const RejectionCard = ({
   message,
 }: RejectionCardProps) => {
   return (
-    <Card className='relative flex gap-4 p-10'>
+    <Card className='relative flex gap-4 p-10 h-[260px] w-full min-w-[660px]'>
       <aside className='flex flex-col gap-2 items-center'>
         <Image className='rounded-lg' src={icon} alt={icon} width={160} height={160} />
         <div className='flex gap-1 font-semibold whitespace-nowrap'>
@@ -28,7 +28,7 @@ const RejectionCard = ({
         </div>
       </aside>
 
-      <div className='flex flex-col w-[600px] gap-[6px]'>
+      <div className='flex flex-col w-full gap-[6px]'>
         <div className='flex font-bold text-lg'>
           <span className='line-clamp-2'>{name}</span>
         </div>

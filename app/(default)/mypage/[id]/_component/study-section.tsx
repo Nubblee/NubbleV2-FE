@@ -10,7 +10,7 @@ interface StudySectionProps {
 
 const StudySection = ({ title, studyList, rejectionList }: StudySectionProps) => {
   return (
-    <section className='flex flex-col gap-6'>
+    <section className='flex flex-col gap-6 w-full'>
       <h2 className='text-lg font-bold'>{title}</h2>
       {studyList && (
         <ul className='flex gap-10 flex-wrap'>
@@ -28,7 +28,7 @@ const StudySection = ({ title, studyList, rejectionList }: StudySectionProps) =>
       )}
 
       {rejectionList && (
-        <ul className='flex flex-col gap-10'>
+        <ul className='grid grid-cols-[repeat(auto-fit,minmax(660px,1fr))] gap-10'>
           {rejectionList?.map((study) => (
             <li key={study.studyGroupId}>
               <RejectionCard {...study} className='cursor-pointer' onClick={() => {}} />

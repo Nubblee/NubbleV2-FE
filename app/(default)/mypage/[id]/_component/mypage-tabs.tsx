@@ -18,15 +18,15 @@ const MypageTabs = () => {
   }
 
   return (
-    <div className='flex space-x-6 border-b border-gray-200'>
+    <div className='flex space-x-6 border-b border-gray-200 justify-center'>
       {tabs.map((tab) => (
         <button
           key={tab}
           onClick={() => handleClick(tab)}
           className={clsx(
-            'pb-2 text-lg font-medium cursor-pointer',
+            'pb-2 font-semibold text-xl cursor-pointer',
             currentTab === tab
-              ? 'border-b-2 border-green-dark text-green-dark'
+              ? 'border-b-2 border-green-middle text-green-middle'
               : 'text-gray-400 hover:text-gray-dark'
           )}
         >
