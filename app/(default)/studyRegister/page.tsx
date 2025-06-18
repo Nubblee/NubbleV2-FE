@@ -8,18 +8,17 @@ import StudyRegisterTag from "@/app/(default)/studyRegister/_component/studyRegi
 import Button from "@/components/Button";
 import Input from "@/components/Input/input";
 import { useStudyRegisterForm } from "@/hooks/hooks/useStudyRegisterForm";
-import { MeetingType } from "@/types/study";
 import {
-  LANGUAGE_MAP,
-  LEVEL_MAP,
-  MEETING_TYPE_MAP,
   DAY_MAP,
-  PROBLEM_MAP,
-  LanguageKey,
-  ProblemKey,
-  MeetingTypeKey,
-  LevelKey,
   DayKey,
+  LANGUAGE_MAP,
+  LanguageKey,
+  LEVEL_MAP,
+  LevelKey,
+  MEETING_TYPE_MAP,
+  MeetingTypeKey,
+  PROBLEM_MAP,
+  ProblemKey,
 } from "@/utils/enumMaps";
 import { validateStudyForm } from "@/utils/validateStudyForm";
 import { useRouter } from "next/navigation";
@@ -159,7 +158,8 @@ const StudyRegister = () => {
           htmlFor="introduction"
           className="font-bold text-black block mb-2"
         >
-          스터디 소개 <span className="text-red">*</span>
+          스터디 소개
+          {/* <span className="text-red">*</span> */}
         </label>
         <textarea
           id="description"
@@ -176,7 +176,8 @@ const StudyRegister = () => {
           htmlFor="applicationForm"
           className="font-bold text-black block mb-2"
         >
-          스터디 신청 양식 <span className="text-red">*</span>
+          스터디 신청 양식
+          {/* <span className="text-red">*</span> */}
         </label>
         <textarea
           id="applicationForm"

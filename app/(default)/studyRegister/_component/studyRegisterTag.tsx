@@ -1,6 +1,8 @@
 import Input from "@/components/Input/input";
 import Select from "@/components/Select";
 import TagGroup from "@/components/TagGroup/TagGroup";
+import { DayType } from "@/types/day";
+import { MeetingType } from "@/types/study";
 
 const languageOptions = [
   "Java",
@@ -48,11 +50,11 @@ interface StudyRegisterTagProps {
   problemPlatforms: string[];
   setProblemPlatforms: (v: string[]) => void;
   meetingType: string;
-  setMeetingType: (v: string) => void;
+  setMeetingType: (v: "" | MeetingType) => void;
   meetingRegion: string;
   setMeetingRegion: (v: string) => void;
-  mainMeetingDays: string[];
-  setMainMeetingDays: (v: string[]) => void;
+  mainMeetingDays: DayType[];
+  setMainMeetingDays: (v: DayType[]) => void;
   capacity: number;
   setCapacity: (v: number) => void;
   endDate: string;
@@ -111,7 +113,7 @@ const StudyRegisterTag = ({
           label="진행방식 (1개)"
           options={howOptions}
           selectedValues={meetingType ? [meetingType] : []}
-          onChange={(arr) => setMeetingType(arr[0] || "")}
+          onChange={(arr) => setMeetingType((arr[0] || "") as "" | MeetingType)}
           singleSelect
         />
         <div className="w-[30%]">
@@ -128,14 +130,15 @@ const StudyRegisterTag = ({
         label="스터디 일정"
         options={days}
         selectedValues={mainMeetingDays}
-        onChange={setMainMeetingDays}
+        onChange={(values) => setMainMeetingDays(values as DayType[])}
       />
       <div className="flex w-full gap-10">
         {/* 모집인원 */}
         <div className="flex items-center gap-2">
           <div>
             <label htmlFor="personnel" className="font-bold text-black">
-              모집인원 <span className="text-red">*</span>
+              모집인원
+              {/* <span className="text-red">*</span> */}
             </label>
           </div>
           <div className="w-[70px]">
@@ -154,7 +157,8 @@ const StudyRegisterTag = ({
         <div className="flex items-center gap-2">
           <div>
             <label htmlFor="deadline" className="font-bold text-black">
-              모집 마감일 <span className="text-red">*</span>
+              모집 마감일
+              {/* <span className="text-red">*</span> */}
             </label>
           </div>
           <div className="w-[140px]">

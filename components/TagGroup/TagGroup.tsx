@@ -8,7 +8,7 @@ interface TagGroupProps {
   labelClassName?: string;
   options: string[];
   selectedValues: string[];
-  onChange: (selected: string[]) => void;
+  onChange?: (selected: string[]) => void;
   readonly?: boolean;
   sideLabelSize?: "default" | "small";
   singleSelect?: boolean;
@@ -28,7 +28,7 @@ const TagGroup = ({
   console.log("[TagGroup] options:", options);
   console.log("[TagGroup] selectedValues:", selectedValues);
   const toggle = (value: string) => {
-    if (readonly) return;
+    if (readonly || !onChange) return;
 
     let newSelected: string[];
     if (singleSelect) {
