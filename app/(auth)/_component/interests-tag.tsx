@@ -5,8 +5,15 @@ import { languageOptions, levelOptions, problemOptions } from "@/config/study";
 import { useInterestTags } from "@/hooks/useInterestTags";
 
 const InterestsTag = () => {
-  const { handleLanguages, handlePlatforms, handleLevels, handleInterestTags } =
-    useInterestTags();
+  const {
+    languages,
+    platforms,
+    levels,
+    handleLanguages,
+    handlePlatforms,
+    handleLevels,
+    handleInterestTags,
+  } = useInterestTags();
 
   return (
     <div className="flex flex-col gap-[78px] max-w-screen-md items-center">
@@ -14,14 +21,21 @@ const InterestsTag = () => {
         <TagGroup
           label="언어"
           options={languageOptions}
+          selectedValues={languages}
           onChange={handleLanguages}
         />
         <TagGroup
           label="풀이 사이트"
           options={problemOptions}
+          selectedValues={platforms}
           onChange={handlePlatforms}
         />
-        <TagGroup label="레벨" options={levelOptions} onChange={handleLevels} />
+        <TagGroup
+          label="레벨"
+          options={levelOptions}
+          selectedValues={levels}
+          onChange={handleLevels}
+        />
       </div>
       <Button
         onClick={handleInterestTags}

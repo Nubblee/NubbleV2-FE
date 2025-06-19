@@ -1,17 +1,17 @@
-import LoginForm from '../_component/login-form'
-import AuthLink from '../_component/auth-link'
+import LoginForm from "../_component/login-form";
+import AuthLink from "../_component/auth-link";
 
 const page = () => {
   return (
-    <div className='flex flex-col items-center'>
+    <div className="flex flex-col items-center">
       <LoginForm />
-      <div className='flex gap-2 my-3 text-gray-light text-md font-light'>
-        <AuthLink href='/signup'>회원가입</AuthLink>
+      <div className="flex gap-2 my-3 text-gray-light text-md font-light">
+        <AuthLink href="/signup">회원가입</AuthLink>
         <span>|</span>
-        <AuthLink href={'/forgot-password'}>비밀번호 찾기</AuthLink>
+        <AuthLink href={"/forgot-password"}>비밀번호 찾기</AuthLink>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
