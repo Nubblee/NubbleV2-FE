@@ -48,6 +48,32 @@ export interface StudyGroup {
   mainMeetingDays: DayType[];
 }
 
+//스터디 생성  타입
+export type RegisterStudyParams = Omit<
+  StudyGroup,
+  "studyGroupId" | "startDate" | "endDate" | "status"
+>;
+
+//스터디 모집공고
+export interface CreateRecruitingPostParams {
+  studyGroupId: string;
+  title: string;
+  description: string;
+  recruitCapacity: number;
+  endDate: string;
+  applicationFormContent: string;
+}
+//스터디 모집공고 조회
+export interface StudyRegisterDetailTagProps {
+  languages: string[];
+  levels: string[];
+  platforms: string[];
+  meetingType: string;
+  region: string;
+  days: string[];
+  capacity: number;
+  endDate: string;
+}
 // 승인 거부된 스터디
 export interface RejectionCardProps
   extends Pick<

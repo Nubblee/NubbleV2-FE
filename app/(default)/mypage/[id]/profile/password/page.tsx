@@ -1,11 +1,20 @@
 'use client'
 
 import { useAuthStore } from '@/stores/useAuthStore'
-import Divider from '@/components/divider'
-import { EditActions, EditForm, EditImage } from './_component'
+import { EditPassword, EditImage, EditActions } from '../_component'
+import { Divider } from '@/components'
+import { useState } from 'react'
 
 const Page = () => {
   const user = useAuthStore((state) => state.user)
+
+  const [password, setPassword] = useState('')
+  const [checkPassword, setCheckPassword] = useState('')
+
+  const handleChangePassword = (field: 'password' | 'checkPassword', value: string) => {
+    if (field === 'password') setPassword(value)
+    else setCheckPassword(value)
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -17,7 +26,11 @@ const Page = () => {
       <form onSubmit={handleSubmit} className='flex flex-col w-[1000px] items-center gap-10'>
         <EditImage user={user} onChangeImage={() => {}} />
         <Divider />
-        <EditForm user={user} />
+        <EditPassword
+          password={password}
+          checkPassword={checkPassword}
+          onChangePassword={handleChangePassword}
+        />
         <Divider />
         <EditActions />
       </form>

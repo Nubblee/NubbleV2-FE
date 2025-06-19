@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import clsx from "clsx";
 import TagButton from "./TagButton";
 
@@ -9,10 +6,11 @@ interface TagGroupProps {
   sideLabel?: string;
   labelClassName?: string;
   options: string[];
-  defaultSelected?: string[];
+  selectedValues: string[];
   onChange?: (selected: string[]) => void;
   readonly?: boolean;
   sideLabelSize?: "default" | "small";
+  singleSelect?: boolean;
 }
 
 const TagGroup = ({
@@ -20,22 +18,24 @@ const TagGroup = ({
   sideLabel,
   labelClassName,
   options,
-  defaultSelected = [],
+  selectedValues,
   onChange,
   readonly = false,
   sideLabelSize = "default",
+  singleSelect = false,
 }: TagGroupProps) => {
-  const [selectedValues, setSelectedValues] =
-    useState<string[]>(defaultSelected);
-
   const toggle = (value: string) => {
-    if (readonly) return;
-    const newSelected = selectedValues.includes(value)
-      ? selectedValues.filter((v) => v !== value)
-      : [...selectedValues, value];
+    if (readonly || !onChange) return;
 
-    setSelectedValues(newSelected);
-    onChange?.(newSelected);
+    let newSelected: string[];
+    if (singleSelect) {
+      newSelected = selectedValues.includes(value) ? [] : [value];
+    } else {
+      newSelected = selectedValues.includes(value)
+        ? selectedValues.filter((v) => v !== value)
+        : [...selectedValues, value];
+    }
+    onChange(newSelected);
   };
 
   const computedLabelClass = clsx(
@@ -53,7 +53,7 @@ const TagGroup = ({
             <TagButton
               key={option}
               selected={selectedValues.includes(option)}
-              onClick={() => toggle(option)}
+              onClick={readonly ? undefined : () => toggle(option)}
               className={readonly ? "pointer-events-none" : ""}
             >
               {option}
@@ -74,7 +74,7 @@ const TagGroup = ({
           <TagButton
             key={option}
             selected={selectedValues.includes(option)}
-            onClick={() => toggle(option)}
+            onClick={readonly ? undefined : () => toggle(option)}
             className={readonly ? "pointer-events-none" : ""}
           >
             {option}

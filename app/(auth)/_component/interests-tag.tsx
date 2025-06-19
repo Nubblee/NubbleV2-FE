@@ -6,6 +6,9 @@ import { useInterestTags } from "@/hooks/useInterestTags";
 
 const InterestsTag = () => {
   const {
+    languages,
+    platforms,
+    levels,
     handleLanguages,
     handlePlatforms,
     handleLevels,
@@ -19,14 +22,21 @@ const InterestsTag = () => {
         <TagGroup
           label="언어"
           options={languageOptions}
+          selectedValues={languages}
           onChange={handleLanguages}
         />
         <TagGroup
           label="풀이 사이트"
           options={Object.values(problemOptions)}
+          selectedValues={platforms}
           onChange={handlePlatforms}
         />
-        <TagGroup label="레벨" options={levelOptions} onChange={handleLevels} />
+        <TagGroup
+          label="레벨"
+          options={levelOptions}
+          selectedValues={levels}
+          onChange={handleLevels}
+        />
       </div>
       <div className="flex gap-4">
         <Button onClick={handleInterestTags} className="items-center py-3">
