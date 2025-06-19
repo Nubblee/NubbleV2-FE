@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   const loginDropDown = [
-    { label: "마이페이지", link: `/profile/${user?.nickname}` },
+    { label: "마이페이지", link: `/mypage/${user?.nickname}` },
     { label: "로그아웃", onClick: handleLogout },
   ];
 
