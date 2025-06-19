@@ -49,7 +49,6 @@ export const useInterestTags = () => {
         )?.[0];
       })
       .filter((v): v is keyof typeof problemOptions => !!v);
-
     setPlatforms(keys);
   };
 

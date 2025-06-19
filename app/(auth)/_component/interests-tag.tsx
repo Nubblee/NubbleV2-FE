@@ -16,6 +16,9 @@ const InterestsTag = () => {
     handleSkipInterestTags,
   } = useInterestTags();
 
+  console.log(languages);
+  console.log(platforms);
+
   return (
     <div className="flex flex-col gap-[78px] max-w-screen-md items-center">
       <div className="flex flex-col gap-[60px] px-4">
@@ -28,7 +31,7 @@ const InterestsTag = () => {
         <TagGroup
           label="풀이 사이트"
           options={Object.values(problemOptions)}
-          selectedValues={platforms}
+          selectedValues={platforms.map((key) => problemOptions[key])}
           onChange={handlePlatforms}
         />
         <TagGroup
