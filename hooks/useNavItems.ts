@@ -6,7 +6,7 @@ export const useNavItems = () => {
 
   const authItems = user
     ? [
-        { title: `${user.nickname} 프로필`, href: "/profile" },
+        { title: `${user.nickname} 프로필`, href: `/mypage/${user.loginId}` },
         { title: "로그아웃", isButton: true },
       ]
     : [{ title: "로그인", href: "/login" }];
