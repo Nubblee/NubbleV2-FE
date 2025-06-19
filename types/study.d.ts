@@ -47,3 +47,25 @@ export interface StudyGroup {
   meetingRegion: string | null;
   mainMeetingDays: DayType[];
 }
+
+// 승인 거부된 스터디
+export interface RejectionCardProps
+  extends Pick<
+      StudyGroup,
+      | "studyGroupId"
+      | "name"
+      | "status"
+      | "mainLanguage"
+      | "mainMeetingDays"
+      | "difficultyLevels"
+    >,
+    "endDate" {
+  icon: string;
+  allMembers: number;
+  members: number;
+  message: string;
+  expireDay?: string;
+  rejectionDay?: string;
+  className?: string;
+  onClick?: () => void;
+}
