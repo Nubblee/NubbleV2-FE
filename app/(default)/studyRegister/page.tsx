@@ -5,8 +5,8 @@ import {
   fetchRegisterStudy,
 } from "@/api/studyRegister/studyRegister";
 import StudyRegisterTag from "@/app/(default)/studyRegister/_component/studyRegisterTag";
+import { Input } from "@/components";
 import Button from "@/components/Button";
-import Input from "@/components/Input/input";
 import { useStudyRegisterForm } from "@/hooks/hooks/useStudyRegisterForm";
 import {
   DAY_MAP,

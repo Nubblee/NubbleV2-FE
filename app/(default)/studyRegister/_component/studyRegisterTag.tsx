@@ -1,4 +1,4 @@
-import Input from "@/components/Input/input";
+import { Input } from "@/components";
 import Select from "@/components/Select";
 import TagGroup from "@/components/TagGroup/TagGroup";
 import { DayType } from "@/types/day";
