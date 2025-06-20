@@ -30,11 +30,18 @@ export const DropDown = ({ lists, onClose }: DropDownProps) => {
     >
       <ul className="text-sm text-gray-700">
         {lists.map((list, idx) => (
-          <li key={idx} className="hover:bg-gray-100 px-4 py-2 cursor-pointer">
+          <li
+            key={idx}
+            className="hover:bg-green-light px-4 py-2 cursor-pointer"
+          >
             {list.link ? (
-              <Link href={list.link}>{list.label}</Link>
+              <Link href={list.link} onClick={() => onClose?.()}>
+                {list.label}
+              </Link>
             ) : list.onClick ? (
               <button
+                type="button"
+                className="cursor-pointer"
                 onClick={() => {
                   list.onClick?.();
                   onClose?.();
