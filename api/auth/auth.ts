@@ -27,16 +27,20 @@ export const fetchSignUp = async ({
 
 //회원가입시 회원 선호 코딩테스트 정보 전송
 export const fetchUserInterest = async ({
-  interestsLanguages,
+  interestedLanguages,
   currentLevels,
   preferredPlatforms,
 }: AuthInterestsProps) => {
   try {
-    const res = await apiClient.put(apiEndPoints.AUTH.INTERESTS, {
-      interestsLanguages,
-      currentLevels,
-      preferredPlatforms,
-    });
+    const res = await apiClient.put(
+      apiEndPoints.AUTH.INTERESTS,
+      {
+        interestedLanguages,
+        currentLevels,
+        preferredPlatforms,
+      },
+      { withCredentials: true }
+    );
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -96,13 +100,16 @@ export const fetchAvailabilityLogin = async ({
 };
 
 //토큰으로 인증 정보 조회
-export const fetchUser = async (token: string) => {
+export const fetchUser = async (token?: string) => {
   const client = typeof window === "undefined" ? ServerClient : apiClient;
+  const headers: Record<string, string> = {};
+  if (token) {
+    headers["Cookie"] = `auth-session-id=${token}`;
+  }
   try {
     const res = await client.get(apiEndPoints.AUTH.USER, {
-      headers: {
-        Cookie: `auth-session-id=${token}`,
-      },
+      headers,
+      withCredentials: true,
     });
     return res.data.user;
   } catch (error) {

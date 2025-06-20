@@ -74,6 +74,7 @@ const SignUpForm = () => {
         onChange={handleNickName}
         isInvalid={!invalidNickName.state}
         invalidMessage={invalidNickName.message}
+        validMessage={invalidNickName.message}
         size={20}
         label='닉네임 *'
         className='py-3 border-gray-light'
@@ -87,6 +88,7 @@ const SignUpForm = () => {
         onChange={handleSignUpId}
         isInvalid={!invalidId.state}
         invalidMessage={invalidId.message}
+        validMessage={invalidId.message}
         size={20}
         label='아이디 *'
         className='py-3 border-gray-light caret-green-middle'

@@ -13,7 +13,11 @@ const InterestsTag = () => {
     handlePlatforms,
     handleLevels,
     handleInterestTags,
+    handleSkipInterestTags,
   } = useInterestTags();
+
+  console.log(languages);
+  console.log(platforms);
 
   return (
     <div className="flex flex-col gap-[78px] max-w-screen-md items-center">
@@ -26,8 +30,8 @@ const InterestsTag = () => {
         />
         <TagGroup
           label="풀이 사이트"
-          options={problemOptions}
-          selectedValues={platforms}
+          options={Object.values(problemOptions)}
+          selectedValues={platforms.map((key) => problemOptions[key])}
           onChange={handlePlatforms}
         />
         <TagGroup
@@ -37,12 +41,18 @@ const InterestsTag = () => {
           onChange={handleLevels}
         />
       </div>
-      <Button
-        onClick={handleInterestTags}
-        className="w-[55%] m-auto items-center py-3"
-      >
-        확인
-      </Button>
+      <div className="flex gap-4">
+        <Button onClick={handleInterestTags} className="items-center py-3">
+          입력 완료
+        </Button>
+        <Button
+          variant="outlined"
+          onClick={handleSkipInterestTags}
+          className="items-center py-3"
+        >
+          건너뛰기
+        </Button>
+      </div>
     </div>
   );
 };

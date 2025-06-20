@@ -4,13 +4,14 @@ export interface AuthUserProps {
   nickname: string;
   password: string;
   preferredArea?: string;
+  profileImageUrl?: string;
   email: string;
   profileImg?: string;
 }
 
 //회원 선호 코테 정보 인터페이스
 export interface AuthInterestsProps {
-  interestsLanguages: string[];
+  interestedLanguages: string[];
   currentLevels: string[];
   preferredPlatforms: string[];
 }

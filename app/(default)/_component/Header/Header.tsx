@@ -6,9 +6,13 @@ import { usePathname } from "next/navigation";
 import { useNavItems } from "@/hooks/useNavItems";
 import { useAuthStore } from "@/stores/useAuthStore";
 import { fetchLogout } from "@/api/auth/auth";
+import ProfileImage from "@/components/ProfileImage";
+import { useState } from "react";
+import { DropDown } from "./dropdown";
 
 const Header = () => {
-  const { clearUser } = useAuthStore();
+  const { clearUser, user } = useAuthStore();
+  const [isDropDown, setIsDropDown] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
 
@@ -27,20 +31,32 @@ const Header = () => {
     }
   };
 
+  const loginDropDown = [
+    { label: "마이페이지", link: `/mypage/${user?.nickname}` },
+    { label: "로그아웃", onClick: handleLogout },
+  ];
+
   return (
     <header className={`flex px-12 py-4 ${bgColor}`}>
       <div className="flex items-center justify-between  w-full mx-auto">
         <Logo color={logoColor} />
         <nav className="flex gap-6">
-          <ul className="flex gap-6">
+          <ul className="flex gap-6 items-center">
             {navItems.map(({ title, href, isButton }) => (
               <li
                 key={title}
                 className={`font-semibold ${textColor} hover:font-extrabold`}
               >
                 {isButton ? (
-                  <button className="cursor-pointer" onClick={handleLogout}>
-                    {title}
+                  <button
+                    className="cursor-pointer relative"
+                    onClick={() => setIsDropDown((prev) => !prev)}
+                  >
+                    <ProfileImage
+                      src={user?.profileImageUrl}
+                      alt={user?.nickname}
+                      size={38}
+                    />
                   </button>
                 ) : (
                   <Link href={href ?? "/"}>{title}</Link>
@@ -48,6 +64,12 @@ const Header = () => {
               </li>
             ))}
           </ul>
+          {isDropDown && (
+            <DropDown
+              lists={loginDropDown}
+              onClose={() => setIsDropDown(false)}
+            />
+          )}
         </nav>
       </div>
     </header>
