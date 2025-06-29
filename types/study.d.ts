@@ -73,6 +73,7 @@ export interface StudyRegisterDetailTagProps {
   days: string[];
   capacity: number;
   endDate: string;
+  studyId: number;
 }
 // 승인 거부된 스터디
 export interface RejectionCardProps

@@ -12,7 +12,9 @@ const StudyDetailPage = async ({ params }: Props) => {
   const data = await fetchGetAnnouncement(id);
   const announcement = data.studyAnnouncement.announcement;
   const studyGroup = data.studyAnnouncement.studyGroup;
-  // const meta = data.studyAnnouncement.meta;
+
+  console.log("Announcement Data:", announcement);
+  console.log("Study Group Data:", studyGroup);
 
   return (
     <div className="flex flex-col items-center justify-center w-full px-4 py-10">
@@ -36,6 +38,7 @@ const StudyDetailPage = async ({ params }: Props) => {
           days={studyGroup.mainMeetingDays}
           capacity={announcement.recruitCapacity}
           endDate={announcement.endDate}
+          studyId={studyGroup.id}
         />
       </div>
       <div className="mt-6 w-full max-w-[600px] whitespace-pre-wrap">

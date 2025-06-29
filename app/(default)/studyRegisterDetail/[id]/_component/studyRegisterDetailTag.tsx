@@ -1,7 +1,8 @@
 import ShowDay from "@/components/ShowDay";
 import TagGroup from "@/components/TagGroup/TagGroup";
 import { StudyRegisterDetailTagProps } from "@/types/study";
-
+import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 const StudyRegisterDetailTag = ({
   languages,
   levels,
@@ -11,9 +12,18 @@ const StudyRegisterDetailTag = ({
   days,
   capacity,
   endDate,
+  studyId,
 }: StudyRegisterDetailTagProps) => {
+  console.log(studyId);
   return (
-    <div className="flex flex-col gap-[20px] justify-center">
+    <div className="relative flex flex-col gap-[20px] justify-center">
+      <Link
+        href={`/study/${studyId}`}
+        className="absolute top-0 right-0 flex items-center gap-1 px-0 py-0 text-green-middle hover:underline hover:text-green-dark font-medium text-base transition"
+      >
+        스터디 바로가기
+        <ArrowUpRight size={18} />
+      </Link>
       <TagGroup
         sideLabel="언어"
         options={languages}
