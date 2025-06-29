@@ -145,8 +145,12 @@ const StudyRegisterTag = ({
             <Input
               id="personnel"
               type="number"
+              min={1}
               value={capacity}
-              onChange={(e) => setCapacity(Number(e.target.value))}
+              onChange={(e) => {
+                const value = Number(e.target.value);
+                setCapacity(value < 0 ? 0 : value);
+              }}
               placeholder="0"
               className="py-1 border-gray-light flex-grow"
             />
