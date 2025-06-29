@@ -19,10 +19,12 @@ const StudyDetailPage = async ({ params }: Props) => {
   return (
     <div className="flex flex-col items-center justify-center w-full px-4 py-10">
       {/* 제목 */}
-      <div className="mb-6 w-full max-w-[600px] border-b-1 border-gray-middle pb-6">
-        <div className="flex justify-between items-end">
-          <div className="text-3xl font-bold">{announcement.title}</div>
-          <p className="text-gray-middle text-sm self-end">
+      <div className="mb-6 w-full max-w-[600px] ">
+        <div className="relative w-full max-w-[600px] border-b-1 border-gray-middle pb-6 min-h-[60px]">
+          <div className="text-3xl font-bold break-words pr-32">
+            {announcement.title}
+          </div>
+          <p className="absolute bottom-1 right-0 text-gray-middle text-sm whitespace-nowrap">
             {announcement.createdAt.split("T")[0]}
           </p>
         </div>
