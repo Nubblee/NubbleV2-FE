@@ -13,7 +13,7 @@ export function useStudyRegisterForm() {
   const [meetingType, setMeetingType] = useState<MeetingType | "">("");
   const [meetingRegion, setMeetingRegion] = useState("");
   const [mainMeetingDays, setMainMeetingDays] = useState<DayType[]>([]);
-  const [capacity, setCapacity] = useState<number>(0);
+  const [capacity, setCapacity] = useState<number>(1);
   const [endDate, setEndDate] = useState<string>("");
 
   const getFormData = () => ({

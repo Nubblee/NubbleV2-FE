@@ -26,6 +26,14 @@ import { useRouter } from "next/navigation";
 const StudyRegister = () => {
   const router = useRouter();
   const form = useStudyRegisterForm();
+  const applicationFormPlaceholder = `코딩스터디 언어:
+코딩스터디 레벨:
+선호하는 코딩테스트 사이트:
+가능한 스터디 시간:
+원하는 스터디 요일:
+이 스터디에 가입하고 싶은 이유:
+깃허브 아이디:
+사는 지역:`;
 
   const handleCreate = async () => {
     const {
@@ -42,6 +50,11 @@ const StudyRegister = () => {
       capacity,
       endDate,
     } = form.getFormData();
+
+    const finalApplicationForm =
+      applicationForm && applicationForm.trim() !== ""
+        ? applicationForm
+        : applicationFormPlaceholder;
 
     const mappedLanguages = languages.map(
       (l) => LANGUAGE_MAP[l as LanguageKey]
@@ -60,7 +73,7 @@ const StudyRegister = () => {
     const error = validateStudyForm({
       title,
       description,
-      applicationForm,
+      applicationForm: finalApplicationForm,
       languages: mappedLanguages,
       mainLanguage: mappedMainLanguage,
       difficultyLevels: mappedLevels,
@@ -99,7 +112,7 @@ const StudyRegister = () => {
         description,
         recruitCapacity: capacity - 1,
         endDate,
-        applicationFormContent: applicationForm,
+        applicationFormContent: finalApplicationForm,
       });
 
       const announcementId = announcementData.studyAnnouncement.id;
@@ -182,7 +195,7 @@ const StudyRegister = () => {
           id="applicationForm"
           value={form.applicationForm}
           onChange={(e) => form.setApplicationForm(e.target.value)}
-          placeholder={`코딩스터디 언어:\n코딩스터디 레벨:\n선호하는 코딩테스트 사이트:\n가능한 스터디 시간:\n원하는 스터디 요일:\n이 스터디에 가입하고 싶은 이유:\n깃허브 아이디:\n사는 지역:`}
+          placeholder={applicationFormPlaceholder}
           className="w-full h-[240px] p-3 border border-gray-light rounded-md focus:outline-none focus:border-green-middle resize-none"
         />
       </div>
