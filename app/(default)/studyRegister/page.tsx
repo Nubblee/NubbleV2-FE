@@ -7,6 +7,7 @@ import {
 import StudyRegisterTag from "@/app/(default)/studyRegister/_component/studyRegisterTag";
 import { Input } from "@/components";
 import Button from "@/components/Button";
+import { applicationFormPlaceholder } from "@/config/applicationFormPlaceholder";
 import { useStudyRegisterForm } from "@/hooks/hooks/useStudyRegisterForm";
 import {
   DAY_MAP,
@@ -26,14 +27,6 @@ import { useRouter } from "next/navigation";
 const StudyRegister = () => {
   const router = useRouter();
   const form = useStudyRegisterForm();
-  const applicationFormPlaceholder = `코딩스터디 언어:
-코딩스터디 레벨:
-선호하는 코딩테스트 사이트:
-가능한 스터디 시간:
-원하는 스터디 요일:
-이 스터디에 가입하고 싶은 이유:
-깃허브 아이디:
-사는 지역:`;
 
   const handleCreate = async () => {
     const {
