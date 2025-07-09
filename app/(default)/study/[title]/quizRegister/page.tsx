@@ -32,7 +32,7 @@ const Page = () => {
             <Input
               id="date"
               type="date"
-              className="py-1 border border-gray-light bg-white flex-1"
+              className="py-2 border border-gray-light bg-white flex-1"
               placeholder="연도-월-일"
             />
           </div>
@@ -42,7 +42,7 @@ const Page = () => {
             </label>
             <Input
               id="title"
-              className="py-1 border border-gray-light bg-white flex-1"
+              className="py-2 border border-gray-light bg-white flex-1"
               placeholder="문제 제목을 입력하세요."
             />
           </div>
@@ -52,7 +52,7 @@ const Page = () => {
             </label>
             <Input
               id="link"
-              className="py-1 border border-gray-light bg-white flex-1"
+              className="py-2 border border-gray-light bg-white flex-1"
               placeholder="문제 링크를 입력하세요."
             />
           </div>
@@ -62,7 +62,7 @@ const Page = () => {
             </label>
             <Input
               id="tag"
-              className="py-1 border border-gray-light bg-white flex-1"
+              className="py-2 border border-gray-light bg-white flex-1"
               placeholder="문제 알고리즘 태그를 입력하세요."
             />
           </div>
