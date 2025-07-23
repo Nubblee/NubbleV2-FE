@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "@radix-ui/react-select": "^2.2.2",
+    "@tiptap/extension-placeholder": "^3.0.3",
+    "@tiptap/extensions": "^3.0.3",
+    "@tiptap/pm": "^3.0.3",
+    "@tiptap/react": "^3.0.3",
+    "@tiptap/starter-kit": "^3.0.3",
     "axios": "^1.9.0",
     "clsx": "^2.1.1",
     "lucide-react": "0.503.0",
